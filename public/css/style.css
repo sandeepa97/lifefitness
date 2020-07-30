@@ -1,0 +1,155 @@
+body {
+  background-color: #1D1B1B;
+  max-width: 1000px;
+}
+
+/*Navigation Start*/
+
+.nav-bar {
+  padding-top: 50px;
+
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 300px;
+}
+
+li a {
+
+  font-size: 20px;
+  display: block;
+  color: white;
+  padding: 10px 60px;
+
+}
+
+li a:hover {
+  background-color: #E91C23;
+  color: white;
+  text-decoration: none;
+}
+
+.active {
+  background-color: #1e90ff;
+  color: white;
+  text-decoration: none;
+}
+
+
+.logo{
+  margin-left: 15px;
+  width : 284px;
+}
+
+.bg-img {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -5;
+}
+
+.social-icons {
+    padding: 80px 60px;
+}
+
+.social-icon {
+  margin-right: 25px;
+}
+
+.credit {
+  padding-left: 60px;
+  color: white;
+  font-size: 8px;
+}
+
+/*Navigation End*/
+
+
+/*Gym-status start*/
+
+.status-form {
+  right : 100px;
+  top: 50px;
+  position: fixed;
+  color : white;
+  width: 300px;
+  background-color: rgba(255,255,255,0.3) !important;
+}
+
+.status-items {
+  margin: 25px;
+  width: 250px;
+}
+
+.gym-status {
+  font-size: 25px;
+  text-align: center;
+  background-color : #2ecc71;
+}
+
+.trainer-status {
+  font-size: 23px;
+  text-align: center;
+  background-color : #1e90ff;
+}
+
+/*Gym-status end*/
+
+
+
+
+/*login start*/
+
+.login-form {
+  right : 100px;
+  bottom: 200px;
+  position: fixed;
+  color : white;
+}
+
+.card{
+margin-top: auto;
+margin-bottom: auto;
+width: 300px;
+background-color: rgba(255,255,255,0.3) !important;
+}
+
+
+.login_btn{
+color: black;
+background-color: #f9ca24;
+width: 100px;
+}
+
+.login_btn:hover{
+color: white;
+background-color: #1D1B1B;
+}
+
+.link{
+font-size: 11px;
+color: white;
+margin-left: 20px;
+text-decoration: none;
+}
+
+/*login end*/
+
+
+
+.date-time-form {
+  right : 100px;
+  bottom: 50px;
+  position: fixed;
+  color : white;
+  width: 300px;
+  background-color: rgba(255,255,255,0.3) !important;
+}
+
+#dateTime {
+  margin: 15px;
+  margin-left: 90px;
+}
