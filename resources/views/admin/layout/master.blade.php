@@ -11,11 +11,14 @@
   <title>LIFE FITNESS GYMS</title>
 
   <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="{{url('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="{{url('css/sb-admin-2.min.css')}}" rel="stylesheet">
+  
+  @yield('custom-css')
+
 
 </head>
 
@@ -40,7 +43,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{url('admin-dashboard')}}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -63,7 +66,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <!-- <h6 class="collapse-header">Custom Components:</h6> -->
             <a class="collapse-item" href="{{url('admin/members')}}">View Members</a>
-            <a class="collapse-item" href="cards.html">Add Member</a>
+            <a class="collapse-item" id="member-add" href="#">Add Member</a>
           </div>
         </div>
       </li>
@@ -410,7 +413,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->fname}} {{Auth::user()->lname}}</span>
-                <img class="img-profile rounded-circle" src="img/pro.jpg">
+                <img class="img-profile rounded-circle" src="{{url('img/pro.jpg')}}">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -485,21 +488,35 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="{{url('vendor/jquery/jquery.min.js')}}"></script>
+  <script src="{{url('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
   <!-- Core plugin JavaScript -->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="{{url('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
+  <script src="{{url('js/sb-admin-2.min.js')}}"></script>
 
   <!-- Page level plugins -->
-  <script src="vendor/chart.js/Chart.min.js"></script>
+  <script src="{{url('vendor/chart.js/Chart.min.js')}}"></script>
 
   <!-- Page level custom scripts -->
-  <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script>
+  <script src="{{url('js/demo/chart-area-demo.js')}}"></script>
+  <script src="{{url('js/demo/chart-pie-demo.js')}}"></script>
+  
+  <script type="text/javascript">
+    var baseUrl = '{{url('')}}';
+
+    $('#member-add').click(function(){
+            $('#useraddmodal').modal('toggle');
+        });
+
+
+  </script>
+{{-- Include User Modal --}}
+@include('admin.member.components.member-add-modal')
+
+  @yield('custom-js')
 
   </body>
 

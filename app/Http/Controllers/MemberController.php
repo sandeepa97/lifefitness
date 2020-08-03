@@ -93,7 +93,7 @@ class MemberController extends Controller
     {
         try {
             $members = $this->memberService->update($request->all(), $id);
-            return $this->apiResponse->success(200, $members, 'User has been updated');
+            return $this->apiResponse->success(200, $members, 'Member has been updated');
         } catch (\Exception $e) {
             dd($e->getMessage());
             return $this->apiResponse->failed($e, 500, 'Error ocurred');

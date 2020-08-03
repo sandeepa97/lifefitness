@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h3>Customer List</h3>
+            <h3>Member List</h3>
         </div>
     </div>
     <div class="row">
@@ -14,7 +14,7 @@
     <div class="row card mt-1">
         <div class="container">
             <div class="col-md-12 ">
-                <table id="usertable" class="table table-bordered">
+                <table id="membertable" class="table table-bordered">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -50,10 +50,10 @@
 </div>
 
 {{-- Include User Modal --}}
-@include('user.components.user-add-modal')
+@include('admin.member.components.member-add-modal')
 
 {{-- Include User Edit Modal --}}
-@include('user.components.user-edit-modal')
+@include('admin.member.components.member-edit-modal')
 @endsection
 
 @section('custom-js')
@@ -61,43 +61,29 @@
     $(document).ready(function(){
 
 
-        // Get All User Roles
-        $.ajax({
-            type: 'GET',
-            url: baseUrl+'/user-role',
-            success: function(res){
-                var userRole = res.data;
-                // #user_role
-                var html ='';
-                html+='<option value="0">Select User Role</option>';
-                for(var x=0; x<userRole.length; x++){
-                    html+='<option value="'+userRole[x].id+'">'+userRole[x].name+'</option>';
-                }
-               $('#user_role').html(html);
-            }
+        $('#membertable').DataTable({
 
+        ajax: baseUrl+'/admin/get-all-members',
+        columns: 
+                [
+                    { data: 'id' },
+                    { data: 'fname' },
+                    { data: 'lname' },
+                    { data: 'gender' },
+                    { data: 'nic' },
+                    { data: 'address' },
+                    { data: 'contact' },
+                    { data: 'email' },
+                    {   
+                        
+                        data: null,
+                        className: "center",
+                        defaultContent: '<a href="" class="editor_editmember btn btn-primary"><i class="fa fa-edit"></i>Edit</a>' +
+                                '<a href="" class="remove_member btn btn-danger"><i class="fa fa-trash"></i>Delete</a>'
+                    }
+                ]
         });
-
-        $('#usertable').DataTable(
-            {
-    ajax: baseUrl+'/admin/get-all-users',
-    columns: [
-        { data: 'id' },
-        { data: 'fname' },
-        { data: 'lname' },
-        { data: 'mobile' },
-        { data: 'email' },
-        {   
-            
-            data: null,
-            className: "center",
-            defaultContent: '<a href="" class="editor_edit btn btn-primary"><i class="fa fa-edit"></i>Edit</a>' +
-                    '<a href="" class="remove_user btn btn-danger"><i class="fa fa-trash"></i>Delete</a>'
-        }
-
-    ]
-}
-        );
+        alert("jason working");
     });
 
 
