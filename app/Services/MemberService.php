@@ -42,14 +42,13 @@ class MemberService implements ServiceInterface
         $array = [
             'fname' => $data['fname'],
             'lname' => $data['lname'],
-            'gender' => $data['lname'],
-            'nic' => $data['lname'],
+            'gender' => $data['gender'],
+            'nic' => $data['nic'],
             'address' => $data['address'],
             'contact' => $data['contact'],
             'email' => $data['email'],
             'password'=>bcrypt($data['password']),
             'created_by' =>Auth::id(),
-            'updated_by' => 0,
         ];
         return $this->memberRepository->create($array);
     }

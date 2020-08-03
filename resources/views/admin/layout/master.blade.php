@@ -2,8 +2,7 @@
 <html lang="en">
 
 <head>
-  
-  <link rel="icon" href="favicon.ico" type="image/ico">
+  <link rel="icon" href="{{url('favicon.ico')}}" type="image/ico">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,7 +15,9 @@
 
   <!-- Custom styles for this template-->
   <link href="{{url('css/sb-admin-2.min.css')}}" rel="stylesheet">
-  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+
   @yield('custom-css')
 
 
@@ -503,12 +504,14 @@
   <!-- Page level custom scripts -->
   <script src="{{url('js/demo/chart-area-demo.js')}}"></script>
   <script src="{{url('js/demo/chart-pie-demo.js')}}"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+
   
   <script type="text/javascript">
     var baseUrl = '{{url('')}}';
 
     $('#member-add').click(function(){
-            $('#useraddmodal').modal('toggle');
+            $('#memberaddmodal').modal('toggle');
         });
 
 

@@ -49,12 +49,13 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
+        // 
         try {
-            // dd($cutomers);
+            
             $members = $this->memberService->store($request->all());
             return $this->apiResponse->success(200, $members, 'success');
         } catch (\Exception $e) {
+            dd($request);
             dd($e->getMessage());
             return $this->apiResponse->failed($e, 500, 'Error Occured');
         }
@@ -109,9 +110,7 @@ class MemberController extends Controller
     public function destroy($id)
     {
         try {
-
             $this->memberService->delete($id);
-
             return $this->apiResponse->success(200, [], 'member has been deleted');
         } catch (\Exception $e) {
             return $this->apiResponse->failed($e, 500, 'member has not been deleted');

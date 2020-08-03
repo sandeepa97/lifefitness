@@ -27,6 +27,6 @@ Route::post('post-login', 'LoginController@postLogin');
 Route::get('admin-dashboard', 'LoginController@dashboard'); 
 Route::get('logout', 'LoginController@logout');
 
-//Admin
+//Admin -> Member Functions
 Route::resource('admin/members', 'MemberController');
 Route::get('admin/get-all-members', 'MemberController@getAllMembers');
