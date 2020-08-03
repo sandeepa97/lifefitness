@@ -1,33 +1,35 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Services\ApiResponseService;
+use App\Services\MemberService;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class MemberController extends Controller
 {
-    public function index(){
-        return view('admin.dashboard');
-    }
 
-    protected $userService;
+    protected $memberService;
 
 
     protected $apiResponse;
 
 
-    /**
-     * Constructor
-     */
+
     function __construct(
-        UserService $user,
+        memberService $member,
         ApiResponseService $apiResponseService
     ) {
-        $this->userService = $user;
+        $this->memberService = $member;
         $this->apiResponse = $apiResponseService;
     }
 
+
+
+    public function index()
+    {
+        return view('admin.member.index');
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -47,13 +49,13 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        try{
-            
-        $user = $this->userService->store($request->all());
-        return $this->apiResponse->success(200,$user,'success');
-        }catch(\Exception $e){
-
-
+        // dd($request);
+        try {
+            // dd($cutomers);
+            $members = $this->memberService->store($request->all());
+            return $this->apiResponse->success(200, $members, 'success');
+        } catch (\Exception $e) {
+            dd($e->getMessage());
             return $this->apiResponse->failed($e, 500, 'Error Occured');
         }
     }
@@ -90,9 +92,10 @@ class AdminController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            $user = $this->userService->update($request->all(), $id);
-            return $this->apiResponse->success(200, $user, 'User has been updated');
+            $members = $this->memberService->update($request->all(), $id);
+            return $this->apiResponse->success(200, $members, 'User has been updated');
         } catch (\Exception $e) {
+            dd($e->getMessage());
             return $this->apiResponse->failed($e, 500, 'Error ocurred');
         }
     }
@@ -107,13 +110,21 @@ class AdminController extends Controller
     {
         try {
 
-            $this->userService->delete($id);
+            $this->memberService->delete($id);
 
-            return $this->apiResponse->success(200, [], 'User has been deleted');
+            return $this->apiResponse->success(200, [], 'member has been deleted');
         } catch (\Exception $e) {
-            return $this->apiResponse->failed($e, 500, 'User has not been deleted');
+            return $this->apiResponse->failed($e, 500, 'member has not been deleted');
         }
     }
+    public function getAllMembers()
+    {
+        try {
+            $members = $this->memberService->fetchAll();
 
-
+            return response()->json(['data' => $members]);
+        } catch (\Exception $e) {
+            return $this->apiResponse->failed($e, 500, 'Error Occured');
+        }
+    }
 }
