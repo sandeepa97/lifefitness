@@ -46,7 +46,7 @@
       <li class="nav-item active">
         <a class="nav-link" href="{{url('admin-dashboard')}}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
+          <span>Admin Dashboard</span></a>
       </li>
 
       <!-- Divider -->
@@ -218,22 +218,34 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Login Screens:</h6>
-            <a class="collapse-item" href="login.html">Login</a>
-            <a class="collapse-item" href="register.html">Register</a>
-            <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+            <a class="collapse-item" href="#">Login</a>
+            <a class="collapse-item" href="#">Register</a>
+            <a class="collapse-item" href="#">Forgot Password</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Other Pages:</h6>
-            <a class="collapse-item" href="404.html">404 Page</a>
-            <a class="collapse-item" href="blank.html">Blank Page</a>
+            <a class="collapse-item" href="#">404 Page</a>
+            <a class="collapse-item" href="#">Blank Page</a>
           </div>
         </div>
       </li>
 
       <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePagesStore" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Online Store</span></a>
+          <div id="collapsePagesStore" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Login Screens:</h6>
+            <a class="collapse-item" href="#">Login</a>
+            <a class="collapse-item" href="#">Register</a>
+            <a class="collapse-item" href="#">Forgot Password</a>
+            <div class="collapse-divider"></div>
+            <h6 class="collapse-header">Other Pages:</h6>
+            <a class="collapse-item" href="#">404 Page</a>
+            <a class="collapse-item" href="#">Blank Page</a>
+          </div>
+        </div>
       </li>
 
       <!-- Nav Item - Tables -->
@@ -505,7 +517,7 @@
   <script src="{{url('js/demo/chart-area-demo.js')}}"></script>
   <script src="{{url('js/demo/chart-pie-demo.js')}}"></script>
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
-
+  <script src="{{asset('js/library/jquery.confirm.js')}}"></script>
   
   <script type="text/javascript">
     var baseUrl = '{{url('')}}';
@@ -513,8 +525,6 @@
     $('#member-add').click(function(){
             $('#memberaddmodal').modal('toggle');
         });
-
-
   </script>
 {{-- Include User Modal --}}
 @include('admin.member.components.member-add-modal')

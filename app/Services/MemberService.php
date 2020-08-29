@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Repositories\Contract\MemberRepositoryInterface;
 use App\Services\Contract\ServiceInterface;
 use App\Member;
+use Auth;
 
 class MemberService implements ServiceInterface
 {

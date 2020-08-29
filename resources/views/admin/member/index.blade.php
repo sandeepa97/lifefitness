@@ -29,20 +29,7 @@
                         </tr>
 
                     </thead>
-                    <tfoot>
-                        <tr>
-                            <th>ID</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Gender</th>
-                            <th>NIC</th>
-                            <th>Address</th>
-                            <th>Contact</th>
-                            <th>Email</th>
-                            <th>Action</th>
-                        </tr>
 
-                    </tfoot>
                 </table>
             </div>
         </div>
@@ -92,7 +79,7 @@
         $('#frmcreatemember').submit(function(e){
             e.preventDefault();
             $.ajax({
-                url: "{{ url('/admin/member/')}}",
+                url: "{{ url('/admin/members/')}}",
                 type: 'POST',
                 data: $('#frmcreatemember').serialize(),
                 success: function(response){
@@ -115,7 +102,7 @@
             confirm: function() {
               $.ajax({
                   type: 'DELETE',
-                  url: baseUrl+'/admin/member/'+memberId,
+                  url: baseUrl+'/admin/members/'+memberId,
                   success: function(res){
                       alert(res.msg);
                       setTimeout(function(){
@@ -161,7 +148,7 @@
 
             $.ajax({
                 type: 'PUT',
-                url: baseUrl+'/admin/member/'+memberId,
+                url: baseUrl+'/admin/members/'+memberId,
                 data: $('#editfrmmember').serialize(),
                 success: function(response){
                     if(response.success==true){

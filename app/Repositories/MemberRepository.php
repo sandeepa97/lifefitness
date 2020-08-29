@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Repositories\Contract\MemberRepositoryInterface;
 use App\Member;
+use Auth;
 
 class MemberRepository implements MemberRepositoryInterface
 {
