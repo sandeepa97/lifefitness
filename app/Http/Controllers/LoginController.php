@@ -38,7 +38,7 @@ class LoginController extends Controller
     {
  
       if(Auth::check()){
-        return view('admin.dashboard');
+        return view('admin.dashboard.index');
       }
        return Redirect::to("login")->withSuccess('Please Login first');
     }

@@ -30,3 +30,27 @@ Route::get('logout', 'LoginController@logout');
 //Admin -> Member Functions
 Route::resource('admin/members', 'MemberController');
 Route::get('admin/get-all-members', 'MemberController@getAllMembers');
+
+//Admin -> Payment Functions
+Route::resource('admin/payments', 'PaymentController');
+
+//Admin -> MemberAttendance Functions
+Route::resource('admin/member-attendance', 'MemberAttendanceController');
+
+//Admin -> Schedule Functions
+Route::resource('admin/schedules', 'ScheduleController');
+
+//Admin -> Notice Functions
+Route::resource('admin/notices', 'NoticeController');
+
+//Admin -> Profit Functions
+Route::resource('admin/profit', 'ProfitController');
+
+//Admin -> Trainer Functions
+Route::resource('admin/trainers', 'TrainerController');
+
+//Admin -> Trainer Shifts Functions
+Route::resource('admin/trainer-shifts', 'TrainerShiftsController');
+
+//Admin -> Inventory Functions
+Route::resource('admin/inventory', 'InventoryController');

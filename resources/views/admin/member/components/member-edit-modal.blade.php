@@ -55,18 +55,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="password">Password</label>
-                                <input type="password" class="form-control"  name="password" id="editpassword" placeholder="Password"/>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="confirm">Confirm Password</label>
-                                <input type="password" class="form-control" name="confirm" id="editconfirm" placeholder="Confirm Password"/>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Save</button>

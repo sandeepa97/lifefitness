@@ -135,7 +135,6 @@
         $('#editaddress').val(data.address);
         $('#editcontact').val(data.contact);
         $('#editemail').val(data.email);
-        $('#editpassword').val(data.password);
         $('#membereditmodal').modal('toggle');
 
         });
