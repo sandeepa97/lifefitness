@@ -101,6 +101,9 @@
             text: "Are you sure?",
             confirm: function() {
               $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
                   type: 'DELETE',
                   url: baseUrl+'/admin/members/'+memberId,
                   success: function(res){

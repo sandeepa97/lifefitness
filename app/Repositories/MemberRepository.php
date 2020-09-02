@@ -32,7 +32,6 @@ class MemberRepository implements MemberRepositoryInterface
         $members->address = $data['address'];
         $members->contact = $data['contact'];
         $members->email = $data['email'];
-        $members->password = bcrypt($data['password']);
         $members->updated_by = Auth::id();
         $members->save();
         return $members;

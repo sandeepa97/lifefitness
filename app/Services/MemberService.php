@@ -50,6 +50,7 @@ class MemberService implements ServiceInterface
             'email' => $data['email'],
             'password'=>bcrypt($data['password']),
             'created_by' =>Auth::id(),
+            'updated_by' =>Auth::id(),
         ];
         return $this->memberRepository->create($array);
     }

@@ -55,7 +55,7 @@ class MemberController extends Controller
             $members = $this->memberService->store($request->all());
             return $this->apiResponse->success(200, $members, 'success');
         } catch (\Exception $e) {
-            dd($request);
+      
             dd($e->getMessage());
             return $this->apiResponse->failed($e, 500, 'Error Occured');
         }
