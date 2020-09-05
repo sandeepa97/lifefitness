@@ -8,7 +8,7 @@
     </div>
     <div class="row">
         <div class="col-md-12 text-right">
-            <button type="button" class="btn btn-primary" id="btnaddmember">Add Member</button>
+            <button type="button" class="btn btn-primary mr-3" id="btnaddmember">Add Member</button>
         </div>
     </div>
     <div class="row card mt-1">
@@ -115,7 +115,7 @@
               })
             },
             cancel: function() {
-                // nothing to do
+                // nothing to do...
 
             }
         });
