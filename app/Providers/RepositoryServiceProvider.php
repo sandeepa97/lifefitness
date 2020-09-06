@@ -4,9 +4,11 @@ namespace App\Providers;
 
 use App\Repositories\Contract\UserRepositoryInterface;
 use App\Repositories\Contract\MemberRepositoryInterface;
+use App\Repositories\Contract\PaymentRepositoryInterface;
 
 use App\Repositories\UserRepository;
 use App\Repositories\MemberRepository;
+use App\Repositories\PaymentRepository;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -32,6 +34,7 @@ class RepositoryServiceProvider extends ServiceProvider
 
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
         $this->app->bind(MemberRepositoryInterface::class, MemberRepository::class);
+        $this->app->bind(PaymentRepositoryInterface::class, PaymentRepository::class);
 
     }
 }

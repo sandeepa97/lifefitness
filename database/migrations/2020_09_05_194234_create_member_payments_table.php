@@ -17,7 +17,7 @@ class CreateMemberPaymentsTable extends Migration
             $table->id();
             $table->string('member_id');
             $table->date('date');
-            $table->string('payment_type');
+            $table->string('payment_type_id');
             $table->decimal('amount',5,2);
             $table->string('created_by');
             $table->string('updated_by');

@@ -2,15 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\ApiResponseService;
+use App\Services\PaymentService;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    protected $paymentService;
+
+
+    protected $apiResponse;
+
+
+
+    function __construct(
+        paymentService $payment,
+        ApiResponseService $apiResponseService
+    ) {
+        $this->paymentService = $payment;
+        $this->apiResponse = $apiResponseService;
+    }
+
+
+
     public function index()
     {
         return view('admin.payments.index');
@@ -34,7 +49,16 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // 
+        // try {
+            
+        //     $members = $this->memberService->store($request->all());
+        //     return $this->apiResponse->success(200, $members, 'success');
+        // } catch (\Exception $e) {
+      
+        //     dd($e->getMessage());
+        //     return $this->apiResponse->failed($e, 500, 'Error Occured');
+        // }
     }
 
     /**
@@ -68,7 +92,13 @@ class PaymentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // try {
+        //     $members = $this->memberService->update($request->all(), $id);
+        //     return $this->apiResponse->success(200, $members, 'Member has been updated');
+        // } catch (\Exception $e) {
+        //     dd($e->getMessage());
+        //     return $this->apiResponse->failed($e, 500, 'Error ocurred');
+        // }
     }
 
     /**
@@ -79,6 +109,20 @@ class PaymentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // try {
+        //     $this->memberService->delete($id);
+        //     return $this->apiResponse->success(200, [], 'member has been deleted');
+        // } catch (\Exception $e) {
+        //     return $this->apiResponse->failed($e, 500, 'member has not been deleted');
+        // }
+    }
+    public function getAllMemberPayments()
+    {
+        try {
+            $payments = $this->paymentService->fetchAll();
+            return response()->json(['data' => $payments]);
+        } catch (\Exception $e) {
+            return $this->apiResponse->failed($e, 500, 'Error Occured');
+        }
     }
 }

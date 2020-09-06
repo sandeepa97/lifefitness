@@ -33,6 +33,9 @@ Route::get('admin/get-all-members', 'MemberController@getAllMembers');
 
 //Admin -> Payment Functions
 Route::resource('admin/payments', 'PaymentController');
+Route::get('admin/get-all-payments', 'PaymentController@getAllMemberPayments');
+Route::get('admin/get-all-payment-types', 'PaymentTypeController@index');
+
 
 //Admin -> MemberAttendance Functions
 Route::resource('admin/member-attendance', 'MemberAttendanceController');
