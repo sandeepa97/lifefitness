@@ -53,7 +53,8 @@ class PaymentController extends Controller
         try {
             
             $payments = $this->paymentService->store($request->all());
-            dd($payments);
+            // dd($e->getMessage());
+            // dd($payments);
             return $this->apiResponse->success(200, $payments, 'success');
         } catch (\Exception $e) {
       
@@ -93,13 +94,13 @@ class PaymentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // try {
-        //     $members = $this->memberService->update($request->all(), $id);
-        //     return $this->apiResponse->success(200, $members, 'Member has been updated');
-        // } catch (\Exception $e) {
-        //     dd($e->getMessage());
-        //     return $this->apiResponse->failed($e, 500, 'Error ocurred');
-        // }
+        try {
+            $payments = $this->paymentService->update($request->all(), $id);
+            return $this->apiResponse->success(200, $payments, 'Payment has been updated');
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return $this->apiResponse->failed($e, 500, 'Error ocurred');
+        }
     }
 
     /**
@@ -110,12 +111,12 @@ class PaymentController extends Controller
      */
     public function destroy($id)
     {
-        // try {
-        //     $this->memberService->delete($id);
-        //     return $this->apiResponse->success(200, [], 'member has been deleted');
-        // } catch (\Exception $e) {
-        //     return $this->apiResponse->failed($e, 500, 'member has not been deleted');
-        // }
+        try {
+            $this->paymentService->delete($id);
+            return $this->apiResponse->success(200, [], 'Payment has been deleted');
+        } catch (\Exception $e) {
+            return $this->apiResponse->failed($e, 500, 'Payment has not been deleted');
+        }
     }
     public function getAllMemberPayments()
     {

@@ -19,14 +19,6 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <!-- <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Gender</th>
-                            <th>NIC</th>
-                            <th>Address</th>
-                            <th>Contact</th>
-                            <th>Email</th>
-                            <th>Action</th> -->
                             <th>Member ID</th>
                             <th>First Name</th>
                             <th>Last Name</th>
@@ -133,7 +125,7 @@
         $('#frmcreatepayment').submit(function(e){
             e.preventDefault();
             $.ajax({
-                url: "{{ url('/admin/payments/')}}",
+                url: "{{ url('/admin/paymentss/')}}",
                 type: 'POST',
                 data: $('#frmcreatepayment').serialize(),
                 success: function(response){
@@ -184,6 +176,7 @@
         e.preventDefault();
         var data = $('#paymenttable').DataTable().row($(this).parents('tr')).data();
         var paymentTypeId = data.payment_type_id;
+        var memberId = data.member_id;
 
         // Get All Payment Types
         $.ajax({
@@ -213,42 +206,52 @@
             url: baseUrl+'/admin/get-all-members',
             success: function(res){
                 var memberData = res.data;
-                var MemberId = data.member_id;
+        
                 // #payment_type
                 var html ='';
                 html+='<option value="0">Member ID</option>';
                 for(var x=0; x<memberData.length; x++){
-                    if(memberID==memberData[x].id){
+                    if(memberId==memberData[x].id){
                         html+='<option selected value="'+memberData[x].id+'">'+memberData[x].id+'</option>';
                     }else{
                         html+='<option value="'+memberData[x].id+'">'+memberData[x].id+'</option>';
                     }
                 }
                $('#editmember_id').html(html);
+
                 // #First Name
                 var html ='';
                 html+='<option value="0">First Name</option>';
                 for(var x=0; x<memberData.length; x++){
+                    if(memberId==memberData[x].id){
+                    html+='<option selected value="'+memberData[x].id+'">'+memberData[x].fname+'</option>';
+                    }else{
                     html+='<option value="'+memberData[x].id+'">'+memberData[x].fname+'</option>';
+                    }
                 }
                $('#editfname').html(html);
                 // #Last Name
                 var html ='';
                 html+='<option value="0">Last Name</option>';
                 for(var x=0; x<memberData.length; x++){
+                    if(memberId==memberData[x].id){
+                    html+='<option selected value="'+memberData[x].id+'">'+memberData[x].lname+'</option>';
+                    }else{
                     html+='<option value="'+memberData[x].id+'">'+memberData[x].lname+'</option>';
+                    }
+
                 }
                $('#editlname').html(html);
             }
 
         });
         
-        $('#editmember_id').val(data.member_id);        
+        // $('#editmember_id').val(data.member_id);        
         $('#hdnpaymentid').val(data.id);
-        $('#editfname').val(data.member.fname);
-        $('#editlname').val(data.member.lname);
+        // $('#editfname').val(data.member.fname);
+        // $('#editlname').val(data.member.lname);
         $('#editdate').val(data.date);
-        $('#editpayment_type').val(data.member_payments.payment_type);
+        // $('#editpayment_type').val(data.member_payments.payment_type);
         $('#editamount').val(data.amount);
         $('#paymenteditmodal').modal('toggle');
 

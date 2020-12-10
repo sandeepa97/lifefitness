@@ -37,6 +37,6 @@ class PaymentRepository implements PaymentRepositoryInterface
 
     public function delete($id)
     {
-        // return MemberPayment::where('id', $id)->delete();
+        return MemberPayment::where('id', $id)->delete();
     }
 }
