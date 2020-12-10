@@ -14,7 +14,9 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="member_id">Member ID</label>
-                                    <input type="text"  class="form-control" id="member_id" name="member_id" placeholder="Member ID">
+                                    <!-- <input type="text"  class="form-control" id="member_id" name="member_id" placeholder="Member ID"> -->
+                                    <select name="member_id"  id="member_id" class="form-control">
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -22,11 +24,15 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="fname">First Name</label>
-                                    <input type="text"  class="form-control" id="fname" name="fname" placeholder="First Name">
+                                    <!-- <input type="text"  class="form-control" id="fname" name="fname" placeholder="First Name"> -->
+                                    <select name="fname"  id="fname" class="form-control">
+                                    </select>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="lname">Last Name</label>
-                                    <input type="text"  class="form-control" id="lname" name="lname" placeholder="Last Name">
+                                    <!-- <input type="text"  class="form-control" id="lname" name="lname" placeholder="Last Name"> -->
+                                    <select name="lname"  id="lname" class="form-control">
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -38,10 +44,7 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="payment_type">Payment Type</label>
-                                <select name="payment_type"  id="payment_type" class="form-control">
-                                    <option value="Male">Registration Fee</option>
-                                    <option value="Female">Monthly Membership Fee</option>
-                                    <option value="Female">bla bla others</option>
+                                <select name="payment_type_id"  id="payment_type_id" class="form-control">
                                 </select>
                             </div>
 

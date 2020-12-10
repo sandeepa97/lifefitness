@@ -49,16 +49,17 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        // 
-        // try {
+        // dd($request);
+        try {
             
-        //     $members = $this->memberService->store($request->all());
-        //     return $this->apiResponse->success(200, $members, 'success');
-        // } catch (\Exception $e) {
+            $payments = $this->paymentService->store($request->all());
+            dd($payments);
+            return $this->apiResponse->success(200, $payments, 'success');
+        } catch (\Exception $e) {
       
-        //     dd($e->getMessage());
-        //     return $this->apiResponse->failed($e, 500, 'Error Occured');
-        // }
+            // dd($e->getMessage());
+            return $this->apiResponse->failed($e, 500, 'Error Occured');
+        }
     }
 
     /**

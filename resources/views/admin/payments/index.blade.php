@@ -55,6 +55,53 @@
 <script type="text/javascript">
     $(document).ready(function(){
 
+        // Get All Payment Types
+        $.ajax({
+            type: 'GET',
+            url: baseUrl+'/admin/get-all-payment-types',
+            success: function(res){
+                var paymentType = res.data;
+                // #payment_type
+                var html ='';
+                html+='<option value="0">Select Payment Type</option>';
+                for(var x=0; x<paymentType.length; x++){
+                    html+='<option value="'+paymentType[x].id+'">'+paymentType[x].payment_type+'</option>';
+                }
+               $('#payment_type_id').html(html);
+            }
+
+        });
+        // Get All Members
+        $.ajax({
+            type: 'GET',
+            url: baseUrl+'/admin/get-all-members',
+            success: function(res){
+                var memberData = res.data;
+                // #payment_type
+                var html ='';
+                html+='<option value="0">Member ID</option>';
+                for(var x=0; x<memberData.length; x++){
+                    html+='<option value="'+memberData[x].id+'">'+memberData[x].id+'</option>';
+                }
+               $('#member_id').html(html);
+                // #First Name
+                var html ='';
+                html+='<option value="0">First Name</option>';
+                for(var x=0; x<memberData.length; x++){
+                    html+='<option value="'+memberData[x].id+'">'+memberData[x].fname+'</option>';
+                }
+               $('#fname').html(html);
+                // #Last Name
+                var html ='';
+                html+='<option value="0">Last Name</option>';
+                for(var x=0; x<memberData.length; x++){
+                    html+='<option value="'+memberData[x].id+'">'+memberData[x].lname+'</option>';
+                }
+               $('#lname').html(html);
+            }
+
+        });
+
 
         $('#paymenttable').DataTable({
 
@@ -136,6 +183,65 @@
      $('#paymenttable').on('click', 'a.editor_editpayment', function (e) {
         e.preventDefault();
         var data = $('#paymenttable').DataTable().row($(this).parents('tr')).data();
+        var paymentTypeId = data.payment_type_id;
+
+        // Get All Payment Types
+        $.ajax({
+            type: 'GET',
+            url: baseUrl+'/admin/get-all-payment-types',
+            success: function(res){
+                var paymentType = res.data;
+                // #payment_type
+                var html ='';
+                html+='<option value="0">Select Payment Type</option>';
+                for(var x=0; x<paymentType.length; x++){
+                    if(paymentTypeId==paymentType[x].id){
+                    html+='<option selected value="'+paymentType[x].id+'">'+paymentType[x].payment_type+'</option>';
+                    }
+                    else{
+                    html+='<option value="'+paymentType[x].id+'">'+paymentType[x].payment_type+'</option>';
+                    }
+                }
+               $('#editpayment_type').html(html);
+            }
+
+        });
+
+         // Get All Members
+         $.ajax({
+            type: 'GET',
+            url: baseUrl+'/admin/get-all-members',
+            success: function(res){
+                var memberData = res.data;
+                var MemberId = data.member_id;
+                // #payment_type
+                var html ='';
+                html+='<option value="0">Member ID</option>';
+                for(var x=0; x<memberData.length; x++){
+                    if(memberID==memberData[x].id){
+                        html+='<option selected value="'+memberData[x].id+'">'+memberData[x].id+'</option>';
+                    }else{
+                        html+='<option value="'+memberData[x].id+'">'+memberData[x].id+'</option>';
+                    }
+                }
+               $('#editmember_id').html(html);
+                // #First Name
+                var html ='';
+                html+='<option value="0">First Name</option>';
+                for(var x=0; x<memberData.length; x++){
+                    html+='<option value="'+memberData[x].id+'">'+memberData[x].fname+'</option>';
+                }
+               $('#editfname').html(html);
+                // #Last Name
+                var html ='';
+                html+='<option value="0">Last Name</option>';
+                for(var x=0; x<memberData.length; x++){
+                    html+='<option value="'+memberData[x].id+'">'+memberData[x].lname+'</option>';
+                }
+               $('#editlname').html(html);
+            }
+
+        });
         
         $('#editmember_id').val(data.member_id);        
         $('#hdnpaymentid').val(data.id);

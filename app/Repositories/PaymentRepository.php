@@ -25,17 +25,14 @@ class PaymentRepository implements PaymentRepositoryInterface
     }
     public function update($data, $id)
     {
-        // $members = MemberPayment::find($id);
-        // $members->fname = $data['fname'];
-        // $members->lname = $data['lname'];
-        // $members->gender = $data['gender'];
-        // $members->nic = $data['nic'];
-        // $members->address = $data['address'];
-        // $members->contact = $data['contact'];
-        // $members->email = $data['email'];
-        // $members->updated_by = Auth::id();
-        // $members->save();
-        // return $members;
+        $payments = MemberPayment::find($id);
+        $payments->member_id = $data['member_id'];
+        $payments->date = $data['date'];
+        $payments->payment_type_id = $data['payment_type_id'];
+        $payments->amount = $data['amount'];
+        $payments->updated_by = Auth::id();
+        $payments->save();
+        return $payments;
     }
 
     public function delete($id)

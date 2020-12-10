@@ -40,19 +40,17 @@ class PaymentService implements ServiceInterface
      */
     public function store($data)
     {
-        // $array = [
-        //     'fname' => $data['fname'],
-        //     'lname' => $data['lname'],
-        //     'gender' => $data['gender'],
-        //     'nic' => $data['nic'],
-        //     'address' => $data['address'],
-        //     'contact' => $data['contact'],
-        //     'email' => $data['email'],
-        //     'password'=>bcrypt($data['password']),
-        //     'created_by' =>Auth::id(),
-        //     'updated_by' =>Auth::id(),
-        // ];
-        // return $this->memberRepository->create($array);
+        $array = [
+            'member_id'=>$data['member_id'],
+            // 'fname' => $data['fname'],
+            // 'lname' => $data['lname'],
+            'date'=> $data['date'],
+            'payment_type_id' => $data['payment_type_id'],
+            'amount' => $data['amount'],
+            'created_by' =>Auth::id(),
+            'updated_by' =>Auth::id(),
+        ];
+        return $this->paymentRepository->create($array);
     }
 
     /**
@@ -64,11 +62,11 @@ class PaymentService implements ServiceInterface
      */
     public function update($data, $id)
     {
-        // return $this->memberRepository->update($data, $id);
+        return $this->paymentRepository->update($data, $id);
     }
 
     public function delete($id)
     {
-        // return $this->memberRepository->delete($id);
+        return $this->paymentRepository->delete($id);
     }
 }
