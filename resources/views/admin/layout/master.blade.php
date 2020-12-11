@@ -16,6 +16,8 @@
 
   <!-- Custom styles for this template-->
   <link href="{{url('css/sb-admin-2.min.css')}}" rel="stylesheet">
+  <link href="{{url('css/custom.css')}}" rel="stylesheet">
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
 
@@ -98,8 +100,9 @@
         <div id="collapseUtilities2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <!-- <h6 class="collapse-header">Custom Components:</h6> -->
-            <a class="collapse-item" href="{{url('admin/member-attendance')}}">View Member Attendance</a>
-            <a class="collapse-item" id="member-add" href="#">Mark Attendance</a>
+            <a class="collapse-item" href="{{url('admin/member-attendance')}}">Mark Member Attendance</a>
+            <a class="collapse-item" href="{{url('admin/view-member-attendance')}}">View Member Attendance</a>
+            <a class="collapse-item" id="member-add" href="#">Quick Attendance Mark</a>
           </div>
         </div>
       </li>

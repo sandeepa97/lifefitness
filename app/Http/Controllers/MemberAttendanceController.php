@@ -2,10 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\ApiResponseService;
+use App\Services\MemberAttendanceService;
+
 use Illuminate\Http\Request;
 
 class MemberAttendanceController extends Controller
 {
+    protected $memberAttendanceService;
+
+
+    protected $apiResponse;
+
+
+
+    function __construct(
+        memberAttendanceService $memberAttendance,
+        ApiResponseService $apiResponseService
+    ) {
+        $this->memberAttendanceService = $memberAttendance;
+        $this->apiResponse = $apiResponseService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,6 +31,10 @@ class MemberAttendanceController extends Controller
     public function index()
     {
         return view('admin.member_attendance.index');
+    }
+    public function viewAttendance()
+    {
+        return view('admin.member_attendance.viewAttendance');
     }
 
     /**
