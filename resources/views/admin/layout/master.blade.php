@@ -131,7 +131,7 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <!-- <h6 class="collapse-header">Custom Components:</h6> -->
             <a class="collapse-item" href="{{url('admin/notices')}}">View Notices</a>
-            <a class="collapse-item" id="member-add" href="#">Add Notice</a>
+            <a class="collapse-item" id="member-add" href="#">Post Notice</a>
             <a class="collapse-item" id="member-add" href="#">Gym Status</a>
           </div>
         </div>
@@ -421,7 +421,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->fname}} {{Auth::user()->lname}}</span>
-                <img class="img-profile rounded-circle" src="{{url('img/pro.jpg')}}">
+                <img class="img-profile rounded-circle" src="{{url('img/pro.png')}}">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
