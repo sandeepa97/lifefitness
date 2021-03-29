@@ -17,9 +17,9 @@ class MemberAttendanceService implements ServiceInterface
     }
     public function fetchAll()
     {
-        $memberAttendances = $this->memberAttendanceRepository->fetchAll();
+        $memberAttendance = $this->memberAttendanceRepository->fetchAll();
 
-        return $memberAttendances;
+        return $memberAttendance;
     }
 
     /**
@@ -41,14 +41,12 @@ class MemberAttendanceService implements ServiceInterface
     public function store($data)
     {
         $array = [
-            // 'member_id'=>$data['member_id'],
-            // 'fname' => $data['fname'],
-            // 'lname' => $data['lname'],
-            // 'date'=> $data['date'],
-            // 'payment_type_id' => $data['payment_type_id'],
-            // 'amount' => $data['amount'],
-            // 'created_by' =>Auth::id(),
-            // 'updated_by' =>Auth::id(),
+            'member_id'=>$data['member_id'],
+            'member_in_date'=>$data['member_in_date'],
+            'member_in_time'=>$data['member_in_time'],
+            'created_by' =>Auth::id(),
+            'updated_by' =>Auth::id(),
+
         ];
         return $this->memberAttendanceRepository->create($array);
     }

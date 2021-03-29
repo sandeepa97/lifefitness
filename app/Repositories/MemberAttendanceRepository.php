@@ -11,7 +11,7 @@ class MemberAttendanceRepository implements MemberAttendanceRepositoryInterface
 
     public function fetchAll()
     {
-        // return MemberAttendance::all();
+        return MemberAttendance::all();
     }
 
     public function fetch($id)
@@ -20,25 +20,22 @@ class MemberAttendanceRepository implements MemberAttendanceRepositoryInterface
 
     public function create($data)
     {
-        // return MemberAttendance::create($data);
+        return MemberAttendance::create($data);
     }
     public function update($data, $id)
     {
-        // $members = MemberAttendance::find($id);
-        // $members->fname = $data['fname'];
-        // $members->lname = $data['lname'];
-        // $members->gender = $data['gender'];
-        // $members->nic = $data['nic'];
-        // $members->address = $data['address'];
-        // $members->contact = $data['contact'];
-        // $members->email = $data['email'];
-        // $members->updated_by = Auth::id();
-        // $members->save();
-        // return $members;
+
+        $memberAttendance = MemberAttendance::find($id);
+        $memberAttendance->member_id = $data['member_id'];
+        $memberAttendance->member_in_date = $data['member_in_date'];
+        $memberAttendance->member_in_time = $data['member_in_time'];
+        $memberAttendance->updated_by = Auth::id();
+        $memberAttendance->save();
+        return $memberAttendance;
     }
 
     public function delete($id)
     {
-        // return MemberAttendance::where('id', $id)->delete();
+        return MemberAttendance::where('id', $id)->delete();
     }
 }

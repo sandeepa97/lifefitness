@@ -102,4 +102,20 @@ class MemberAttendanceController extends Controller
     {
         //
     }
+
+    public function getAllMemberAttendance()
+    {
+        try{
+            
+            $memberAttendance = $this->memberAttendanceService->fetchAll();
+            // dd($e->getMessage());
+            
+            return response()->json(['data' => $memberAttendance]);
+        } catch (\Exception $e){
+            // dd($memberAttendance);
+            dd($e->getMessage());
+            return $this->apiResponse->failed($e,500,'Error Occured');
+        }
+    }
+
 }
