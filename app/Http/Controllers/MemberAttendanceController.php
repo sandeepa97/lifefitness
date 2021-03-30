@@ -98,7 +98,7 @@ class MemberAttendanceController extends Controller
             $memberAttendance = $this->memberAttendanceService->update($request->all(),$id);
             return $this->apiResponse->success(200, $memberAttendance, 'Member Attendance has been updated');
         } catch(\Exception $e) {
-            
+            return $this->apiResponse->failed($e, 500, 'Error occured');
         }
     }
 
