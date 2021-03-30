@@ -34,6 +34,8 @@
 
 </div>
 
+@endsection
+
 @section('custom-js')
 <script type="text/javascript">
 
