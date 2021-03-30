@@ -57,8 +57,9 @@ class MemberAttendanceController extends Controller
     {
         try{
             $memberAttendance = $this->memberAttendanceService->store($request->all());
-            return $this->apiResponse->success(200, $memberAttendance, 'success');
+            return $this->apiResponse->success(200, $memberAttendance, 'Attendance Marked Successfully');
         } catch (\Exception $e) {
+            // dd($e->getMessage());
             return $this->apiResponse->failed($e, 500, 'Error Occured');
         }
     }

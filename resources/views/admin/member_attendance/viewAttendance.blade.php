@@ -34,6 +34,10 @@
 
 </div>
 
+@include('admin.member_attendance.components.attendance-add-modal')
+
+@include('admin.member_attendance.components.attendance-edit-modal')
+
 @endsection
 
 @section('custom-js')
@@ -41,6 +45,22 @@
 
     $(document).ready(function(){
 
+        //get all members
+        $.ajax({
+            type: 'GET',
+            url: baseUrl+'/admin/get-all-members',
+            success: function(res){
+                var memberData = res.data;
+                var html = '';
+                html += '<option value="0">Member ID</option>';
+                for(var x=0; x<memberData.length; x++){
+                    html+='<option value="'+memberData[x].id+'">'+ memberData[x].id+'</option>';
+                }
+                $('#member_id').html(html);
+            }
+        });
+
+        //load data to Table
         $('#attendancetable').DataTable({
             ajax: baseUrl+'/admin/get-all-attendance',
             columns:
@@ -56,9 +76,30 @@
                         '<a href="" class="remove_payment btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>'
                     }
                 ]
-        })
+        });
 
     });
+
+        //mark attendance
+        $('#btnaddattendance').click(function(){
+            $('#attendanceaddmodal').modal('toggle');
+        });
+
+        $('#frmcreateattendance').submit(function(e){
+            e.preventDefault();
+            $.ajax({
+                url: "{{url('admin/member-attendance')}}",
+                type: 'POST',
+                data: $('#frmcreateattendance').serialize(),
+                success: function(response){
+                    alert(response.msg);
+                    location.reload();
+                }
+            });
+        });
+
+
+
 
 </script>
 
