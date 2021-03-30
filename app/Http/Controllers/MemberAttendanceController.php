@@ -55,7 +55,12 @@ class MemberAttendanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $memberAttendance = $this->memberAttendanceService->store($request->all());
+            return $this->apiResponse->success(200, $memberAttendance, 'success');
+        } catch (\Exception $e) {
+            return $this->apiResponse->failed($e, 500, 'Error Occured');
+        }
     }
 
     /**
@@ -89,7 +94,12 @@ class MemberAttendanceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try{
+            $memberAttendance = $this->memberAttendanceService->update($request->all(),$id);
+            return $this->apiResponse->success(200, $memberAttendance, 'Member Attendance has been updated');
+        } catch(\Exception $e) {
+            
+        }
     }
 
     /**
@@ -100,7 +110,12 @@ class MemberAttendanceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try{
+            $this->memberAttendanceService->delete($id);
+            return $this->apiResponse->success(200, [], 'Member Attendance has been deleted');
+        } catch (\Excepption $e) {
+            return $this->apiResponse->failed($e,500,'Error Occured');
+        }
     }
 
     public function getAllMemberAttendance()
