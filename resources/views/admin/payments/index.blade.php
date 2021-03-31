@@ -195,7 +195,7 @@
                     html+='<option value="'+paymentType[x].id+'">'+paymentType[x].payment_type+'</option>';
                     }
                 }
-               $('#editpayment_type').html(html);
+               $('#editpayment_type_id').html(html);
             }
 
         });

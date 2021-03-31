@@ -22,22 +22,22 @@
                                 <input type="hidden" name="hdnpaymentid" id="hdnpaymentid"/>
                             </div>
                         </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="fname">First Name</label>
-                                    <!-- <input type="text"  class="form-control" id="editfname" name="fname" placeholder="First Name"> -->
+                                   
                                     <select name="fname"  id="editfname" class="form-control">
                                     </select>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="lname">Last Name</label>
-                                    <!-- <input type="text"  class="form-control" id="editlname" name="lname" placeholder="Last Name"> -->
+                             
                                     <select name="lname"  id="editlname" class="form-control">
                                     </select>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-4">
@@ -46,7 +46,7 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="payment_type">Payment Type</label>
-                                <select name="payment_type"  id="editpayment_type" class="form-control">
+                                <select name="payment_type_id"  id="editpayment_type_id" class="form-control">
                                 </select>
                             </div>
 

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class PaymentType extends Model
 {
+
+
         /**
      * The table associated with the model.
      *
