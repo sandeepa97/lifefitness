@@ -72,8 +72,8 @@
                     { 
                         data: null,
                         className: "center",
-                        defaultContent: '<a href="" class="editor_editattendance btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>' + 
-                        '<a href="" class="remove_payment btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>'
+                        defaultContent: '<a href="" class="edit_attendance btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>' + 
+                        '<a href="" class="remove_attendance btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>'
                     }
                 ]
         });
@@ -94,6 +94,36 @@
                 success: function(response){
                     alert(response.msg);
                     location.reload();
+                }
+            });
+        });
+
+        //delete attendance
+        $('#attendancetable').on('click','a.remove_attendance', function(e){
+            e.preventDefault();
+            var data = $('#attendancetable').DataTable().row($(this).parents('tr')).data();
+            var attendanceId = data.id;
+
+            $.confirm({
+                text: "Are you sure?",
+                confirm: function(){
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: 'DELETE',
+                        url: baseUrl+'/admin/member-attendance/'+ attendanceId,
+                        success: function(res){
+                            alert(res.msg);
+                            setTimeout(function(){
+                                location.reload();
+                            },1000)
+                        }
+
+                    });
+                },
+                cancel: function(){
+                    //nothing to do
                 }
             });
         });
