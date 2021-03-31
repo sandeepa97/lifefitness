@@ -57,7 +57,8 @@ class PaymentController extends Controller
             // dd($payments);
             return $this->apiResponse->success(200, $payments, 'success');
         } catch (\Exception $e) {
-      
+            
+            // dd($payments);
             // dd($e->getMessage());
             return $this->apiResponse->failed($e, 500, 'Error Occured');
         }

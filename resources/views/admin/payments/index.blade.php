@@ -125,7 +125,7 @@
         $('#frmcreatepayment').submit(function(e){
             e.preventDefault();
             $.ajax({
-                url: "{{ url('/admin/paymentss/')}}",
+                url: "{{ url('/admin/payments')}}",
                 type: 'POST',
                 data: $('#frmcreatepayment').serialize(),
                 success: function(response){

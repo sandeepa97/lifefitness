@@ -20,22 +20,22 @@
                                 </div>
                             </div>
                         </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="fname">First Name</label>
-                                    <!-- <input type="text"  class="form-control" id="fname" name="fname" placeholder="First Name"> -->
+                         
                                     <select name="fname"  id="fname" class="form-control">
                                     </select>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="lname">Last Name</label>
-                                    <!-- <input type="text"  class="form-control" id="lname" name="lname" placeholder="Last Name"> -->
+                                 
                                     <select name="lname"  id="lname" class="form-control">
                                     </select>
                                 </div>
                             </div>
-                        </div>
+                    </div> -->
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-4">
