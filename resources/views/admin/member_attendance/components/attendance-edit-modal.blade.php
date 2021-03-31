@@ -17,7 +17,7 @@
                                     <!-- <input type="text"  class="form-control" id="member_id" name="member_id" placeholder="Member ID"> -->
                                     <select name="member_id"  id="editmember_id" class="form-control">
                                     </select>
-                                    <input type="hidden" name="hdnpaymentid" id="hdnpaymentid"/>
+                                    <input type="hidden" name="hdnattendance_id" id="hdnattendance_id"/>
                                 </div>
                             </div>
                         </div>

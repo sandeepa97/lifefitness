@@ -128,7 +128,60 @@
             });
         });
 
+        //edit member attendance record
+        $('#attendancetable').on('click','a.edit_attendance', function (e){
+            e.preventDefault();
+            var data = $('#attendancetable').DataTable().row($(this).parents('tr')).data();
+            var memberId = data.member_id;
 
+            //get all members
+            $.ajax({
+                type: 'GET',
+                url: baseUrl+'/admin/get-all-members',
+                success: function(res){
+                    var memberData = res.data;
+
+                    var html = '';
+                    html +='<option value="0">Member ID</option>';
+                    for(var x = 0; x<memberData.length; x++){
+                        if(memberId==memberData[x].id){
+                            html+='<option selected value="'+memberData[x].id+'">'+memberData[x].id+'</option>';
+                        }else {
+                            html+='<option value="'+memberData[x].id+'">'+memberData[x].id+'</option>';
+                        }
+                    }
+                    $('#editmember_id').html(html);
+                }
+            });
+
+            $('#hdnattendance_id').val(data.id);
+            $('#editmember_in_date').val(data.member_in_date);
+            $('#editmember_in_time').val(data.member_in_time);
+            $('#attendanceeditmodal').modal('toggle');
+
+        });
+
+        //edit Attendance
+        $('#editfrmattendance').submit(function(e){
+            e.preventDefault();
+            var attendanceId = $('#hdnattendance_id').val();
+
+            $.ajax({
+                type: 'PUT',
+                url: baseUrl+'/admin/member-attendance/'+ attendanceId,
+                data: $('#editfrmattendance').serialize(),
+                success: function(response){
+                    if(response.success==true){
+                        alert(response.msg);
+                        setTimeout(function(){
+                            location.reload();
+                        },1000);
+                    }else{
+                        alert(response.msg);
+                    }
+                }
+            });
+        });
 
 
 </script>
