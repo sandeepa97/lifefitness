@@ -49,7 +49,13 @@ class ExerciseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $exercise = $this->exerciseService->store($request->all());
+            return $this->apiResponse->success(200, $exercise, 'Exercise Added Successfully');
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return $this->apiResponse->failed($e, 500, 'Error Occured');
+        }
     }
 
     /**
@@ -83,7 +89,12 @@ class ExerciseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try{
+            $exercise = $this->exerciseService->update($request->all(),$id);
+            return $this->apiResponse->success(200, $exercise, 'Exercise has been updated');
+        } catch(\Exception $e) {
+            return $this->apiResponse->failed($e, 500, 'Error occured');
+        }
     }
 
     /**
@@ -94,7 +105,12 @@ class ExerciseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try{
+            $this->exerciseService->delete($id);
+            return $this->apiResponse->success(200, [], 'Exercise has been deleted');
+        } catch (\Excepption $e) {
+            return $this->apiResponse->failed($e,500,'Error Occured');
+        }
     }
 
     public function getAllExercises()

@@ -20,25 +20,27 @@
     <div class="row mt-1">
         
             <div class="col-md-4 card">
-                <table id="attendancetable" class="table table-bordered">
+                <table id="exercisetable" class="table table-bordered">
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Exercise Name</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                 </table>
             </div>
             <div class="col-md-8 card">
-                <table id="attendancetable" class="table table-bordered">
+                <table id="scheduletable" class="table table-bordered">
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Schedule Name</th>
-                            <th>Exercise ID</th>
+                            <!-- <th>Exercise ID</th> -->
                             <th>Exercise Name</th>
                             <th>Reps</th>
                             <th>Sets</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                 </table>
@@ -47,5 +49,56 @@
     </div>
 
 </div>
+
+@include('admin.schedules.components.exercise-add-modal')
+
+@include('admin.schedules.components.exercise-edit-modal')
+
+@endsection
+
+@section('custom-js')
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+        //load data to Table
+        $('#exercisetable').DataTable({
+            ajax: baseUrl+'/admin/get-all-exercises',
+            columns:
+                [
+                    { data: 'id' },
+                    { data: 'exercise_name' },
+                    { 
+                        data: null,
+                        className: "center",
+                        defaultContent: '<a href="" class="edit_exercise btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>' + 
+                        '<a href="" class="remove_exercise btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>'
+                    }
+                ]
+        });
+
+    });
+
+        //add exercise
+        $('#btnaddexercise').click(function(){
+            $('#exerciseaddmodal').modal('toggle');
+        });
+
+        $('#frmcreateexercise').submit(function(e){
+            e.preventDefault();
+            $.ajax({
+                url: "{{url('admin/exercises')}}",
+                type: 'POST',
+                data: $('#frmcreateexercise').serialize(),
+                success: function(response){
+                    alert(response.msg);
+                    location.reload();
+                }
+            });
+        });
+
+</script>
+
 
 @endsection

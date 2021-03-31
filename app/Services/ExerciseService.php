@@ -40,15 +40,11 @@ class ExerciseService implements ServiceInterface
      */
     public function store($data)
     {
-        // $array = [
-        //     'member_id'=>$data['member_id'],
-        //     'member_in_date'=>$data['member_in_date'],
-        //     'member_in_time'=>$data['member_in_time'],
-        //     'created_by' =>Auth::id(),
-        //     'updated_by' =>Auth::id(),
+        $array = [
+            'exercise_name'=>$data['exercise_name'],
 
-        // ];
-        // return $this->memberAttendanceRepository->create($array);
+        ];
+        return $this->exerciseRepository->create($array);
     }
 
     /**
@@ -60,11 +56,11 @@ class ExerciseService implements ServiceInterface
      */
     public function update($data, $id)
     {
-        // return $this->memberAttendanceRepository->update($data, $id);
+        return $this->exerciseRepository->update($data, $id);
     }
 
     public function delete($id)
     {
-        // return $this->memberAttendanceRepository->delete($id);
+        return $this->exerciseRepository->delete($id);
     }
 }

@@ -25,13 +25,10 @@ class ExerciseRepository implements ExerciseRepositoryInterface
     public function update($data, $id)
     {
 
-        // $Exercise = Exercise::find($id);
-        // $Exercise->member_id = $data['member_id'];
-        // $Exercise->member_in_date = $data['member_in_date'];
-        // $Exercise->member_in_time = $data['member_in_time'];
-        // $Exercise->updated_by = Auth::id();
-        // $Exercise->save();
-        // return $Exercise;
+        $exercise = Exercise::find($id);
+        $exercise->exercise_name = $data['exercise_name'];
+        $exercise->save();
+        return $exercise;
     }
 
     public function delete($id)
