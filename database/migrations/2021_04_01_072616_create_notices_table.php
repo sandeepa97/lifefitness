@@ -17,8 +17,8 @@ class CreateNoticesTable extends Migration
             $table->id();
             $table->string('notice_subject');
             $table->string('notice_content');
-            $table->string('notice_date');
-            $table->string('notice_time');
+            $table->date('notice_date');
+            $table->time('notice_time');
             $table->string('notice_type_id');
             $table->string('recipients_id');
             $table->timestamps();

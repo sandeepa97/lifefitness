@@ -2,10 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\ApiResponseService;
+use App\Services\NoticeService;
+
 use Illuminate\Http\Request;
 
 class NoticeController extends Controller
 {
+
+
+    protected $noticeService;
+
+
+    protected $apiResponse;
+
+
+
+    function __construct(
+        NoticeService $notice,
+        ApiResponseService $apiResponseService
+    ) {
+        $this->noticeService = $notice;
+        $this->apiResponse = $apiResponseService;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -80,5 +101,15 @@ class NoticeController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getAllNotices()
+    {
+        try {
+            $notices = $this->noticeService->fetchAll();
+            return response()->json(['data' => $notices]);
+        } catch (\Exception $e) {
+            return $this->apiResponse->failed($e, 500, 'Error Occured');
+        }
     }
 }

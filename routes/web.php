@@ -50,6 +50,7 @@ Route::get('admin/get-all-exercises', 'ExerciseController@getAllExercises');
 
 //Admin -> Notice Functions
 Route::resource('admin/notices', 'NoticeController');
+Route::get('admin/get-all-notices', 'NoticeController@getAllNotices');
 
 //Admin -> Profit Functions
 Route::resource('admin/profit', 'ProfitController');
