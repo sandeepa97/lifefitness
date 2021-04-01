@@ -55,7 +55,7 @@ class PaymentController extends Controller
             $payments = $this->paymentService->store($request->all());
             // dd($e->getMessage());
             // dd($payments);
-            return $this->apiResponse->success(200, $payments, 'success');
+            return $this->apiResponse->success(200, $payments, 'Payment Added Successfully');
         } catch (\Exception $e) {
             
             // dd($payments);

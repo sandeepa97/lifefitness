@@ -98,6 +98,70 @@
             });
         });
 
+        //edit exercise
+        $('#exercisetable').on('click','a.edit_exercise', function (e){
+            e.preventDefault();
+            var data = $('#exercisetable').DataTable().row($(this).parents('tr')).data();
+
+            $('#hdnexercise_id').val(data.id);
+            $('#editexercise_name').val(data.exercise_name);
+            $('#exerciseeditmodal').modal('toggle');
+        });
+
+        //edit exercise POST
+        $('#editfrmexercise').submit(function(e){
+            e.preventDefault();
+            var exerciseId = $('#hdnexercise_id').val();
+
+            $.ajax({
+                type: 'PUT',
+                url: baseUrl+'/admin/exercises/'+ exerciseId,
+                data: $('#editfrmexercise').serialize(),
+                success: function(response){
+                    if(response.success==true){
+                        alert(response.msg);
+                        setTimeout(function(){
+                            location.reload();
+                        },1000);
+                    }else{
+                        alert(response.msg);
+                    }
+                }
+            });
+        });
+
+        //delete exercise
+        $('#exercisetable').on('click', 'a.remove_exercise', function (e) {
+        e.preventDefault();
+
+        var data = $('#exercisetable').DataTable().row($(this).parents('tr')).data();
+        var exerciseId = data.id;
+
+        $.confirm({
+            text: "Are you sure?",
+            confirm: function() {
+              $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                  type: 'DELETE',
+                  url: baseUrl+'/admin/exercises/'+exerciseId,
+                  success: function(res){
+                      alert(res.msg);
+                      setTimeout(function(){
+                        location.reload();
+                      },1000)
+                  }
+              })
+            },
+            cancel: function() {
+                // nothing to do.
+
+            }
+        });
+
+    });
+
 </script>
 
 
