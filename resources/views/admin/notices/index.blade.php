@@ -38,6 +38,9 @@
 </div>
 
 
+@include('admin.notices.components.notice-add-modal')
+
+@include('admin.notices.components.notice-edit-modal')
 
 @endsection
 
@@ -49,7 +52,7 @@
         //get all notice types
         $.ajax({
             type: 'GET',
-            url: baseUrl+'admin/get-all-notice-types',
+            url: baseUrl+'/admin/get-all-notice-types',
             success: function(res){
                 var noticeType = res.data;
                 var html = '';
@@ -57,14 +60,14 @@
                 for (var x=0; x<noticeType.length; x++){
                     html+='<option value="'+noticeType[x].id+'">'+noticeType[x].notice_type+'</option>';
                 }
-                $('#notice_type').html(html);
+                $('#notice_type_id').html(html);
             }
         });
 
         //get all recipients
         $.ajax({
             type: 'GET',
-            url: baseUrl+'admin/get-all-notice-recipients',
+            url: baseUrl+'/admin/get-all-notice-recipients',
             success: function(res){
                 var noticeRecipient = res.data;
                 var html = '';
@@ -72,7 +75,7 @@
                 for (var x=0; x<noticeRecipient.length; x++){
                     html+='<option value="'+noticeRecipient[x].id+'">'+noticeRecipient[x].recipient+'</option>';
                 }
-                $('#recipient').html(html);
+                $('#recipients_id').html(html);
             }
         });
 
@@ -100,6 +103,24 @@
         });
 
     });
+
+    //add notice
+    $('#btnaddnotice').click(function(){
+            $('#noticeaddmodal').modal('toggle');
+    });
+
+        $('#frmcreatenotice').submit(function(e){
+            e.preventDefault();
+            $.ajax({
+                url: "{{ url('/admin/notices')}}",
+                type: 'POST',
+                data: $('#frmcreatenotice').serialize(),
+                success: function(response){
+                    alert(response.msg);
+                    location.reload();
+                }
+            });
+        });
 
 
 

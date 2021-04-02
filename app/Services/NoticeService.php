@@ -40,17 +40,16 @@ class NoticeService implements ServiceInterface
      */
     public function store($data)
     {
-        // $array = [
-        //     'member_id'=>$data['member_id'],
-        //     // 'fname' => $data['fname'],
-        //     // 'lname' => $data['lname'],
-        //     'date'=> $data['date'],
-        //     'payment_type_id' => $data['payment_type_id'],
-        //     'amount' => $data['amount'],
-        //     'created_by' =>Auth::id(),
-        //     'updated_by' =>Auth::id(),
-        // ];
-        // return $this->paymentRepository->create($array);
+        $array = [
+            'notice_subject'=>$data['notice_subject'],
+            'notice_content'=>$data['notice_content'],
+            'notice_date'=>$data['notice_date'],
+            'notice_time'=>$data['notice_time'],
+            'notice_type_id'=>$data['notice_type_id'],
+            'recipients_id'=>$data['recipients_id'],
+
+        ];
+        return $this->noticeRepository->create($array);
     }
 
     /**
