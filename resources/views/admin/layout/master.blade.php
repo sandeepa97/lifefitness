@@ -132,8 +132,8 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <!-- <h6 class="collapse-header">Custom Components:</h6> -->
             <a class="collapse-item" href="{{url('admin/notices')}}">View Notices</a>
-            <a class="collapse-item" id="member-add" href="#">Post Notice</a>
-            <a class="collapse-item" id="member-add" href="#">Gym Status</a>
+            <a class="collapse-item" id="member-add" href="{{url('admin/post-notice')}}">Post Notice</a>
+            <!-- <a class="collapse-item" id="member-add" href="#">Gym Status</a> -->
           </div>
         </div>
       </li>

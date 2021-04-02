@@ -3,29 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Services\ApiResponseService;
-use App\Services\NoticeService;
-
+use App\Services\NoticeTypeService;
 use Illuminate\Http\Request;
 
-class NoticeController extends Controller
+class NoticeTypeController extends Controller
 {
+    protected $noticeTypeService;
 
+    protected $apiResponseService;
 
-    protected $noticeService;
-
-
-    protected $apiResponse;
-
-
-
+    /**
+     * Constructor
+     */
     function __construct(
-        NoticeService $notice,
+        NoticeTypeService $noticeTypeService,
         ApiResponseService $apiResponseService
-    ) {
-        $this->noticeService = $notice;
-        $this->apiResponse = $apiResponseService;
+        )
+    {
+        $this->noticeTypeService = $noticeTypeService;
+        $this->apiResponseService = $apiResponseService;
     }
-
 
     /**
      * Display a listing of the resource.
@@ -34,11 +31,15 @@ class NoticeController extends Controller
      */
     public function index()
     {
-        return view('admin.notices.index');
-    }
-    public function postNotice()
-    {
-        return view('admin.notices.postNotice');
+        try{
+
+            $noticeType = $this->noticeTypeService->fetchAll();
+
+            return $this->apiResponseService->success(200,$noticeType,'Data has been found');
+
+        }catch(\Exception $e){
+            return $this->apiResponseService->failed($e,500);
+        }
     }
 
     /**
@@ -105,15 +106,5 @@ class NoticeController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function getAllNotices()
-    {
-        try {
-            $notices = $this->noticeService->fetchAll();
-            return response()->json(['data' => $notices]);
-        } catch (\Exception $e) {
-            return $this->apiResponse->failed($e, 500, 'Error Occured');
-        }
     }
 }
