@@ -116,6 +116,8 @@
                 type: 'POST',
                 data: $('#frmcreatenotice').serialize(),
                 success: function(response){
+                    // dd($request->all);
+                    // alert("hello");
                     alert(response.msg);
                     location.reload();
                 }
@@ -123,6 +125,87 @@
         });
 
 
+     // Edit Notice record
+     $('#noticetable').on('click', 'a.edit_notice', function (e) {
+        e.preventDefault();
+        var data = $('#noticetable').DataTable().row($(this).parents('tr')).data();
+        var noticeTypeId = data.notice_type_id;
+        var recipientId = data.recipients_id;
+
+        // Get All Notices Types
+        $.ajax({
+            type: 'GET',
+            url: baseUrl+'/admin/get-all-notice-types',
+            success: function(res){
+                var noticeType = res.data;
+                // #payment_type
+                var html ='';
+                html+='<option value="0">Select Notice Type</option>';
+                for(var x=0; x<noticeType.length; x++){
+                    if(noticeTypeId==noticeType[x].id){
+                    html+='<option selected value="'+noticeType[x].id+'">'+noticeType[x].notice_type+'</option>';
+                    }
+                    else{
+                    html+='<option value="'+noticeType[x].id+'">'+noticeType[x].notice_type+'</option>';
+                    }
+                }
+               $('#editnotice_type_id').html(html);
+            }
+
+        });
+        // Get All Recipients
+        $.ajax({
+            type: 'GET',
+            url: baseUrl+'/admin/get-all-notice-recipients',
+            success: function(res){
+                var recipient = res.data;
+                // #recipients
+                var html ='';
+                html+='<option value="0">Select Notice Recipient</option>';
+                for(var x=0; x<recipient.length; x++){
+                    if(recipientId==recipient[x].id){
+                    html+='<option selected value="'+recipient[x].id+'">'+recipient[x].recipient+'</option>';
+                    }
+                    else{
+                    html+='<option value="'+recipient[x].id+'">'+recipient[x].recipient+'</option>';
+                    }
+                }
+               $('#editrecipients_id').html(html);
+            }
+
+        });
+
+        $('#hdnnoticeid').val(data.id);
+        $('#editnotice_subject').val(data.notice_subject);
+        $('#editnotice_content').val(data.notice_content);
+        $('#editnotice_date').val(data.notice_date);
+        $('#editnotice_time').val(data.notice_time);
+        $('#noticeeditmodal').modal('toggle');
+
+        });
+
+        //Edit Notice
+        $('#editfrmnotice').submit(function(e){
+            e.preventDefault();
+                var noticeId = $('#hdnnoticeid').val();
+
+            $.ajax({
+                type: 'PUT',
+                url: baseUrl+'/admin/notices/'+noticeId,
+                data: $('#editfrmnotice').serialize(),
+                success: function(response){
+                    if(response.success==true){
+                        alert(response.msg);
+                        setTimeout(function(){
+                            location.reload();
+                        },1000);
+                    }else{
+                        alert(response.msg);
+                    }
+                }
+
+            })
+        });
 
 </script>
 

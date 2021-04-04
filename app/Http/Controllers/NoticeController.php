@@ -49,13 +49,15 @@ class NoticeController extends Controller
     public function create()
     {
         try{
+            // die(var_dump($request));
             $notice = $this->noticeService->store($request->all());
             
             return $this->apiResponse->success(200,$notice, 'Notice Posted Successfully');
         }catch(\Exception $e){
-            // dd($notice);
-            dd($e->getMessage());
-            // return $this->apiResponse->failed($e, 500, 'Error Occured');
+            // dd($e);
+            // dd($e->getMessage());
+            // die(var_dump($e));
+            return $this->apiResponse->failed($e, 500, 'Error Occured');
         }
     }
 
@@ -101,7 +103,13 @@ class NoticeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $notices = $this->noticeService->update($request->all(), $id);
+            return $this->apiResponse->success(200, $notices, 'Notice has been updated');
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return $this->apiResponse->failed($e, 500, 'Error ocurred');
+        }
     }
 
     /**
@@ -112,7 +120,12 @@ class NoticeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $this->noticeService->delete($id);
+            return $this->apiResponse->success(200, [], 'Notice has been deleted');
+        } catch (\Exception $e) {
+            return $this->apiResponse->failed($e, 500, 'Notice has not been deleted');
+        }
     }
 
     public function getAllNotices()

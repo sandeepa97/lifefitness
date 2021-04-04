@@ -25,14 +25,17 @@ class NoticeRepository implements RepositoryInterface
     }
     public function update($data, $id)
     {
-        // $payments = Notice::find($id);
-        // $payments->member_id = $data['member_id'];
-        // $payments->date = $data['date'];
-        // $payments->payment_type_id = $data['payment_type_id'];
-        // $payments->amount = $data['amount'];
-        // $payments->updated_by = Auth::id();
-        // $payments->save();
-        // return $payments;
+
+        $notices = Notice::find($id);
+        $notices->notice_subject = $data['notice_subject'];
+        $notices->notice_content = $data['notice_content'];
+        $notices->notice_date = $data['notice_date'];
+        $notices->notice_time = $data['notice_time'];
+        $notices->notice_type_id = $data['notice_type_id'];
+        $notices->recipients_id = $data['recipients_id'];
+        $notices->save();
+        return $notices;
+
     }
 
     public function delete($id)
