@@ -48,17 +48,7 @@ class NoticeController extends Controller
      */
     public function create()
     {
-        try{
-            // die(var_dump($request));
-            $notice = $this->noticeService->store($request->all());
-            
-            return $this->apiResponse->success(200,$notice, 'Notice Posted Successfully');
-        }catch(\Exception $e){
-            // dd($e);
-            // dd($e->getMessage());
-            // die(var_dump($e));
-            return $this->apiResponse->failed($e, 500, 'Error Occured');
-        }
+        //
     }
 
     /**
@@ -69,7 +59,12 @@ class NoticeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $notice = $this->noticeService->store($request->all());
+            return $this->apiResponse->success(200,$notice, 'Notice Posted Successfully');
+        }catch(\Exception $e){
+            return $this->apiResponse->failed($e, 500, 'Error Occured');
+        }
     }
 
     /**

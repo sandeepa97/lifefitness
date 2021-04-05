@@ -105,19 +105,17 @@
     });
 
     //add notice
-    $('#btnaddnotice').click(function(){
+        $('#btnaddnotice').click(function(){
             $('#noticeaddmodal').modal('toggle');
-    });
+        });
 
         $('#frmcreatenotice').submit(function(e){
             e.preventDefault();
             $.ajax({
-                url: "{{ url('/admin/notices')}}",
+                url: "{{url('admin/notices')}}",
                 type: 'POST',
                 data: $('#frmcreatenotice').serialize(),
                 success: function(response){
-                    // dd($request->all);
-                    // alert("hello");
                     alert(response.msg);
                     location.reload();
                 }

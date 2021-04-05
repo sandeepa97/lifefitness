@@ -24,7 +24,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="date">Date In</label>
-                                <input type="date" class="form-control" id="member_in_date" name="member_in_date" placeholder="Date In">
+                                <input type="date" class="form-control" id="member_in_date" name="member_in_date" placeholder="Date In"
+                                value="<?php echo date('Y-m-d'); ?>">
                             </div>
                         </div>
                     </div>
@@ -32,7 +33,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="time">Time In</label>
-                                <input type="time" class="form-control" id="member_in_time" name="member_in_time" placeholder="Time In">
+                                <input type="time" class="form-control" id="member_in_time" name="member_in_time" placeholder="Time In"
+                                value="<?php echo date('h:i:s'); ?>">
                             </div>
                         </div>
                     </div>
