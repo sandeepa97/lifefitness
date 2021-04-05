@@ -138,7 +138,7 @@
             url: baseUrl+'/admin/get-all-notice-types',
             success: function(res){
                 var noticeType = res.data;
-                // #payment_type
+                // #notice_type
                 var html ='';
                 html+='<option value="0">Select Notice Type</option>';
                 for(var x=0; x<noticeType.length; x++){
@@ -206,6 +206,38 @@
 
             })
         });
+
+    // Delete Notice Record
+    $('#noticetable').on('click', 'a.remove_notice', function (e) {
+        e.preventDefault();
+
+        var data = $('#noticetable').DataTable().row($(this).parents('tr')).data();
+        var noticeId = data.id;
+
+        $.confirm({
+            text: "Are you sure?",
+            confirm: function() {
+              $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                  type: 'DELETE',
+                  url: baseUrl+'/admin/notices/'+noticeId,
+                  success: function(res){
+                      alert(res.msg);
+                      setTimeout(function(){
+                        location.reload();
+                      },1000)
+                  }
+              })
+            },
+            cancel: function() {
+                // nothing to do.
+
+            }
+        });
+
+    });
 
 </script>
 
