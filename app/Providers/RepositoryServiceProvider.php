@@ -15,6 +15,7 @@ use App\Repositories\PaymentRepository;
 use App\Repositories\MemberAttendanceRepository;
 use App\Repositories\ExerciseRepository;
 use App\Repositories\NoticeRepository;
+use App\Repositories\MemberStatusRepository;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -44,6 +45,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(MemberAttendanceRepositoryInterface::class, MemberAttendanceRepository::class);
         $this->app->bind(ExerciseRepositoryInterface::class, ExerciseRepository::class);
         $this->app->bind(RepositoryInterface::class, NoticeRepository::class);
+        $this->app->bind(RepositoryInterface::class, MemberStatusRepository::class);
 
     }
 }
