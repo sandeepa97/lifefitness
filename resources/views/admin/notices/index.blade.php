@@ -175,7 +175,7 @@
 
         });
 
-        $('#hdnnoticeid').val(data.id);
+        $('#hdnnotice_id').val(data.id);
         $('#editnotice_subject').val(data.notice_subject);
         $('#editnotice_content').val(data.notice_content);
         $('#editnotice_date').val(data.notice_date);
@@ -187,7 +187,7 @@
         //Edit Notice
         $('#editfrmnotice').submit(function(e){
             e.preventDefault();
-                var noticeId = $('#hdnnoticeid').val();
+                var noticeId = $('#hdnnotice_id').val();
 
             $.ajax({
                 type: 'PUT',
