@@ -245,7 +245,37 @@
             })
         });
 
+    // Delete Member Status Record
+    $('#statustable').on('click', 'a.remove_memberstatus', function (e) {
+        e.preventDefault();
 
+        var data = $('#statustable').DataTable().row($(this).parents('tr')).data();
+        var memberStatusId = data.id;
+
+        $.confirm({
+            text: "Are you sure?",
+            confirm: function() {
+              $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                  type: 'DELETE',
+                  url: baseUrl+'/admin/member-status/'+memberStatusId,
+                  success: function(res){
+                      alert(res.msg);
+                      setTimeout(function(){
+                        location.reload();
+                      },1000)
+                  }
+              })
+            },
+            cancel: function() {
+                // nothing to do.
+
+            }
+        });
+
+    });
 
 
 
