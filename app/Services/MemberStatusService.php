@@ -40,15 +40,15 @@ class MemberStatusService implements ServiceInterface
      */
     public function store($data)
     {
-        // $array = [
-        //     'member_id'=>$data['member_id'],
-        //     'member_in_date'=>$data['member_in_date'],
-        //     'member_in_time'=>$data['member_in_time'],
-        //     'created_by' =>Auth::id(),
-        //     'updated_by' =>Auth::id(),
+        $array = [
+            'member_id'=>$data['member_id'],
+            'height_cm'=>$data['height_cm'],
+            'weight_kg'=>$data['weight_kg'],
+            'bmi'=>$data['bmi'],
+            'member_status_type_id'=>$data['member_status_type_id'],
 
-        // ];
-        // return $this->memberStatusRepository->create($array);
+        ];
+        return $this->memberStatusRepository->create($array);
     }
 
     /**

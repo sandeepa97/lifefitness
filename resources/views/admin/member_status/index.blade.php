@@ -37,6 +37,7 @@
     </div>
 </div>
 
+@include('admin.member_status.components.member-status-add-modal')
 
 @endsection
 
@@ -45,6 +46,52 @@
 <script type = "text/javascript">
 
     $(document).ready(function(){
+
+        // Get All Members
+        $.ajax({
+            type: 'GET',
+            url: baseUrl+'/admin/get-all-members',
+            success: function(res){
+                var memberData = res.data;
+                var html ='';
+                html+='<option value="0">Member ID</option>';
+                for(var x=0; x<memberData.length; x++){
+                    html+='<option value="'+memberData[x].id+'">'+memberData[x].id+'</option>';
+                }
+               $('#member_id').html(html);
+            //     // #First Name
+            //     var html ='';
+            //     html+='<option value="0">First Name</option>';
+            //     for(var x=0; x<memberData.length; x++){
+            //         html+='<option value="'+memberData[x].id+'">'+memberData[x].fname+'</option>';
+            //     }
+            //    $('#fname').html(html);
+            //     // #Last Name
+            //     var html ='';
+            //     html+='<option value="0">Last Name</option>';
+            //     for(var x=0; x<memberData.length; x++){
+            //         html+='<option value="'+memberData[x].id+'">'+memberData[x].lname+'</option>';
+            //     }
+            //    $('#lname').html(html);
+            }
+
+        });
+        
+        // Get All Member Status Types
+        $.ajax({
+            type: 'GET',
+            url: baseUrl+'/admin/get-all-member-status-types',
+            success: function(res){
+                var memberStatusType = res.data;
+                var html ='';
+                html+='<option value="0">Status</option>';
+                for(var x=0; x<memberStatusType.length; x++){
+                    html+='<option value="'+memberStatusType[x].id+'">'+memberStatusType[x].status_type+'</option>';
+                }
+               $('#member_status_type_id').html(html);
+            }
+
+        });
 
         $('#statustable').DataTable({
 
@@ -70,6 +117,24 @@
         });
 
     });
+
+       // Add Member Status
+       $('#btnaddstatus').click(function(){
+            $('#memberstatusaddmodal').modal('toggle');
+        });
+
+        $('#frmcreatememberstatus').submit(function(e){
+            e.preventDefault();
+            $.ajax({
+                url: "{{ url('/admin/member-status')}}",
+                type: 'POST',
+                data: $('#frmcreatememberstatus').serialize(),
+                success: function(response){
+                    alert(response.msg);
+                    location.reload();
+                }
+            });
+        });
 
 </script>
 

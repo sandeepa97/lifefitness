@@ -58,6 +58,7 @@ Route::get('admin/get-all-notice-recipients', 'NoticeRecipientController@index')
 //Admin -> Member Status Functions
 Route::resource('admin/member-status', 'MemberStatusController');
 Route::get('admin/get-all-member-status', 'MemberStatusController@getAllMemberStatus');
+Route::get('admin/get-all-member-status-types', 'MemberStatusTypeController@index');
 
 //Admin -> Profit Functions
 Route::resource('admin/profit', 'ProfitController');
