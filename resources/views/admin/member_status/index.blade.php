@@ -37,7 +37,8 @@
     </div>
 </div>
 
-@include('admin.member_status.components.member-status-add-modal')
+@include('admin.member_status.components.member-status-add-modal');
+@include('admin.member_status.components.member-status-edit-modal');
 
 @endsection
 
@@ -135,6 +136,118 @@
                 }
             });
         });
+
+
+     // Edit Member Status record
+     $('#statustable').on('click', 'a.edit_memberstatus', function (e) {
+        e.preventDefault();
+        var data = $('#statustable').DataTable().row($(this).parents('tr')).data();
+        var memberStatusTypeId = data.member_status_type_id;
+        var memberId = data.member_id;
+
+        // Get All Member Status Types
+        $.ajax({
+            type: 'GET',
+            url: baseUrl+'/admin/get-all-member-status-types',
+            success: function(res){
+                var memberStatusType = res.data;
+                var html ='';
+                html+='<option value="0">Status</option>';
+                for(var x=0; x<memberStatusType.length; x++){
+                    if(memberStatusTypeId==memberStatusType[x].id){
+                    html+='<option selected value="'+memberStatusType[x].id+'">'+memberStatusType[x].status_type+'</option>';
+                    }
+                    else{
+                    html+='<option value="'+memberStatusType[x].id+'">'+memberStatusType[x].status_type+'</option>';
+                    }
+                }
+               $('#editmember_status_type_id').html(html);
+            }
+
+        });
+
+         // Get All Members
+         $.ajax({
+            type: 'GET',
+            url: baseUrl+'/admin/get-all-members',
+            success: function(res){
+                var memberData = res.data;
+        
+                // #payment_type
+                var html ='';
+                html+='<option value="0">Member ID</option>';
+                for(var x=0; x<memberData.length; x++){
+                    if(memberId==memberData[x].id){
+                        html+='<option selected value="'+memberData[x].id+'">'+memberData[x].id+'</option>';
+                    }else{
+                        html+='<option value="'+memberData[x].id+'">'+memberData[x].id+'</option>';
+                    }
+                }
+               $('#editmember_id').html(html);
+
+            //     // #First Name
+            //     var html ='';
+            //     html+='<option value="0">First Name</option>';
+            //     for(var x=0; x<memberData.length; x++){
+            //         if(memberId==memberData[x].id){
+            //         html+='<option selected value="'+memberData[x].id+'">'+memberData[x].fname+'</option>';
+            //         }else{
+            //         html+='<option value="'+memberData[x].id+'">'+memberData[x].fname+'</option>';
+            //         }
+            //     }
+            //    $('#editfname').html(html);
+            //     // #Last Name
+            //     var html ='';
+            //     html+='<option value="0">Last Name</option>';
+            //     for(var x=0; x<memberData.length; x++){
+            //         if(memberId==memberData[x].id){
+            //         html+='<option selected value="'+memberData[x].id+'">'+memberData[x].lname+'</option>';
+            //         }else{
+            //         html+='<option value="'+memberData[x].id+'">'+memberData[x].lname+'</option>';
+            //         }
+
+            //     }
+            //    $('#editlname').html(html);
+            }
+
+        });
+        
+     
+        $('#hdnmemberstatus_id').val(data.id);
+        $('#editheight_cm').val(data.height_cm);
+        $('#editweight_kg').val(data.weight_kg);
+        $('#editbmi').val(data.bmi);
+        $('#memberstatuseditmodal').modal('toggle');
+
+        });
+
+
+        //Edit Member Status
+        $('#frmeditmemberstatus').submit(function(e){
+            e.preventDefault();
+                var memberStatusId = $('#hdnmemberstatus_id').val();
+
+            $.ajax({
+                type: 'PUT',
+                url: baseUrl+'/admin/member-status/'+memberStatusId,
+                data: $('#frmeditmemberstatus').serialize(),
+                success: function(response){
+                    if(response.success==true){
+                        alert(response.msg);
+                        setTimeout(function(){
+                            location.reload();
+                        },1000);
+                    }else{
+                        alert(response.msg);
+                    }
+                }
+
+            })
+        });
+
+
+
+
 
 </script>
 

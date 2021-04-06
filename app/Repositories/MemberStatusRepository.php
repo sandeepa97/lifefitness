@@ -26,13 +26,14 @@ class MemberStatusRepository implements RepositoryInterface
     public function update($data, $id)
     {
 
-        // $memberStatus = MemberStatus::find($id);
-        // $memberStatus->member_id = $data['member_id'];
-        // $memberStatus->member_in_date = $data['member_in_date'];
-        // $memberStatus->member_in_time = $data['member_in_time'];
-        // $memberStatus->updated_by = Auth::id();
-        // $memberStatus->save();
-        // return $memberStatus;
+        $memberStatus = MemberStatus::find($id);
+        $memberStatus->member_id = $data['member_id'];
+        $memberStatus->height_cm = $data['height_cm'];
+        $memberStatus->weight_kg = $data['weight_kg'];
+        $memberStatus->bmi = $data['bmi'];
+        $memberStatus->member_status_type_id = $data['member_status_type_id'];
+        $memberStatus->save();
+        return $memberStatus;
     }
 
     public function delete($id)
