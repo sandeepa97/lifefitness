@@ -3,24 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Services\ApiResponseService;
-use App\Services\InventoryService;
+use App\Services\InventoryItemCategoryService;
 use Illuminate\Http\Request;
 
-class InventoryController extends Controller
+class InventoryItemCategoryController extends Controller
 {
-    protected $inventoryService;
+    protected $inventoryItemCategoryService;
 
+    protected $apiResponseService;
 
-    protected $apiResponse;
-
-
-
+    /**
+     * Constructor
+     */
     function __construct(
-        InventoryService $inventory,
+        InventoryItemCategoryService $inventoryItemCategoryService,
         ApiResponseService $apiResponseService
-    ) {
-        $this->inventoryService = $inventory;
-        $this->apiResponse = $apiResponseService;
+        )
+    {
+        $this->inventoryItemCategoryService = $inventoryItemCategoryService;
+        $this->apiResponseService = $apiResponseService;
     }
 
     /**
@@ -30,7 +31,15 @@ class InventoryController extends Controller
      */
     public function index()
     {
-        return view('admin.inventory.index');
+        try{
+
+            $inventoryItemCategory = $this->inventoryItemCategoryService->fetchAll();
+
+            return $this->apiResponseService->success(200,$inventoryItemCategory,'Data has been found');
+
+        }catch(\Exception $e){
+            return $this->apiResponseService->failed($e,500);
+        }
     }
 
     /**
@@ -98,15 +107,4 @@ class InventoryController extends Controller
     {
         //
     }
-
-    public function getAllInventory()
-    {
-        try {
-            $inventory = $this->inventoryService->fetchAll();
-            return response()->json(['data' => $inventory]);
-        } catch (\Exception $e) {
-            return $this->apiResponse->failed($e, 500, 'Error Occured');
-        }
-    }
-
 }
