@@ -8,6 +8,7 @@ use App\Repositories\Contract\MemberRepositoryInterface;
 use App\Repositories\Contract\PaymentRepositoryInterface;
 use App\Repositories\Contract\MemberAttendanceRepositoryInterface;
 use App\Repositories\Contract\ExerciseRepositoryInterface;
+use App\Repositories\Contract\TrainerRepositoryInterface;
 
 use App\Repositories\UserRepository;
 use App\Repositories\MemberRepository;
@@ -16,6 +17,7 @@ use App\Repositories\MemberAttendanceRepository;
 use App\Repositories\ExerciseRepository;
 use App\Repositories\NoticeRepository;
 use App\Repositories\MemberStatusRepository;
+use App\Repositories\TrainerRepository;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -46,6 +48,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(ExerciseRepositoryInterface::class, ExerciseRepository::class);
         $this->app->bind(RepositoryInterface::class, NoticeRepository::class);
         $this->app->bind(RepositoryInterface::class, MemberStatusRepository::class);
+        $this->app->bind(TrainerRepositoryInterface::class, TrainerRepository::class);
 
     }
 }

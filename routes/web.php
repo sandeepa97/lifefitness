@@ -65,6 +65,7 @@ Route::resource('admin/profit', 'ProfitController');
 
 //Admin -> Trainer Functions
 Route::resource('admin/trainers', 'TrainerController');
+Route::get('admin/get-all-trainers', 'TrainerController@getAllTrainers');
 
 //Admin -> Trainer Shifts Functions
 Route::resource('admin/trainer-shifts', 'TrainerShiftsController');

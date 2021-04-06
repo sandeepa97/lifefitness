@@ -2,15 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\ApiResponseService;
+use App\Services\TrainerService;
 use Illuminate\Http\Request;
 
 class TrainerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    protected $trainerService;
+
+
+    protected $apiResponse;
+
+
+
+    function __construct(
+        TrainerService $trainer,
+        ApiResponseService $apiResponseService
+    ) {
+        $this->trainerService = $trainer;
+        $this->apiResponse = $apiResponseService;
+    }
+
+
+
     public function index()
     {
         return view('admin.trainer.index');
@@ -34,7 +49,16 @@ class TrainerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // 
+        try {
+            
+            $trainers = $this->trainerService->store($request->all());
+            return $this->apiResponse->success(200, $trainers, 'Trainer Added Successfully');
+        } catch (\Exception $e) {
+      
+            dd($e->getMessage());
+            return $this->apiResponse->failed($e, 500, 'Error Occured');
+        }
     }
 
     /**
@@ -68,7 +92,13 @@ class TrainerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $trainers = $this->trainerService->update($request->all(), $id);
+            return $this->apiResponse->success(200, $trainers, 'Trainer has been updated');
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return $this->apiResponse->failed($e, 500, 'Error ocurred');
+        }
     }
 
     /**
@@ -79,6 +109,21 @@ class TrainerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $this->trainerService->delete($id);
+            return $this->apiResponse->success(200, [], 'Trainer has been deleted');
+        } catch (\Exception $e) {
+            return $this->apiResponse->failed($e, 500, 'Trainer has not been deleted');
+        }
+    }
+    public function getAllTrainers()
+    {
+        try {
+            $trainers = $this->trainerService->fetchAll();
+
+            return response()->json(['data' => $trainers]);
+        } catch (\Exception $e) {
+            return $this->apiResponse->failed($e, 500, 'Error Occured');
+        }
     }
 }
