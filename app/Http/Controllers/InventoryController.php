@@ -51,7 +51,15 @@ class InventoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            
+            $inventory = $this->inventoryService->store($request->all());
+
+            return $this->apiResponse->success(200, $inventory, 'Equipment Added Successfully');
+        } catch (\Exception $e) {
+
+            return $this->apiResponse->failed($e, 500, 'Error Occured');
+        }
     }
 
     /**
@@ -85,7 +93,13 @@ class InventoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $inventory = $this->inventoryService->update($request->all(), $id);
+            return $this->apiResponse->success(200, $inventory, 'Inventory has been updated');
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return $this->apiResponse->failed($e, 500, 'Error ocurred');
+        }
     }
 
     /**
@@ -96,7 +110,12 @@ class InventoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $this->inventoryService->delete($id);
+            return $this->apiResponse->success(200, [], 'Inventory has been deleted');
+        } catch (\Exception $e) {
+            return $this->apiResponse->failed($e, 500, 'Inventory has not been deleted');
+        }
     }
 
     public function getAllInventory()

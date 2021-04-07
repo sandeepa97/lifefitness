@@ -25,17 +25,16 @@ class InventoryRepository implements InventoryRepositoryInterface
     }
     public function update($data, $id)
     {
-        // $inventory = Inventory::find($id);
-        // $Inventory->fname = $data['fname'];
-        // $inventory->lname = $data['lname'];
-        // $inventory->gender = $data['gender'];
-        // $inventory->nic = $data['nic'];
-        // $inventory->address = $data['address'];
-        // $members->contact = $data['contact'];
-        // $members->email = $data['email'];
-        // $members->updated_by = Auth::id();
-        // $members->save();
-        // return $members;
+        $inventory = Inventory::find($id);
+        $Inventory->item_name = $data['item_name'];
+        $inventory->item_category_id = $data['item_category_id'];
+        $inventory->quantity = $data['quantity'];
+        $inventory->service_date = $data['service_date'];
+        $inventory->manufacturer = $data['manufacturer'];
+        $inventory->manufacturer_contact = $data['manufacturer_contact'];
+        $inventory->updated_by = Auth::id();
+        $inventory->save();
+        return $inventory;
     }
 
     public function delete($id)

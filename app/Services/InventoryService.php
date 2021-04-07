@@ -40,19 +40,17 @@ class InventoryService implements ServiceInterface
      */
     public function store($data)
     {
-        // $array = [
-        //     'fname' => $data['fname'],
-        //     'lname' => $data['lname'],
-        //     'gender' => $data['gender'],
-        //     'nic' => $data['nic'],
-        //     'address' => $data['address'],
-        //     'contact' => $data['contact'],
-        //     'email' => $data['email'],
-        //     'password'=>bcrypt($data['password']),
-        //     'created_by' =>Auth::id(),
-        //     'updated_by' =>Auth::id(),
-        // ];
-        // return $this->inventoryRepository->create($array);
+        $array = [
+            'item_name' => $data['item_name'],
+            'item_category_id' => $data['item_category_id'],
+            'quantity' => $data['quantity'],
+            'service_date' => $data['service_date'],
+            'manufacturer' => $data['manufacturer'],
+            'manufacturer_contact' => $data['manufacturer_contact'],
+            'created_by' =>Auth::id(),
+            'updated_by' =>Auth::id(),
+        ];
+        return $this->inventoryRepository->create($array);
     }
 
     /**
