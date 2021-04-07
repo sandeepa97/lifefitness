@@ -68,7 +68,9 @@ Route::resource('admin/trainers', 'TrainerController');
 Route::get('admin/get-all-trainers', 'TrainerController@getAllTrainers');
 
 //Admin -> Trainer Shifts Functions
-Route::resource('admin/trainer-shifts', 'TrainerShiftsController');
+Route::resource('admin/trainer-shifts', 'TrainerShiftController');
+Route::get('admin/get-all-trainer-shifts', 'TrainerShiftController@getAllShifts');
+Route::get('admin/get-all-trainer-shifts-type', 'TrainerShiftTypeController@index');
 
 //Admin -> Inventory Functions
 Route::resource('admin/inventory', 'InventoryController');

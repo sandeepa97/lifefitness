@@ -20,6 +20,7 @@ use App\Repositories\NoticeRepository;
 use App\Repositories\MemberStatusRepository;
 use App\Repositories\TrainerRepository;
 use App\Repositories\InventoryRepository;
+use App\Repositories\TrainerShiftRepository;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -50,6 +51,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(ExerciseRepositoryInterface::class, ExerciseRepository::class);
         $this->app->bind(RepositoryInterface::class, NoticeRepository::class);
         $this->app->bind(RepositoryInterface::class, MemberStatusRepository::class);
+        $this->app->bind(RepositoryInterface::class, TrainerShiftRepository::class);
         $this->app->bind(TrainerRepositoryInterface::class, TrainerRepository::class);
         $this->app->bind(InventoryRepositoryInterface::class, InventoryRepository::class);
 

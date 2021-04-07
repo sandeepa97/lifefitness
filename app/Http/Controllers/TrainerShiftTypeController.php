@@ -2,10 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\ApiResponseService;
+use App\Services\TrainerShiftTypeService;
 use Illuminate\Http\Request;
 
-class TrainerShiftsController extends Controller
+class TrainerShiftTypeController extends Controller
 {
+    protected $trainerShiftTypeService;
+
+    protected $apiResponseService;
+
+    /**
+     * Constructor
+     */
+    function __construct(
+        TrainerShiftTypeService $trainerShiftTypeService,
+        ApiResponseService $apiResponseService
+        )
+    {
+        $this->trainerShiftTypeService = $trainerShiftTypeService;
+        $this->apiResponseService = $apiResponseService;
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +31,15 @@ class TrainerShiftsController extends Controller
      */
     public function index()
     {
-        return view('admin.trainer_shifts.index');
+        try{
+
+            $trainerShiftType = $this->trainerShiftTypeService->fetchAll();
+
+            return $this->apiResponseService->success(200,$trainerShiftType,'Data has been found');
+
+        }catch(\Exception $e){
+            return $this->apiResponseService->failed($e,500);
+        }
     }
 
     /**
