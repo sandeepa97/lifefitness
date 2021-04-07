@@ -94,12 +94,22 @@ class InventoryController extends Controller
     public function update(Request $request, $id)
     {
         try {
+            // dd($inventory);
             $inventory = $this->inventoryService->update($request->all(), $id);
             return $this->apiResponse->success(200, $inventory, 'Inventory has been updated');
         } catch (\Exception $e) {
             dd($e->getMessage());
             return $this->apiResponse->failed($e, 500, 'Error ocurred');
         }
+
+        // try {
+        //     $inventorys = $this->inventoryService->update($request->all(), $id);
+        //     return $this->apiResponse->success(200, $inventorys, 'Inventory has been updated');
+        // } catch (\Exception $e) {
+        //     dd($e->getMessage());
+        //     return $this->apiResponse->failed($e, 500, 'Error ocurred');
+        // }
+
     }
 
     /**

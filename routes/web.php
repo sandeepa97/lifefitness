@@ -72,5 +72,6 @@ Route::resource('admin/trainer-shifts', 'TrainerShiftsController');
 
 //Admin -> Inventory Functions
 Route::resource('admin/inventory', 'InventoryController');
+Route::put('admin/inventory/update', 'InventoryController@update');
 Route::get('admin/get-all-inventory', 'InventoryController@getAllInventory');
 Route::get('admin/get-all-inventory-category', 'InventoryItemCategoryController@index');

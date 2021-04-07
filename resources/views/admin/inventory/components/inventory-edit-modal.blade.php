@@ -7,7 +7,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form data-parsley-validate="" id="frmeditinventory">
+            <form data-parsley-validate="" id="editfrminventory">
                 <div class="modal-body">
                     {{csrf_field()}}
                     <div class="form-group">

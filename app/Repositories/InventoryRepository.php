@@ -26,7 +26,7 @@ class InventoryRepository implements InventoryRepositoryInterface
     public function update($data, $id)
     {
         $inventory = Inventory::find($id);
-        $Inventory->item_name = $data['item_name'];
+        $inventory->item_name = $data['item_name'];
         $inventory->item_category_id = $data['item_category_id'];
         $inventory->quantity = $data['quantity'];
         $inventory->service_date = $data['service_date'];

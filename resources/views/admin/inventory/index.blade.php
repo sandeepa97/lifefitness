@@ -140,16 +140,15 @@ columns:
 
         });
 
-        
         //Edit Inventory
-        $('#frmeditinventory').submit(function(e){
+        $('#editfrminventory').submit(function(e){
             e.preventDefault();
                 var inventoryId = $('#hdninventoryid').val();
 
             $.ajax({
                 type: 'PUT',
                 url: baseUrl+'/admin/inventory/'+inventoryId,
-                data: $('#frmeditinventory').serialize(),
+                data: $('#editfrminventory').serialize(),
                 success: function(response){
                     if(response.success==true){
                         alert(response.msg);
@@ -157,12 +156,14 @@ columns:
                             location.reload();
                         },1000);
                     }else{
-                        alert(response.msg);
+                        // alert(response.msg);
+                        console.log(response.msg);
                     }
                 }
 
             })
         });
+
 
     // Delete Inventory Record
     $('#inventorytable').on('click', 'a.remove_inventory', function (e) {
