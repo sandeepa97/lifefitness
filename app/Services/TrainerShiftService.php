@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Repositories\Contract\RepositoryInterface;
+use App\Repositories\Contract\TrainerShiftRepositoryInterface;
 use App\Services\Contract\ServiceInterface;
 use App\TrainerShift;
 use Auth;
@@ -11,7 +11,7 @@ class TrainerShiftService implements ServiceInterface
 {
 
     protected $trainerShiftRepository;
-    function __construct(RepositoryInterface $trainerShiftRepository)
+    function __construct(TrainerShiftRepositoryInterface $trainerShiftRepository)
     {
         $this->trainerShiftRepository = $trainerShiftRepository;
     }
@@ -40,17 +40,14 @@ class TrainerShiftService implements ServiceInterface
      */
     public function store($data)
     {
-        // $array = [
-        //     'item_name' => $data['item_name'],
-        //     'item_category_id' => $data['item_category_id'],
-        //     'quantity' => $data['quantity'],
-        //     'service_date' => $data['service_date'],
-        //     'manufacturer' => $data['manufacturer'],
-        //     'manufacturer_contact' => $data['manufacturer_contact'],
-        //     'created_by' =>Auth::id(),
-        //     'updated_by' =>Auth::id(),
-        // ];
-        // return $this->trainerShiftRepository->create($array);
+        $array = [
+            'trainer_id' => $data['trainer_id'],
+            'shift_date' => $data['shift_date'],
+            'shift_start_time' => $data['shift_start_time'],
+            'shift_end_time' => $data['shift_end_time'],
+            'shift_type_id' => $data['shift_type_id'],
+        ];
+        return $this->trainerShiftRepository->create($array);
     }
 
     /**

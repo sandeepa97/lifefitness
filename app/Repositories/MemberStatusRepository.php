@@ -2,11 +2,11 @@
 
 namespace App\Repositories;
 
-use App\Repositories\Contract\RepositoryInterface;
+use App\Repositories\Contract\MemberStatusRepositoryInterface;
 use App\MemberStatus;
 use Auth;
 
-class MemberStatusRepository implements RepositoryInterface
+class MemberStatusRepository implements MemberStatusRepositoryInterface
 {
 
     public function fetchAll()

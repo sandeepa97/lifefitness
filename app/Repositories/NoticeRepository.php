@@ -2,11 +2,11 @@
 
 namespace App\Repositories;
 
-use App\Repositories\Contract\RepositoryInterface;
+use App\Repositories\Contract\NoticeRepositoryInterface;
 use App\Notice;
 use Auth;
 
-class NoticeRepository implements RepositoryInterface
+class NoticeRepository implements NoticeRepositoryInterface
 {
 
     public function fetchAll()

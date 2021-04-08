@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Repositories\Contract\RepositoryInterface;
+use App\Repositories\Contract\MemberStatusRepositoryInterface;
 use App\Services\Contract\ServiceInterface;
 use App\MemberStatus;
 use Auth;
@@ -11,7 +11,7 @@ class MemberStatusService implements ServiceInterface
 {
 
     protected $memberStatusRepository;
-    function __construct(RepositoryInterface $memberStatusRepository)
+    function __construct(MemberStatusRepositoryInterface $memberStatusRepository)
     {
         $this->memberStatusRepository = $memberStatusRepository;
     }

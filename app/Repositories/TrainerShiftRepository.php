@@ -2,11 +2,11 @@
 
 namespace App\Repositories;
 
-use App\Repositories\Contract\RepositoryInterface;
+use App\Repositories\Contract\TrainerShiftRepositoryInterface;
 use App\TrainerShift;
 use Auth;
 
-class TrainerShiftRepository implements RepositoryInterface
+class TrainerShiftRepository implements TrainerShiftRepositoryInterface
 {
 
     public function fetchAll()
@@ -26,15 +26,14 @@ class TrainerShiftRepository implements RepositoryInterface
     public function update($data, $id)
     {
 
-        // $trainerShifts = TrainerShift::find($id);
-        // $trainerShifts->trainerShift_subject = $data['trainerShift_subject'];
-        // $trainerShifts->trainerShift_content = $data['trainerShift_content'];
-        // $trainerShifts->trainerShift_date = $data['trainerShift_date'];
-        // $trainerShifts->trainerShift_time = $data['trainerShift_time'];
-        // $trainerShifts->trainerShift_type_id = $data['trainerShift_type_id'];
-        // $trainerShifts->recipients_id = $data['recipients_id'];
-        // $trainerShifts->save();
-        // return $trainerShifts;
+        $trainerShifts = TrainerShift::find($id);
+        $trainerShifts->trainer_id = $data['trainer_id'];
+        $trainerShifts->shift_date = $data['shift_date'];
+        $trainerShifts->shift_start_time = $data['shift_start_time'];
+        $trainerShifts->shift_end_time = $data['shift_end_time'];
+        $trainerShifts->shift_type_id = $data['shift_type_id'];
+        $trainerShifts->save();
+        return $trainerShifts;
 
     }
 

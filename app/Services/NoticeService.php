@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Repositories\Contract\RepositoryInterface;
+use App\Repositories\Contract\NoticeRepositoryInterface;
 use App\Services\Contract\ServiceInterface;
 use App\Notice;
 use Auth;
@@ -11,7 +11,7 @@ class NoticeService implements ServiceInterface
 {
 
     protected $noticeRepository;
-    function __construct(RepositoryInterface $noticeRepository)
+    function __construct(NoticeRepositoryInterface $noticeRepository)
     {
         $this->noticeRepository = $noticeRepository;
     }

@@ -47,7 +47,13 @@ class TrainerShiftController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            
+            $trainerShifts = $this->trainerShiftService->store($request->all());
+            return $this->apiResponse->success(200, $trainerShifts, 'Trainer Shift Assigned Successfully');
+        } catch (\Exception $e) {
+            return $this->apiResponse->failed($e, 500, 'Error Occured');
+        }
     }
 
     /**
@@ -81,7 +87,13 @@ class TrainerShiftController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $trainerShifts = $this->trainerShiftService->update($request->all(), $id);
+            return $this->apiResponse->success(200, $trainerShifts, 'Trainer Shift has been updated');
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return $this->apiResponse->failed($e, 500, 'Error ocurred');
+        }
     }
 
     /**
@@ -92,8 +104,14 @@ class TrainerShiftController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $this->trainerShiftService->delete($id);
+            return $this->apiResponse->success(200, [], 'Trainer Shift has been deleted');
+        } catch (\Exception $e) {
+            return $this->apiResponse->failed($e, 500, 'Trainer Shift has not been deleted');
+        }
     }
+
     public function getAllShifts()
     {
         try {
