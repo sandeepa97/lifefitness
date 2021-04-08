@@ -40,16 +40,14 @@ class WorkoutScheduleService implements ServiceInterface
      */
     public function store($data)
     {
-        // $array = [
-        //     'workoutSchedule_subject'=>$data['workoutSchedule_subject'],
-        //     'workoutSchedule_content'=>$data['workoutSchedule_content'],
-        //     'workoutSchedule_date'=>$data['workoutSchedule_date'],
-        //     'workoutSchedule_time'=>$data['workoutSchedule_time'],
-        //     'workoutSchedule_type_id'=>$data['workoutSchedule_type_id'],
-        //     'recipients_id'=>$data['recipients_id'],
+        $array = [
+            'schedule_type_id'=>$data['schedule_type_id'],
+            'exercise_id'=>$data['exercise_id'],
+            'reps'=>$data['reps'],
+            'sets'=>$data['sets'],
 
-        // ];
-        // return $this->workoutScheduleRepository->create($array);
+        ];
+        return $this->workoutScheduleRepository->create($array);
     }
 
     /**

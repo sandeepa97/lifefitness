@@ -54,6 +54,10 @@
 
 @include('admin.schedules.components.exercise-edit-modal')
 
+@include('admin.schedules.components.schedule-add-modal')
+
+@include('admin.schedules.components.schedule-edit-modal')
+
 @endsection
 
 @section('custom-js')
@@ -182,6 +186,171 @@
                 ]
         });
 
+        // Get All Schedule Types
+        $.ajax({
+            type: 'GET',
+            url: baseUrl+'/admin/get-all-schedules-type',
+            success: function(res){
+                var scheduleType = res.data;
+                // #schedule_type
+                var html ='';
+                html+='<option value="0">Select Schedule Name</option>';
+                for(var x=0; x<scheduleType.length; x++){
+                    html+='<option value="'+scheduleType[x].id+'">'+scheduleType[x].schedule_type+'</option>';
+                }
+               $('#schedule_type_id').html(html);
+            }
+
+        });
+        // Get All Exercises
+        $.ajax({
+            type: 'GET',
+            url: baseUrl+'/admin/get-all-exercises',
+            success: function(res){
+                var exercises = res.data;
+                // #schedule_type
+                var html ='';
+                html+='<option value="0">Select Exercise Name</option>';
+                for(var x=0; x<exercises.length; x++){
+                    html+='<option value="'+exercises[x].id+'">'+exercises[x].exercise_name+'</option>';
+                }
+               $('#exercise_id').html(html);
+            }
+
+        });
+
+        //add schedule
+        $('#btnaddschedule').click(function(){
+            $('#scheduleaddmodal').modal('toggle');
+        });
+
+        $('#frmcreateschedule').submit(function(e){
+            e.preventDefault();
+            $.ajax({
+                url: "{{url('admin/schedules')}}",
+                type: 'POST',
+                data: $('#frmcreateschedule').serialize(),
+                success: function(response){
+                    alert(response.msg);
+                    location.reload();
+                }
+            });
+        });
+
+
+   // Edit Schedule record
+     $('#scheduletable').on('click', 'a.edit_schedule', function (e) {
+        e.preventDefault();
+        var data = $('#scheduletable').DataTable().row($(this).parents('tr')).data();
+        var scheduleTypeId = data.schedule_type_id;
+        var exerciseId = data.exercise_id;
+
+        // Get All Schedule Types
+        $.ajax({
+            type: 'GET',
+            url: baseUrl+'/admin/get-all-schedules-type',
+            success: function(res){
+                var scheduleType = res.data;
+                var html ='';
+                html+='<option value="0">Select Schedule Type</option>';
+                for(var x=0; x<scheduleType.length; x++){
+                    if(scheduleTypeId==scheduleType[x].id){
+                    html+='<option selected value="'+scheduleType[x].id+'">'+scheduleType[x].schedule_type+'</option>';
+                    }
+                    else{
+                    html+='<option value="'+scheduleType[x].id+'">'+scheduleType[x].schedule_type+'</option>';
+                    }
+                }
+               $('#editschedule_type_id').html(html);
+            }
+
+        });
+
+         // Get All Exercises
+         $.ajax({
+            type: 'GET',
+            url: baseUrl+'/admin/get-all-exercises',
+            success: function(res){
+                var exerciseData = res.data;
+                var html ='';
+                html+='<option value="0">Select Exercise Name</option>';
+                for(var x=0; x<exerciseData.length; x++){
+                    if(exerciseId==exerciseData[x].id){
+                        html+='<option selected value="'+exerciseData[x].id+'">'+exerciseData[x].exercise_name+'</option>';
+                    }else{
+                        html+='<option value="'+exerciseData[x].id+'">'+exerciseData[x].exercise_name+'</option>';
+                    }
+                }
+               $('#editexercise_id').html(html);
+
+            }
+
+        });
+        
+  
+        $('#hdnschedule_id').val(data.id);
+        $('#editreps').val(data.reps);
+        $('#editsets').val(data.sets);
+        $('#scheduleeditmodal').modal('toggle');
+
+        });
+
+
+        //Edit Schedule
+        $('#frmeditschedule').submit(function(e){
+            e.preventDefault();
+                var scheduleId = $('#hdnschedule_id').val();
+
+            $.ajax({
+                type: 'PUT',
+                url: baseUrl+'/admin/schedules/'+scheduleId,
+                data: $('#frmeditschedule').serialize(),
+                success: function(response){
+                    if(response.success==true){
+                        alert(response.msg);
+                        setTimeout(function(){
+                            location.reload();
+                        },1000);
+                    }else{
+                        alert(response.msg);
+                    }
+                }
+
+            })
+        });
+
+
+    // Delete Schedule Record
+    $('#scheduletable').on('click', 'a.remove_schedule', function (e) {
+        e.preventDefault();
+
+        var data = $('#scheduletable').DataTable().row($(this).parents('tr')).data();
+        var scheduleId = data.id;
+
+        $.confirm({
+            text: "Are you sure?",
+            confirm: function() {
+              $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                  type: 'DELETE',
+                  url: baseUrl+'/admin/schedules/'+scheduleId,
+                  success: function(res){
+                      alert(res.msg);
+                      setTimeout(function(){
+                        location.reload();
+                      },1000)
+                  }
+              })
+            },
+            cancel: function() {
+                // nothing to do.
+
+            }
+        });
+
+    });
 
 </script>
 

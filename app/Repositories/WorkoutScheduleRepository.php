@@ -26,15 +26,13 @@ class WorkoutScheduleRepository implements WorkoutScheduleRepositoryInterface
     public function update($data, $id)
     {
 
-        // $WorkoutSchedules = WorkoutSchedule::find($id);
-        // $WorkoutSchedules->WorkoutSchedule_subject = $data['WorkoutSchedule_subject'];
-        // $WorkoutSchedules->WorkoutSchedule_content = $data['WorkoutSchedule_content'];
-        // $WorkoutSchedules->WorkoutSchedule_date = $data['WorkoutSchedule_date'];
-        // $WorkoutSchedules->WorkoutSchedule_time = $data['WorkoutSchedule_time'];
-        // $WorkoutSchedules->WorkoutSchedule_type_id = $data['WorkoutSchedule_type_id'];
-        // $WorkoutSchedules->recipients_id = $data['recipients_id'];
-        // $WorkoutSchedules->save();
-        // return $WorkoutSchedules;
+        $workoutSchedules = WorkoutSchedule::find($id);
+        $workoutSchedules->schedule_type_id = $data['schedule_type_id'];
+        $workoutSchedules->exercise_id = $data['exercise_id'];
+        $workoutSchedules->reps = $data['reps'];
+        $workoutSchedules->sets = $data['sets'];
+        $workoutSchedules->save();
+        return $workoutSchedules;
 
     }
 
