@@ -44,7 +44,9 @@ Route::get('admin/view-member-attendance', 'MemberAttendanceController@viewAtten
 Route::get('admin/get-all-attendance', 'MemberAttendanceController@getAllMemberAttendance');
 
 //Admin -> Schedule Functions
-Route::resource('admin/schedules', 'ScheduleController');
+Route::resource('admin/schedules', 'WorkoutScheduleController');
+Route::get('admin/get-all-schedules', 'WorkoutScheduleController@getAllSchedules');
+Route::get('admin/get-all-schedules-type', 'WorkoutScheduleTypeController@index');
 Route::resource('admin/exercises', 'ExerciseController');
 Route::get('admin/get-all-exercises', 'ExerciseController@getAllExercises');
 

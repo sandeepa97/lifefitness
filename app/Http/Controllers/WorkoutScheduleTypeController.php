@@ -2,10 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\ApiResponseService;
+use App\Services\WorkoutScheduleTypeService;
 use Illuminate\Http\Request;
 
-class ScheduleController extends Controller
+class WorkoutScheduleTypeController extends Controller
 {
+    protected $workoutScheduleTypeService;
+
+    protected $apiResponseService;
+
+    /**
+     * Constructor
+     */
+    function __construct(
+        WorkoutScheduleTypeService $workoutScheduleTypeService,
+        ApiResponseService $apiResponseService
+        )
+    {
+        $this->workoutScheduleTypeService = $workoutScheduleTypeService;
+        $this->apiResponseService = $apiResponseService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +31,16 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        return view('admin.schedules.index');
+        try{
+
+            $workoutScheduleType = $this->workoutScheduleTypeService->fetchAll();
+
+            return $this->apiResponseService->success(200,$workoutScheduleType,'Data has been found');
+
+        }catch(\Exception $e){
+            dd($e->getMessage());
+            return $this->apiResponseService->failed($e,500);
+        }
     }
 
     /**

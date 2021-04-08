@@ -162,6 +162,27 @@
 
     });
 
+
+        //load data to Schedule Table
+        $('#scheduletable').DataTable({
+            ajax: baseUrl+'/admin/get-all-schedules',
+            columns:
+                [
+                    { data: 'id' },
+                    { data: 'workout_schedule_type.schedule_type' },
+                    { data: 'exercises.exercise_name' },
+                    { data: 'reps' },
+                    { data: 'sets' },
+                    { 
+                        data: null,
+                        className: "center",
+                        defaultContent: '<a href="" class="edit_schedule btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>' + 
+                        '<a href="" class="remove_schedule btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>'
+                    }
+                ]
+        });
+
+
 </script>
 
 
