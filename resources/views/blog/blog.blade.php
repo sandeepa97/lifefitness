@@ -16,7 +16,6 @@
 <div class="container">
 	<h1>FITNESS BLOG</h1>
 	<img src="img/img2.jpg" width="800px">
-	<a class="btn btn-primary" href="{{url('logout')}}">Log Out</a>
 </div>
 
 @endsection

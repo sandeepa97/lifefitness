@@ -5,7 +5,7 @@
 <div class = "row">
 
 	<div >
-	<img src="img/logo.jpg"  class = "logo">
+	<img src="img/logot.png"  class = "logo">
 
 	<div class = "nav-bar">
 
