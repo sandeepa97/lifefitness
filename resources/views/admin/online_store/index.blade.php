@@ -8,23 +8,22 @@
     </div>
     <div class="row">
         <div class="col-md-12 text-right">
-            <button type="button" class="btn btn-primary" id="btnaddinventory">Add Item</button>
+            <button type="button" class="btn btn-primary" id="btnaddstore">Add Item</button>
         </div>
     </div>
     <div class="row card mt-1">
         <div class="container">
             <div class="col-md-12 ">
-                <table id="inventorytable" class="table table-bordered">
+                <table id="storetable" class="table table-bordered">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Equipment Name</th>
+                            <th>Item Name</th>
                             <th>Category</th>
-                            <th>Quantity</th>
-                            <th>Service Date</th>
-                            <th>Updated Date/Time</th>
+                            <th>Description</th>
                             <th>Manufacturer</th>
-                            <th>Manufacturer Contact</th>
+                            <th>Price</th>
+                            <th>Image</th>
                             <th>Action</th>
                         </tr>
 
@@ -36,8 +35,8 @@
     </div>
 </div>
 
-@include('admin.inventory.components.inventory-add-modal');
-@include('admin.inventory.components.inventory-edit-modal');
+@include('admin.online_store.components.store-add-modal');
+@include('admin.online_store.components.store-edit-modal');
 
 @endsection
 
@@ -45,24 +44,23 @@
 
 <script type="text/javascript">
 
-$('#inventorytable').DataTable({
+$('#storetable').DataTable({
 
-ajax: baseUrl+'/admin/get-all-inventory',
+ajax: baseUrl+'/admin/get-all-online-store',
 columns: 
         [
             { data: 'id' },
             { data: 'item_name' },
             { data: 'item_category.category_name' },
-            { data: 'quantity' },
-            { data: 'service_date' },
-            { data: 'updated_at' },
+            { data: 'item_description' },
             { data: 'manufacturer' },
-            { data: 'manufacturer_contact' },
+            { data: 'price' },
+            { data: 'img_url' },
             {   
                 data: null,
                 className: "center",
-                defaultContent: '<a href="" class="edit_inventory btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>' +
-                        '<a href="" class="remove_inventory btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>'
+                defaultContent: '<a href="" class="edit_store btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>' +
+                        '<a href="" class="remove_store btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>'
             }
         ]
 });

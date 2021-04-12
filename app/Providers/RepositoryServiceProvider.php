@@ -13,6 +13,7 @@ use App\Repositories\Contract\NoticeRepositoryInterface;
 use App\Repositories\Contract\MemberStatusRepositoryInterface;
 use App\Repositories\Contract\TrainerShiftRepositoryInterface;
 use App\Repositories\Contract\WorkoutScheduleRepositoryInterface;
+use App\Repositories\Contract\OnlineStoreRepositoryInterface;
 
 use App\Repositories\UserRepository;
 use App\Repositories\MemberRepository;
@@ -25,6 +26,7 @@ use App\Repositories\TrainerRepository;
 use App\Repositories\InventoryRepository;
 use App\Repositories\TrainerShiftRepository;
 use App\Repositories\WorkoutScheduleRepository;
+use App\Repositories\OnlineStoreRepository;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -59,6 +61,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(TrainerRepositoryInterface::class, TrainerRepository::class);
         $this->app->bind(InventoryRepositoryInterface::class, InventoryRepository::class);
         $this->app->bind(WorkoutScheduleRepositoryInterface::class, WorkoutScheduleRepository::class);
+        $this->app->bind(OnlineStoreRepositoryInterface::class, OnlineStoreRepository::class);
 
     }
 }

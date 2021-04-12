@@ -19,7 +19,7 @@ class CreateOnlineStoreTable extends Migration
             $table->string('item_category_id');
             $table->string('item_description');
             $table->string('manufacturer');
-            $table->string('price');
+            $table->decimal('price',7,2);
             $table->string('img_url')->nullable()->default('img/store/img.jpg');
             $table->timestamps();
         });

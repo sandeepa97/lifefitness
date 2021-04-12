@@ -2,10 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\ApiResponseService;
+use App\Services\OnlineStoreService;
 use Illuminate\Http\Request;
 
 class OnlineStoreController extends Controller
 {
+    protected $onlineStoreService;
+
+
+    protected $apiResponse;
+
+
+
+    function __construct(
+        OnlineStoreService $onlineStore,
+        ApiResponseService $apiResponseService
+    ) {
+        $this->onlineStoreService = $onlineStore;
+        $this->apiResponse = $apiResponseService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -34,7 +51,15 @@ class OnlineStoreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            
+            $onlineStore = $this->onlineStoreService->store($request->all());
+
+            return $this->apiResponse->success(200, $onlineStore, 'Item Added Successfully');
+        } catch (\Exception $e) {
+
+            return $this->apiResponse->failed($e, 500, 'Error Occured');
+        }
     }
 
     /**
@@ -68,7 +93,13 @@ class OnlineStoreController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $onlineStore = $this->onlineStoreService->update($request->all(), $id);
+            return $this->apiResponse->success(200, $onlineStore, 'Item has been updated');
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return $this->apiResponse->failed($e, 500, 'Error ocurred');
+        }
     }
 
     /**
@@ -79,6 +110,22 @@ class OnlineStoreController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $this->onlineStoreService->delete($id);
+            return $this->apiResponse->success(200, [], 'onlineStore has been deleted');
+        } catch (\Exception $e) {
+            return $this->apiResponse->failed($e, 500, 'onlineStore has not been deleted');
+        }
     }
+
+    public function getAllOnlineStore()
+    {
+        try {
+            $onlineStore = $this->onlineStoreService->fetchAll();
+            return response()->json(['data' => $onlineStore]);
+        } catch (\Exception $e) {
+            return $this->apiResponse->failed($e, 500, 'Error Occured');
+        }
+    }
+
 }
