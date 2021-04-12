@@ -79,3 +79,12 @@ Route::resource('admin/inventory', 'InventoryController');
 Route::put('admin/inventory/update', 'InventoryController@update');
 Route::get('admin/get-all-inventory', 'InventoryController@getAllInventory');
 Route::get('admin/get-all-inventory-category', 'InventoryItemCategoryController@index');
+
+//Admin -> Fitness Blog
+Route::resource('admin/fitness-blog', 'FitnessBlogController');
+
+//Admin -> Online Store
+Route::resource('admin/online-store', 'OnlineStoreController');
+
+//Admin -> Online Coach
+Route::resource('admin/online-coach', 'OnlineCoachController');

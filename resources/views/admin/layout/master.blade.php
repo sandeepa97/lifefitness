@@ -224,7 +224,7 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#">View Blog</a>
+            <a class="collapse-item" href="{{url('admin/fitness-blog')}}">View Blog</a>
             <a class="collapse-item" href="#">Add Post</a>
           </div>
         </div>
@@ -237,16 +237,15 @@
           <span>Online Store</span></a>
           <div id="collapsePagesStore" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#">View Store</a>
-            <a class="collapse-item" href="#">View Stock</a>
-            <a class="collapse-item" href="#">View Orders</a>
+            <a class="collapse-item" href="{{url('admin/online-store')}}">View Store</a>
+            <a class="collapse-item" href="#">Add Item</a>
           </div>
         </div>
       </li>
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="{{url('admin/online-coach')}}">
           <i class="fas fa-fw fa-table"></i>
           <span>Online Coaching</span></a>
       </li>
