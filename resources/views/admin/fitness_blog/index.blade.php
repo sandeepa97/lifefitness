@@ -36,8 +36,8 @@
     </div>
 </div>
 
-@include('admin.inventory.components.inventory-add-modal');
-@include('admin.inventory.components.inventory-edit-modal');
+@include('admin.fitness_blog.components.blog-add-modal');
+@include('admin.fitness_blog.components.blog-edit-modal');
 
 @endsection
 
