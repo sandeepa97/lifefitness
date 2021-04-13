@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Services\ApiResponseService;
 use App\Services\OnlineStoreService;
+
 use Illuminate\Http\Request;
 
 class OnlineStoreController extends Controller
 {
+
+
     protected $onlineStoreService;
 
 
@@ -22,6 +25,7 @@ class OnlineStoreController extends Controller
         $this->onlineStoreService = $onlineStore;
         $this->apiResponse = $apiResponseService;
     }
+
 
     /**
      * Display a listing of the resource.
@@ -51,13 +55,10 @@ class OnlineStoreController extends Controller
      */
     public function store(Request $request)
     {
-        try {
-            
+        try{
             $onlineStore = $this->onlineStoreService->store($request->all());
-
-            return $this->apiResponse->success(200, $onlineStore, 'Item Added Successfully');
-        } catch (\Exception $e) {
-
+            return $this->apiResponse->success(200,$onlineStore, 'Item Added Successfully');
+        }catch(\Exception $e){
             return $this->apiResponse->failed($e, 500, 'Error Occured');
         }
     }
@@ -94,8 +95,8 @@ class OnlineStoreController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            $onlineStore = $this->onlineStoreService->update($request->all(), $id);
-            return $this->apiResponse->success(200, $onlineStore, 'Item has been updated');
+            $onlineStores = $this->onlineStoreService->update($request->all(), $id);
+            return $this->apiResponse->success(200, $onlineStores, 'Item has been updated');
         } catch (\Exception $e) {
             dd($e->getMessage());
             return $this->apiResponse->failed($e, 500, 'Error ocurred');
@@ -112,9 +113,9 @@ class OnlineStoreController extends Controller
     {
         try {
             $this->onlineStoreService->delete($id);
-            return $this->apiResponse->success(200, [], 'onlineStore has been deleted');
+            return $this->apiResponse->success(200, [], 'Item has been deleted');
         } catch (\Exception $e) {
-            return $this->apiResponse->failed($e, 500, 'onlineStore has not been deleted');
+            return $this->apiResponse->failed($e, 500, 'Item has not been deleted');
         }
     }
 
@@ -127,5 +128,5 @@ class OnlineStoreController extends Controller
             return $this->apiResponse->failed($e, 500, 'Error Occured');
         }
     }
-
 }
+

@@ -31,7 +31,7 @@ class OnlineStoreRepository implements OnlineStoreRepositoryInterface
         $onlineStore->item_description = $data['item_description'];
         $onlineStore->manufacturer = $data['manufacturer'];
         $onlineStore->price = $data['price'];
-        $onlineStore->img_url = $data['img_url'];
+        // $onlineStore->img_url = $data['img_url'];
         $onlineStore->save();
         return $onlineStore;
     }

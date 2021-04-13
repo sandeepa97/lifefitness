@@ -86,6 +86,7 @@ Route::resource('admin/fitness-blog', 'FitnessBlogController');
 //Admin -> Online Store
 Route::resource('admin/online-store', 'OnlineStoreController');
 Route::get('admin/get-all-online-store', 'OnlineStoreController@getAllOnlineStore');
+Route::get('admin/get-all-online-store-category', 'OnlineStoreItemCategoryController@index');
 
 //Admin -> Online Coach
 Route::resource('admin/online-coach', 'OnlineCoachController');

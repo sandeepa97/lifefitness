@@ -46,7 +46,7 @@ class OnlineStoreService implements ServiceInterface
             'item_description' => $data['item_description'],
             'manufacturer' => $data['manufacturer'],
             'price' => $data['price'],
-            'img_url' => $data['img_url'],
+            // 'img_url' => $data['img_url'],
         ];
         return $this->onlineStoreRepository->create($array);
     }

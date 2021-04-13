@@ -65,33 +65,37 @@ columns:
         ]
 });
 
-        // Get All Equipment Categories
+        // Get All Item Categories
         $.ajax({
             type: 'GET',
-            url: baseUrl+'/admin/get-all-inventory-category',
+            url: baseUrl+'/admin/get-all-online-store-category',
             success: function(res){
-                var inventoryCategory = res.data;
+                var storeCategory = res.data;
                 var html ='';
                 html+='<option value="0">Select Category</option>';
-                for(var x=0; x<inventoryCategory.length; x++){
-                    html+='<option value="'+inventoryCategory[x].id+'">'+inventoryCategory[x].category_name+'</option>';
+                for(var x=0; x<storeCategory.length; x++){
+                    html+='<option value="'+storeCategory[x].id+'">'+storeCategory[x].category_name+'</option>';
                 }
                $('#item_category_id').html(html);
             }
         });
 
-       // Add Equipment
-       $('#btnaddinventory').click(function(){
-            $('#inventoryaddmodal').modal('toggle');
+       // Add Item
+       $('#btnaddstore').click(function(){
+            $('#storeaddmodal').modal('toggle');
         });
 
-        $('#frmcreateinventory').submit(function(e){
+        $('#frmcreatestore').submit(function(e){
             e.preventDefault();
             $.ajax({
-                url: "{{ url('/admin/inventory')}}",
+                headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "{{ url('/admin/online-store')}}",
                 type: 'POST',
-                data: $('#frmcreateinventory').serialize(),
+                data: $('#frmcreatestore').serialize(),
                 success: function(response){
+                    // console.log(response.msg);
                     alert(response.msg);
                     location.reload();
                 }
@@ -99,26 +103,26 @@ columns:
         });
 
 
- // Edit Inventory record
- $('#inventorytable').on('click', 'a.edit_inventory', function (e) {
+ // Edit Store record
+ $('#storetable').on('click', 'a.edit_store', function (e) {
         e.preventDefault();
-        var data = $('#inventorytable').DataTable().row($(this).parents('tr')).data();
-        var inventoryCategoryId = data.item_category_id;
+        var data = $('#storetable').DataTable().row($(this).parents('tr')).data();
+        var storeCategoryId = data.item_category_id;
 
-        // Get All Equipment Category
+        // Get All Store Category
         $.ajax({
             type: 'GET',
-            url: baseUrl+'/admin/get-all-inventory-category',
+            url: baseUrl+'/admin/get-all-online-store-category',
             success: function(res){
-                var inventoryCategory = res.data;
+                var storeCategory = res.data;
                 var html ='';
                 html+='<option value="0">Select Category</option>';
-                for(var x=0; x<inventoryCategory.length; x++){
-                    if(inventoryCategoryId==inventoryCategory[x].id){
-                    html+='<option selected value="'+inventoryCategory[x].id+'">'+inventoryCategory[x].category_name+'</option>';
+                for(var x=0; x<storeCategory.length; x++){
+                    if(storeCategoryId==storeCategory[x].id){
+                    html+='<option selected value="'+storeCategory[x].id+'">'+storeCategory[x].category_name+'</option>';
                     }
                     else{
-                    html+='<option value="'+inventoryCategory[x].id+'">'+inventoryCategory[x].category_name+'</option>';
+                    html+='<option value="'+storeCategory[x].id+'">'+storeCategory[x].category_name+'</option>';
                     }
                 }
                $('#edititem_category_id').html(html);
@@ -128,25 +132,28 @@ columns:
 
         
     
-        $('#hdninventoryid').val(data.id);
+        $('#hdnstoreid').val(data.id);
         $('#edititem_name').val(data.item_name);
-        $('#editquantity').val(data.quantity);
-        $('#editservice_date').val(data.service_date);
+        $('#edititem_description').val(data.item_description);
         $('#editmanufacturer').val(data.manufacturer);
-        $('#editmanufacturer_contact').val(data.manufacturer_contact);
-        $('#inventoryeditmodal').modal('toggle');
+        $('#editprice').val(data.price);
+        // $('#editimg_url').val(data.img_url);
+        $('#storeeditmodal').modal('toggle');
 
         });
 
-        //Edit Inventory
-        $('#editfrminventory').submit(function(e){
+        //Edit store
+        $('#frmeditstore').submit(function(e){
             e.preventDefault();
-                var inventoryId = $('#hdninventoryid').val();
+                var storeId = $('#hdnstoreid').val();
 
             $.ajax({
+                // headers: {
+                // 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                // },
                 type: 'PUT',
-                url: baseUrl+'/admin/inventory/'+inventoryId,
-                data: $('#editfrminventory').serialize(),
+                url: baseUrl+'/admin/online-store/'+storeId,
+                data: $('#frmeditstore').serialize(),
                 success: function(response){
                     if(response.success==true){
                         alert(response.msg);
@@ -163,12 +170,12 @@ columns:
         });
 
 
-    // Delete Inventory Record
-    $('#inventorytable').on('click', 'a.remove_inventory', function (e) {
+    // Delete Store Record
+    $('#storetable').on('click', 'a.remove_store', function (e) {
         e.preventDefault();
 
-        var data = $('#inventorytable').DataTable().row($(this).parents('tr')).data();
-        var inventoryId = data.id;
+        var data = $('#storetable').DataTable().row($(this).parents('tr')).data();
+        var storeId = data.id;
 
         $.confirm({
             text: "Are you sure?",
@@ -178,7 +185,7 @@ columns:
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                   type: 'DELETE',
-                  url: baseUrl+'/admin/inventory/'+inventoryId,
+                  url: baseUrl+'/admin/online-store/'+storeId,
                   success: function(res){
                       alert(res.msg);
                       setTimeout(function(){
