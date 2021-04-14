@@ -43,10 +43,7 @@ class FitnessBlogService implements ServiceInterface
         $array = [
             'blog_subject'=>$data['blog_subject'],
             'blog_content'=>$data['blog_content'],
-            'blog_date'=>$data['blog_date'],
-            'blog_time'=>$data['blog_time'],
             'blog_type_id'=>$data['blog_type_id'],
-            'recipients_id'=>$data['recipients_id'],
 
         ];
         return $this->fitnessBlogRepository->create($array);

@@ -59,6 +59,8 @@ class FitnessBlogController extends Controller
             $fitnessBlog = $this->fitnessBlogService->store($request->all());
             return $this->apiResponse->success(200,$fitnessBlog, 'Blog Posted Successfully');
         }catch(\Exception $e){
+            dd($e->getMessage());
+            // dd($request);
             return $this->apiResponse->failed($e, 500, 'Error Occured');
         }
     }

@@ -8,23 +8,19 @@
     </div>
     <div class="row">
         <div class="col-md-12 text-right">
-            <button type="button" class="btn btn-primary" id="btnaddinventory">Add Equipment</button>
+            <button type="button" class="btn btn-primary" id="btnaddblog">Add Blog</button>
         </div>
     </div>
     <div class="row card mt-1">
         <div class="container">
             <div class="col-md-12 ">
-                <table id="inventorytable" class="table table-bordered">
+                <table id="blogtable" class="table table-bordered">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Equipment Name</th>
-                            <th>Category</th>
-                            <th>Quantity</th>
-                            <th>Service Date</th>
-                            <th>Updated Date/Time</th>
-                            <th>Manufacturer</th>
-                            <th>Manufacturer Contact</th>
+                            <th>Blog Type</th>
+                            <th>Subject</th>
+                            <th>Content</th>
                             <th>Action</th>
                         </tr>
 
@@ -45,55 +41,52 @@
 
 <script type="text/javascript">
 
-$('#inventorytable').DataTable({
+$('#blogtable').DataTable({
 
-ajax: baseUrl+'/admin/get-all-inventory',
+ajax: baseUrl+'/admin/get-all-fitness-blog',
 columns: 
         [
             { data: 'id' },
-            { data: 'item_name' },
-            { data: 'item_category.category_name' },
-            { data: 'quantity' },
-            { data: 'service_date' },
-            { data: 'updated_at' },
-            { data: 'manufacturer' },
-            { data: 'manufacturer_contact' },
+            { data: 'blog_type.blog_type' },
+            { data: 'blog_subject' },
+            { data: 'blog_content' },
             {   
                 data: null,
                 className: "center",
-                defaultContent: '<a href="" class="edit_inventory btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>' +
-                        '<a href="" class="remove_inventory btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>'
+                defaultContent: '<a href="" class="edit_blog btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>' +
+                        '<a href="" class="remove_blog btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>'
             }
         ]
 });
 
-        // Get All Equipment Categories
+        // Get All Blog types
         $.ajax({
             type: 'GET',
-            url: baseUrl+'/admin/get-all-inventory-category',
+            url: baseUrl+'/admin/get-all-fitness-blog-types',
             success: function(res){
-                var inventoryCategory = res.data;
+                var blogType = res.data;
                 var html ='';
-                html+='<option value="0">Select Category</option>';
-                for(var x=0; x<inventoryCategory.length; x++){
-                    html+='<option value="'+inventoryCategory[x].id+'">'+inventoryCategory[x].category_name+'</option>';
+                html+='<option value="0">Select Blog Type</option>';
+                for(var x=0; x<blogType.length; x++){
+                    html+='<option value="'+blogType[x].id+'">'+blogType[x].blog_type+'</option>';
                 }
-               $('#item_category_id').html(html);
+               $('#blog_type_id').html(html);
             }
         });
 
-       // Add Equipment
-       $('#btnaddinventory').click(function(){
-            $('#inventoryaddmodal').modal('toggle');
+       // Add Blog
+       $('#btnaddblog').click(function(){
+            $('#blogaddmodal').modal('toggle');
         });
 
-        $('#frmcreateinventory').submit(function(e){
+        $('#frmcreateblog').submit(function(e){
             e.preventDefault();
             $.ajax({
-                url: "{{ url('/admin/inventory')}}",
+                url: "{{ url('/admin/fitness-blog')}}",
                 type: 'POST',
-                data: $('#frmcreateinventory').serialize(),
+                data: $('#frmcreateblog').serialize(),
                 success: function(response){
+                    console.log(response.msg);
                     alert(response.msg);
                     location.reload();
                 }
@@ -101,54 +94,51 @@ columns:
         });
 
 
- // Edit Inventory record
- $('#inventorytable').on('click', 'a.edit_inventory', function (e) {
+ // Edit Blog record
+ $('#blogtable').on('click', 'a.edit_blog', function (e) {
         e.preventDefault();
-        var data = $('#inventorytable').DataTable().row($(this).parents('tr')).data();
-        var inventoryCategoryId = data.item_category_id;
+        var data = $('#blogtable').DataTable().row($(this).parents('tr')).data();
+        var blogTypeId = data.blog_type_id;
 
         // Get All Equipment Category
         $.ajax({
             type: 'GET',
-            url: baseUrl+'/admin/get-all-inventory-category',
+            url: baseUrl+'/admin/get-all-fitness-blog-types',
             success: function(res){
-                var inventoryCategory = res.data;
+                var blogType = res.data;
                 var html ='';
                 html+='<option value="0">Select Category</option>';
-                for(var x=0; x<inventoryCategory.length; x++){
-                    if(inventoryCategoryId==inventoryCategory[x].id){
-                    html+='<option selected value="'+inventoryCategory[x].id+'">'+inventoryCategory[x].category_name+'</option>';
+                for(var x=0; x<blogType.length; x++){
+                    if(blogTypeId==blogType[x].id){
+                    html+='<option selected value="'+blogType[x].id+'">'+blogType[x].blog_type+'</option>';
                     }
                     else{
-                    html+='<option value="'+inventoryCategory[x].id+'">'+inventoryCategory[x].category_name+'</option>';
+                    html+='<option value="'+blogType[x].id+'">'+blogType[x].blog_type+'</option>';
                     }
                 }
-               $('#edititem_category_id').html(html);
+               $('#editblog_type_id').html(html);
             }
 
         });
 
         
     
-        $('#hdninventoryid').val(data.id);
-        $('#edititem_name').val(data.item_name);
-        $('#editquantity').val(data.quantity);
-        $('#editservice_date').val(data.service_date);
-        $('#editmanufacturer').val(data.manufacturer);
-        $('#editmanufacturer_contact').val(data.manufacturer_contact);
-        $('#inventoryeditmodal').modal('toggle');
+        $('#hdnblogid').val(data.id);
+        $('#editblog_subject').val(data.blog_subject);
+        $('#editblog_content').val(data.blog_content);
+        $('#blogeditmodal').modal('toggle');
 
         });
 
-        //Edit Inventory
-        $('#editfrminventory').submit(function(e){
+        //Edit Blog
+        $('#frmeditblog').submit(function(e){
             e.preventDefault();
-                var inventoryId = $('#hdninventoryid').val();
+                var blogId = $('#hdnblogid').val();
 
             $.ajax({
                 type: 'PUT',
-                url: baseUrl+'/admin/inventory/'+inventoryId,
-                data: $('#editfrminventory').serialize(),
+                url: baseUrl+'/admin/fitness-blog/'+blogId,
+                data: $('#frmeditblog').serialize(),
                 success: function(response){
                     if(response.success==true){
                         alert(response.msg);
@@ -165,12 +155,12 @@ columns:
         });
 
 
-    // Delete Inventory Record
-    $('#inventorytable').on('click', 'a.remove_inventory', function (e) {
+    // Delete Blog Record
+    $('#blogtable').on('click', 'a.remove_blog', function (e) {
         e.preventDefault();
 
-        var data = $('#inventorytable').DataTable().row($(this).parents('tr')).data();
-        var inventoryId = data.id;
+        var data = $('#blogtable').DataTable().row($(this).parents('tr')).data();
+        var blogId = data.id;
 
         $.confirm({
             text: "Are you sure?",
@@ -180,7 +170,7 @@ columns:
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                   type: 'DELETE',
-                  url: baseUrl+'/admin/inventory/'+inventoryId,
+                  url: baseUrl+'/admin/fitness-blog/'+blogId,
                   success: function(res){
                       alert(res.msg);
                       setTimeout(function(){

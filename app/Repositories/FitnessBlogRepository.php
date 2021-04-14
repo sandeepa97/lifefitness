@@ -27,12 +27,9 @@ class FitnessBlogRepository implements FitnessBlogRepositoryInterface
     {
 
         $fitnessBlogs = FitnessBlog::find($id);
-        $fitnessBlogs->fitnessBlog_subject = $data['fitnessBlog_subject'];
-        $fitnessBlogs->fitnessBlog_content = $data['fitnessBlog_content'];
-        $fitnessBlogs->fitnessBlog_date = $data['fitnessBlog_date'];
-        $fitnessBlogs->fitnessBlog_time = $data['fitnessBlog_time'];
-        $fitnessBlogs->fitnessBlog_type_id = $data['fitnessBlog_type_id'];
-        $fitnessBlogs->recipients_id = $data['recipients_id'];
+        $fitnessBlogs->blog_type_id = $data['blog_type_id'];
+        $fitnessBlogs->blog_subject = $data['blog_subject'];
+        $fitnessBlogs->blog_content = $data['blog_content'];
         $fitnessBlogs->save();
         return $fitnessBlogs;
 
