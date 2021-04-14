@@ -76,12 +76,13 @@ Route::get('admin/get-all-trainer-shifts-type', 'TrainerShiftTypeController@inde
 
 //Admin -> Inventory Functions
 Route::resource('admin/inventory', 'InventoryController');
-Route::put('admin/inventory/update', 'InventoryController@update');
 Route::get('admin/get-all-inventory', 'InventoryController@getAllInventory');
 Route::get('admin/get-all-inventory-category', 'InventoryItemCategoryController@index');
 
 //Admin -> Fitness Blog
 Route::resource('admin/fitness-blog', 'FitnessBlogController');
+Route::get('admin/get-all-fitness-blog', 'FitnessBlogController@getAllBlogs');
+Route::get('admin/get-all-fitness-blog-types', 'FitnessBlogTypeController@index');
 
 //Admin -> Online Store
 Route::resource('admin/online-store', 'OnlineStoreController');

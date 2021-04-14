@@ -11,8 +11,8 @@ class FitnessBlogRepository implements FitnessBlogRepositoryInterface
 
     public function fetchAll()
     {
-       return FitnessBlog::all();
-        // return FitnessBlog::with(['blogType'])->get();
+    //    return FitnessBlog::all();
+        return FitnessBlog::with(['blogType'])->get();
     }
 
     public function fetch($id)
