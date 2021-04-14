@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2021 at 04:22 PM
+-- Generation Time: Apr 14, 2021 at 10:50 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -64,6 +64,14 @@ CREATE TABLE `fitness_blog` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `fitness_blog`
+--
+
+INSERT INTO `fitness_blog` (`id`, `blog_type_id`, `blog_subject`, `blog_content`, `created_at`, `updated_at`) VALUES
+(1, '1', 'How much nutrition do bodybuilders need?', 'Higher carbohydrate, moderate protein, and lower fat ratios have been shown to promote bodybuilding and muscle growth. Recommended percentages of total caloric intake: 40-60% carbohydrate. 25-35% protein.', NULL, '2021-04-14 13:23:59'),
+(3, '2', 'Which exercise is best for muscle gain?', 'The best way to build muscle is to perform compound exercises which recruit multiple muscle groups. According to Zack George, personal trainer, gym owner, and the UK\'s fittest man, there are five main movements to focus on.', '2021-04-14 14:08:34', '2021-04-14 14:10:13');
 
 -- --------------------------------------------------------
 
@@ -436,6 +444,7 @@ CREATE TABLE `online_coach` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `fname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `lname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gender` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `location` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `contact` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -443,6 +452,14 @@ CREATE TABLE `online_coach` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `online_coach`
+--
+
+INSERT INTO `online_coach` (`id`, `fname`, `lname`, `gender`, `location`, `contact`, `email`, `online_coach_package_id`, `created_at`, `updated_at`) VALUES
+(1, 'Hansi', 'Senevirathne', 'Female', 'Katubedda', '0778541256', 'hansirox@gmail.com', '1', NULL, NULL),
+(2, 'Manul', 'Mendis', 'Male', 'Wadduwa', '0718541256', 'manul@gmail.com', '3', '2021-04-14 15:05:23', '2021-04-14 15:15:47');
 
 -- --------------------------------------------------------
 
@@ -489,7 +506,8 @@ CREATE TABLE `online_store` (
 --
 
 INSERT INTO `online_store` (`id`, `item_name`, `item_category_id`, `item_description`, `manufacturer`, `price`, `img_url`, `created_at`, `updated_at`) VALUES
-(1, 'N-Mass', '1', 'N-MASS delivers a massive 1300 quality calories in each serving! With 55g of naturally sourced whole proteins, 3g of strength enhancing creatine & 250g of food based carbs for a superior whole-food formula for high quality muscle building', 'ANS', '15000.00', 'img/store/img.jpg', NULL, NULL);
+(1, 'N-Mass', '1', 'N-MASS delivers a massive 1300 quality calories in each serving! With 55g of naturally sourced whole proteins, 3g of strength enhancing creatine & 250g of food based carbs for a superior whole-food formula for high quality muscle building', 'ANS', '15000.00', 'img/store/img.jpg', NULL, '2021-04-13 04:27:46'),
+(4, 'ISO100', '1', 'ISO100 is formulated using a cross-flow micro filtration, multi-step purification process that preserves important muscle-building protein fractions', 'Dymatize', '12000.00', 'img/store/img.jpg', '2021-04-13 04:34:54', '2021-04-13 04:35:21');
 
 -- --------------------------------------------------------
 
@@ -866,7 +884,7 @@ ALTER TABLE `exercises`
 -- AUTO_INCREMENT for table `fitness_blog`
 --
 ALTER TABLE `fitness_blog`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `fitness_blog_types`
@@ -950,7 +968,7 @@ ALTER TABLE `notice_recipients`
 -- AUTO_INCREMENT for table `online_coach`
 --
 ALTER TABLE `online_coach`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `online_coach_packages`
@@ -962,7 +980,7 @@ ALTER TABLE `online_coach_packages`
 -- AUTO_INCREMENT for table `online_store`
 --
 ALTER TABLE `online_store`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `online_store_item_category`
