@@ -82,7 +82,7 @@ columns:
             }
         });
 
-       // Add Equipment
+       // Add Client
        $('#btnaddclient').click(function(){
             $('#clientaddmodal').modal('toggle');
         });
@@ -101,54 +101,55 @@ columns:
         });
 
 
- // Edit Inventory record
- $('#inventorytable').on('click', 'a.edit_inventory', function (e) {
+ // Edit Client record
+ $('#clienttable').on('click', 'a.edit_client', function (e) {
         e.preventDefault();
-        var data = $('#inventorytable').DataTable().row($(this).parents('tr')).data();
-        var inventoryCategoryId = data.item_category_id;
+        var data = $('#clienttable').DataTable().row($(this).parents('tr')).data();
+        var coachPackageId = data.online_coach_package_id;
 
-        // Get All Equipment Category
+        // Get All Coach Packages
         $.ajax({
             type: 'GET',
-            url: baseUrl+'/admin/get-all-inventory-category',
+            url: baseUrl+'/admin/get-all-online-coach-packages',
             success: function(res){
-                var inventoryCategory = res.data;
+                var coachPackage = res.data;
                 var html ='';
-                html+='<option value="0">Select Category</option>';
-                for(var x=0; x<inventoryCategory.length; x++){
-                    if(inventoryCategoryId==inventoryCategory[x].id){
-                    html+='<option selected value="'+inventoryCategory[x].id+'">'+inventoryCategory[x].category_name+'</option>';
+                html+='<option value="0">Select Package</option>';
+                for(var x=0; x<coachPackage.length; x++){
+                    if(coachPackageId==coachPackage[x].id){
+                    html+='<option selected value="'+coachPackage[x].id+'">'+coachPackage[x].package_name+'</option>';
                     }
                     else{
-                    html+='<option value="'+inventoryCategory[x].id+'">'+inventoryCategory[x].category_name+'</option>';
+                    html+='<option value="'+coachPackage[x].id+'">'+coachPackage[x].package_name+'</option>';
                     }
                 }
-               $('#edititem_category_id').html(html);
+               $('#editonline_coach_package_id').html(html);
             }
 
         });
 
         
     
-        $('#hdninventoryid').val(data.id);
-        $('#edititem_name').val(data.item_name);
-        $('#editquantity').val(data.quantity);
-        $('#editservice_date').val(data.service_date);
-        $('#editmanufacturer').val(data.manufacturer);
-        $('#editmanufacturer_contact').val(data.manufacturer_contact);
-        $('#inventoryeditmodal').modal('toggle');
+        $('#hdnclientid').val(data.id);
+        $('#editfname').val(data.fname);
+        $('#editlname').val(data.lname);
+        $('#editgender').val(data.gender);
+        $('#editlocation').val(data.location);
+        $('#editcontact').val(data.contact);
+        $('#editemail').val(data.email);
+        $('#clienteditmodal').modal('toggle');
 
         });
 
-        //Edit Inventory
-        $('#editfrminventory').submit(function(e){
+        //Edit Client
+        $('#frmeditclient').submit(function(e){
             e.preventDefault();
-                var inventoryId = $('#hdninventoryid').val();
+                var clientId = $('#hdnclientid').val();
 
             $.ajax({
                 type: 'PUT',
-                url: baseUrl+'/admin/inventory/'+inventoryId,
-                data: $('#editfrminventory').serialize(),
+                url: baseUrl+'/admin/online-coach/'+clientId,
+                data: $('#frmeditclient').serialize(),
                 success: function(response){
                     if(response.success==true){
                         alert(response.msg);
@@ -165,12 +166,12 @@ columns:
         });
 
 
-    // Delete Inventory Record
-    $('#inventorytable').on('click', 'a.remove_inventory', function (e) {
+    // Delete Client Record
+    $('#clienttable').on('click', 'a.remove_client', function (e) {
         e.preventDefault();
 
-        var data = $('#inventorytable').DataTable().row($(this).parents('tr')).data();
-        var inventoryId = data.id;
+        var data = $('#clienttable').DataTable().row($(this).parents('tr')).data();
+        var clientId = data.id;
 
         $.confirm({
             text: "Are you sure?",
@@ -180,7 +181,7 @@ columns:
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                   type: 'DELETE',
-                  url: baseUrl+'/admin/inventory/'+inventoryId,
+                  url: baseUrl+'/admin/online-coach/'+clientId,
                   success: function(res){
                       alert(res.msg);
                       setTimeout(function(){
