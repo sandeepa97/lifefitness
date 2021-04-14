@@ -36,8 +36,8 @@
     </div>
 </div>
 
-@include('admin.inventory.components.inventory-add-modal');
-@include('admin.inventory.components.inventory-edit-modal');
+@include('admin.online_coach.components.client-add-modal');
+@include('admin.online_coach.components.client-edit-modal');
 
 @endsection
 
@@ -67,32 +67,32 @@ columns:
         ]
 });
 
-        // Get All Equipment Categories
+        // Get All Coach Packages
         $.ajax({
             type: 'GET',
-            url: baseUrl+'/admin/get-all-inventory-category',
+            url: baseUrl+'/admin/get-all-online-coach-packages',
             success: function(res){
-                var inventoryCategory = res.data;
+                var coachPackage = res.data;
                 var html ='';
-                html+='<option value="0">Select Category</option>';
-                for(var x=0; x<inventoryCategory.length; x++){
-                    html+='<option value="'+inventoryCategory[x].id+'">'+inventoryCategory[x].category_name+'</option>';
+                html+='<option value="0">Select Package</option>';
+                for(var x=0; x<coachPackage.length; x++){
+                    html+='<option value="'+coachPackage[x].id+'">'+coachPackage[x].package_name+'</option>';
                 }
-               $('#item_category_id').html(html);
+               $('#online_coach_package_id').html(html);
             }
         });
 
        // Add Equipment
-       $('#btnaddinventory').click(function(){
-            $('#inventoryaddmodal').modal('toggle');
+       $('#btnaddclient').click(function(){
+            $('#clientaddmodal').modal('toggle');
         });
 
-        $('#frmcreateinventory').submit(function(e){
+        $('#frmcreateclient').submit(function(e){
             e.preventDefault();
             $.ajax({
-                url: "{{ url('/admin/inventory')}}",
+                url: "{{ url('/admin/online-coach')}}",
                 type: 'POST',
-                data: $('#frmcreateinventory').serialize(),
+                data: $('#frmcreateclient').serialize(),
                 success: function(response){
                     alert(response.msg);
                     location.reload();
