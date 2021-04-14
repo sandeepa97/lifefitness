@@ -93,3 +93,11 @@ Route::get('admin/get-all-online-store-category', 'OnlineStoreItemCategoryContro
 Route::resource('admin/online-coach', 'OnlineCoachController');
 Route::get('admin/get-all-online-clients', 'OnlineCoachController@getAllOnlineClients');
 Route::get('admin/get-all-online-coach-packages', 'OnlineCoachPackageController@index');
+
+
+//Member ->
+Route::resource('member-dashboard', 'Member\MemberDashboardController'); 
+
+
+//Trainer ->
+Route::resource('trainer-dashboard', 'Trainer\TrainerDashboardController'); 
