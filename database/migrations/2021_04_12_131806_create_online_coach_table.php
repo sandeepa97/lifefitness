@@ -17,6 +17,7 @@ class CreateOnlineCoachTable extends Migration
             $table->id();
             $table->string('fname');
             $table->string('lname');
+            $table->string('gender');
             $table->string('location');
             $table->string('contact');
             $table->string('email');

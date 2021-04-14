@@ -8,23 +8,23 @@
     </div>
     <div class="row">
         <div class="col-md-12 text-right">
-            <button type="button" class="btn btn-primary" id="btnaddinventory">Add Equipment</button>
+            <button type="button" class="btn btn-primary" id="btnaddclient">Add Online Client</button>
         </div>
     </div>
     <div class="row card mt-1">
         <div class="container">
             <div class="col-md-12 ">
-                <table id="inventorytable" class="table table-bordered">
+                <table id="clienttable" class="table table-bordered">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Equipment Name</th>
-                            <th>Category</th>
-                            <th>Quantity</th>
-                            <th>Service Date</th>
-                            <th>Updated Date/Time</th>
-                            <th>Manufacturer</th>
-                            <th>Manufacturer Contact</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Gender</th>
+                            <th>Location</th>
+                            <th>Contact</th>
+                            <th>email</th>
+                            <th>Coach Package</th>
                             <th>Action</th>
                         </tr>
 
@@ -45,24 +45,24 @@
 
 <script type="text/javascript">
 
-$('#inventorytable').DataTable({
+$('#clienttable').DataTable({
 
-ajax: baseUrl+'/admin/get-all-inventory',
+ajax: baseUrl+'/admin/get-all-online-clients',
 columns: 
         [
             { data: 'id' },
-            { data: 'item_name' },
-            { data: 'item_category.category_name' },
-            { data: 'quantity' },
-            { data: 'service_date' },
-            { data: 'updated_at' },
-            { data: 'manufacturer' },
-            { data: 'manufacturer_contact' },
+            { data: 'fname' },
+            { data: 'lname' },
+            { data: 'gender' },
+            { data: 'location' },
+            { data: 'contact' },
+            { data: 'email' },
+            { data: 'coach_package.package_name' },
             {   
                 data: null,
                 className: "center",
-                defaultContent: '<a href="" class="edit_inventory btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>' +
-                        '<a href="" class="remove_inventory btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>'
+                defaultContent: '<a href="" class="edit_client btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>' +
+                        '<a href="" class="remove_client btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>'
             }
         ]
 });
