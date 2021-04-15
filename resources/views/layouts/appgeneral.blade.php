@@ -13,6 +13,7 @@
 
 	<link rel="stylesheet" href="{{ url('css/general.css') }}">
 	<link rel="stylesheet" href="{{ url('css/store.css') }}">
+	<link href="{{url('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
