@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\ApiResponseService;
 use App\Services\InventoryService;
 use Illuminate\Http\Request;
+use DB;
 
 class InventoryController extends Controller
 {
@@ -138,4 +139,23 @@ class InventoryController extends Controller
         }
     }
 
+    public function getNextService()
+    {
+        try {
+            $nextService = DB::select(
+            "   SELECT item_name, service_date
+                FROM inventory
+                WHERE service_date > NOW() 
+                ORDER BY service_date 
+                LIMIT 1
+            "
+            );
+
+            return response()->json(['data' => $nextService]);
+
+        } catch (\Exception $e) {
+            // dd($e);
+            return $this->apiResponse->failed($e, 500, 'Error Occured');
+        }
+    }
 }

@@ -25,7 +25,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="date">Date In</label>
-                                <input type="date" class="form-control" id="editmember_in_date" name="member_in_date" placeholder="Date In">
+                                <input type="date" class="form-control" id="editmember_in_date" name="member_in_date" placeholder="Date In" step="any">
                             </div>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="time">Time In</label>
-                                <input type="time" class="form-control" id="editmember_in_time" name="member_in_time" placeholder="Time In">
+                                <input type="time" class="form-control" id="editmember_in_time" name="member_in_time" placeholder="Time In" step="any">
                             </div>
                         </div>
                     </div>

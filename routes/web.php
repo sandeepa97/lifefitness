@@ -40,12 +40,14 @@ Route::get('admin/get-all-members', 'MemberController@getAllMembers');
 Route::resource('admin/payments', 'PaymentController');
 Route::get('admin/get-all-payments', 'PaymentController@getAllMemberPayments');
 Route::get('admin/get-all-payment-types', 'PaymentTypeController@index');
-
+Route::get('admin/get-all-monthly-payments', 'PaymentController@getMonthlyPayments');
+Route::get('admin/get-all-annual-payments', 'PaymentController@getAnnualPayments');
 
 //Admin -> MemberAttendance Functions
 Route::resource('admin/member-attendance', 'MemberAttendanceController');
 Route::get('admin/view-member-attendance', 'MemberAttendanceController@viewAttendance');
 Route::get('admin/get-all-attendance', 'MemberAttendanceController@getAllMemberAttendance');
+Route::get('admin/get-today-attendance', 'MemberAttendanceController@getTodayAttendance');
 
 //Admin -> Schedule Functions
 Route::resource('admin/schedules', 'WorkoutScheduleController');
@@ -82,6 +84,7 @@ Route::get('admin/get-all-trainer-shifts-type', 'TrainerShiftTypeController@inde
 Route::resource('admin/inventory', 'InventoryController');
 Route::get('admin/get-all-inventory', 'InventoryController@getAllInventory');
 Route::get('admin/get-all-inventory-category', 'InventoryItemCategoryController@index');
+Route::get('admin/get-next-service', 'InventoryController@getNextService');
 
 //Admin -> Fitness Blog
 Route::resource('admin/fitness-blog', 'FitnessBlogController');

@@ -6,7 +6,7 @@ use App\Services\ApiResponseService;
 use App\Services\MemberAttendanceService;
 
 use Illuminate\Http\Request;
-
+use DB;
 class MemberAttendanceController extends Controller
 {
     protected $memberAttendanceService;
@@ -131,6 +131,23 @@ class MemberAttendanceController extends Controller
             // dd($memberAttendance);
             dd($e->getMessage());
             return $this->apiResponse->failed($e,500,'Error Occured');
+        }
+    }
+
+    public function getTodayAttendance()
+    {
+        try {
+            $todayAttendance = DB::select(
+            "   SELECT COUNT(id) total_attendance
+                FROM member_attendances
+                WHERE DATE(member_in_date) = DATE(CURRENT_DATE()) "
+            );
+
+            return response()->json(['data' => $todayAttendance]);
+
+        } catch (\Exception $e) {
+            // dd($e);
+            return $this->apiResponse->failed($e, 500, 'Error Occured');
         }
     }
 

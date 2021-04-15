@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\ApiResponseService;
 use App\Services\PaymentService;
 use Illuminate\Http\Request;
+use DB;
 
 class PaymentController extends Controller
 {
@@ -124,6 +125,54 @@ class PaymentController extends Controller
         try {
             $payments = $this->paymentService->fetchAll();
             return response()->json(['data' => $payments]);
+        } catch (\Exception $e) {
+            return $this->apiResponse->failed($e, 500, 'Error Occured');
+        }
+    }
+
+    // public function getMonthlyPayments()
+    // {
+    //     try {
+    //         $monthlyPayments = DB::select(
+    //         "   SELECT SELECT SUM(amount) total_month
+    //             FROM member_payments
+    //             WHERE MONTH(date) = MONTH(CURRENT_DATE())
+    //             AND YEAR(date) = YEAR(CURRENT_DATE()) "
+    //         );
+
+    //         return response()->json(['data' => $monthlyPayments]);
+
+    //     } catch (\Exception $e) {
+    //         // dd($e);
+    //         return $this->apiResponse->failed($e, 500, 'Error Occured');
+    //     }
+    // }
+    public function getAnnualPayments()
+    {
+        try {
+            $annualPayments = DB::select(
+            "   SELECT SUM(amount) total_annual
+                FROM member_payments
+                WHERE YEAR(date) = YEAR(CURRENT_DATE()) "
+            );
+
+            return response()->json(['data' => $annualPayments]);
+
+        } catch (\Exception $e) {
+            return $this->apiResponse->failed($e, 500, 'Error Occured');
+        }
+    }
+    public function getMonthlyPayments()
+    {
+        try {
+            $monthlyPayments = DB::select(
+            "   SELECT SUM(amount) total_monthly
+                FROM member_payments
+                WHERE MONTH(date) = MONTH(CURRENT_DATE()) AND YEAR(date) = YEAR(CURRENT_DATE()) "
+            );
+
+            return response()->json(['data' => $monthlyPayments]);
+
         } catch (\Exception $e) {
             return $this->apiResponse->failed($e, 500, 'Error Occured');
         }
