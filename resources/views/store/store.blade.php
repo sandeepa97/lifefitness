@@ -15,55 +15,55 @@
 </div>
 <div class="container">
 	<h1>ONLINE STORE</h1>
-	<!-- <img src="img/img3.jpg" width="800px"> -->
-<div class="row">
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="{{asset('img/img1.jpg')}}" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-  </ul>
-  <div class="card-body">
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
-</div>
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="{{asset('img/img2.jpg')}}" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-  </ul>
-  <div class="card-body">
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
-</div>
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="{{asset('img/img3.jpg')}}" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-  </ul>
-  <div class="card-body">
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
+
+<div class="row" id="item_card">
+
+    <!-- dynamic card contents -->
+
 </div>
 
 </div>
-</div>
+
+@endsection
+
+@section('custom-js')
+
+
+<script>
+var baseUrl = '{{url('/')}}';
+
+$.ajax({
+  type: 'GET',
+  url: baseUrl+'/admin/get-all-online-store',
+  success: function(res){
+    var store = res.data;
+    for (var x = 0; x<20; x++)
+    {
+      // var html = '<div class="card" style="width: 18rem;">';
+      var html = '<div class="col-md-6 col-lg-4 col-12">';
+      html += '<div class="card" style="width: 18rem;">';
+      html += '<img class="card-img-top" src="'+store[x].img_url+'" alt="Card image cap">';
+      html += '<div id="module" class="card-body">';
+      html += '<h5 class="card-title">'+store[x].item_name+'</h5>';
+      html += '<p class="card-text collapse" id="collapseExample" aria-expanded="false">'+store[x].item_description+'</p>';
+      html += '<a role="button" class="collapsed" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"></a>';
+      html += '</div>';
+      html += '<ul class="list-group list-group-flush">';
+      html += '<li class="list-group-item">Manufacturer: '+store[x].manufacturer+'</li>';
+      html += '<li class="list-group-item">'+store[x].price+' LKR</li>';
+      html += '</ul>';
+      html += '<div class="card-body mt-0">';
+      html += '<a href="#" class="card-link"><span class="badge badge-warning">'+store[x].item_category.category_name+'</span></a>';
+      html += '<a href="#" class="card-link"><span class="badge badge-primary">Buy</span></a>';
+      html += '</div>';
+      html += '</div>';
+      html += '</div>';
+
+      $('#item_card').append(html);
+    }
+  }
+});
+
+</script>
 
 @endsection
