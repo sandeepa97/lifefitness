@@ -81,6 +81,7 @@
                     html+='<option value="'+memberData[x].id+'">'+ memberData[x].id+'</option>';
                 }
                 $('#member_id').html(html);
+                $('#member_id').select2();
             }
         });
 
@@ -99,7 +100,7 @@
             });
         });
 
-
+    $(document).ready(function() {
         //get all members ID
         $.ajax({
             type: 'GET',
@@ -112,7 +113,24 @@
                     html+='<option value="'+memberData[x].id+'">'+ memberData[x].fname+' '+memberData[x].lname+'</option>';
                 }
                 $('#member_name').html(html);
+                $('#member_name').select2();
             }
+        });
+    });
+
+            //mark attendance Name
+
+            $('#frmattendanceName').submit(function(e){
+            e.preventDefault();
+            $.ajax({
+                url: "{{url('admin/member-attendance')}}",
+                type: 'POST',
+                data: $('#frmattendanceName').serialize(),
+                success: function(response){
+                    alert(response.msg);
+                    location.reload();
+                }
+            });
         });
 
 </script>

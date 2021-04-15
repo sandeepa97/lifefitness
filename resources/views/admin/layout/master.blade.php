@@ -17,12 +17,14 @@
   <!-- Custom styles for this template-->
   <link href="{{url('css/sb-admin-2.min.css')}}" rel="stylesheet">
   <link href="{{url('css/custom.css')}}" rel="stylesheet">
+  <link href="{{url('css/select2.min.css')}}" rel="stylesheet">
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
 
   <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
 
   @yield('custom-css')
 
@@ -507,6 +509,7 @@
 
   <!-- Custom scripts for all pages-->
   <script src="{{url('js/sb-admin-2.min.js')}}"></script>
+  <script src="{{url('js/select2.min.js')}}"></script>
 
   <!-- Page level plugins -->
   <script src="{{url('vendor/chart.js/Chart.min.js')}}"></script>
