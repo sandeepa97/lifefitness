@@ -28,6 +28,10 @@ Route::post('post-login', 'LoginController@postLogin');
 Route::get('admin-dashboard', 'LoginController@dashboard'); 
 Route::get('logout', 'LoginController@logout');
 
+//Admin -> Gym Status
+Route::resource('admin/gym-status','GymStatusController');
+Route::get('admin/get-all-gym-status','GymStatusController@getAllGymStatus');
+
 //Admin -> Member Functions
 Route::resource('admin/members', 'MemberController');
 Route::get('admin/get-all-members', 'MemberController@getAllMembers');

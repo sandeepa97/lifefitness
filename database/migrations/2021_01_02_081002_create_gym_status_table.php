@@ -15,10 +15,10 @@ class CreateGymStatusTable extends Migration
     {
         Schema::create('gym_status', function (Blueprint $table) {
             $table->id();
-            $table->string('status');
+            $table->string('current_status');
+            $table->string('current_trainer');
             $table->timestamps();
         });
-        DB::table('gym_status')->insert(['status'=>1]);
     }
 
     /**
