@@ -20,3 +20,4 @@
 #module a:not(.collapsed):after {
   content: '- Show Less';
 }
+
