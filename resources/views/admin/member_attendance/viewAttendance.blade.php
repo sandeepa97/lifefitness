@@ -20,6 +20,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Member ID</th>
+                            <th>Name</th>
                             <th>Date In</th>
                             <th>Time In</th>
                             <th>Action</th>
@@ -67,6 +68,13 @@
                 [
                     { data: 'id' },
                     { data: 'member_id' },
+                    { 
+                        "data": null, 
+                        render: function (data, type, row) {
+                        var name = row.member.fname + " " + row.member.lname;
+                        return name;
+                         }
+                    },
                     { data: 'member_in_date' },
                     { data: 'member_in_time' },
                     { 

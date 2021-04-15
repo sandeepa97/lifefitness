@@ -11,7 +11,8 @@ class MemberAttendanceRepository implements MemberAttendanceRepositoryInterface
 
     public function fetchAll()
     {
-        return MemberAttendance::all();
+        // return MemberAttendance::all();
+        return MemberAttendance::with(['member'])->get();
     }
 
     public function fetch($id)

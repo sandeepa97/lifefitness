@@ -35,13 +35,8 @@
 	<div >
 
 		<div class = "status-form">
-			<div class = "status-items">
-				<div class = "gym-status">
-					<p>GYM OPEN</p>
-				</div>
-				<div class = "trainer-status">
-					<p>TRAINER SANDEEPA</p>
-				</div>
+			<div class = "status-items" id="status-items">
+				<!-- dynamic gym status -->
 			</div>
 		</div>		
 
@@ -91,6 +86,36 @@
 
 		document.getElementById("dateTime").innerHTML = dateTime;
 
+
+</script>
+
+@endsection
+
+@section('custom-js')
+
+
+<script>
+var baseUrl = '{{url('/')}}';
+
+$.ajax({
+  type: 'GET',
+  url: baseUrl+'/admin/get-all-gym-status',
+  success: function(res){
+    var status = res.data;
+    for (var x = 0; x<20; x++)
+    {
+      var html = '<div class = "gym-status">';
+	  html += '<p>'+status[x].current_status+'</p>';
+	  html += '<div>';
+	  html += '<div class = "trainer-status">';
+	  html += '<p>'+status[x].current_trainer+'</p>';
+	  html += '<div>';
+	  html += '<div>';
+
+      $('#status-items').append(html);
+    }
+  }
+});
 
 </script>
 
