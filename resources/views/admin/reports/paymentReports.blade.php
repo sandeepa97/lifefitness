@@ -4,7 +4,7 @@
 
     <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Payment Reports</h5>
+                <h5 class="modal-title">Payments Reports</h5>
             </div>
 
             <form data-parsley-validate="" id="frm-payment-reports">
@@ -45,6 +45,7 @@
                         <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Generate Report</button>
                     <!-- <button type="button" class="btn btn-secondary" id="reset-frm" data-dismiss="modal">Clear</button> -->
+                    <input type="button" class="btn btn-success" onclick="generate()" value="Export To PDF" /> 
                 </div>
                 </div>
             </form>
@@ -53,8 +54,10 @@
         </div>
 
 <div class="container mt-4">
+
             <div class="col-md-12 ">
                 <table id="payment-report-table" class="table table-bordered">
+                    <caption>LIFE FITNESS GYMS - PAYMENTS REPORT</caption>
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -84,7 +87,6 @@
             url: baseUrl+'/admin/get-all-payment-types',
             success: function(res){
                 var paymentType = res.data;
-                // #payment_type
                 var html ='';
                 html+='<option value="0">All Payment Types</option>';
                 for(var x=0; x<paymentType.length; x++){
@@ -96,34 +98,9 @@
         });
 
 
-// $('#payment-report-table').DataTable({
-
-// ajax: baseUrl+'/admin/get-all-payments',
-// columns: 
-//         [
-//             { data: 'id' },
-//             { data: 'member_id' },
-//             { data: 'member.fname' },
-//             { data: 'member.lname' },
-//             { data: 'date' },
-//             { data: 'member_payments.payment_type' },
-//             { data: 'amount' }
-//         ]
-// });
-
-
 $('#frm-payment-reports').submit(function(e){
 
             e.preventDefault();
-            // $.ajax({
-            //     url: "{{ url('/admin/payments')}}",
-            //     type: 'POST',
-            //     data: $('#frm-payment-reports').serialize(),
-            //     success: function(response){
-            //         alert(response.msg);
-            //         location.reload();
-            //     }
-            // });
             $('#payment-report-table').DataTable({
 
             ajax: baseUrl+'/admin/get-all-payments',
@@ -140,6 +117,45 @@ $('#frm-payment-reports').submit(function(e){
             });
         });
 
+
+//Export PDF
+function generate() {  
+    // var doc = new jsPDF('p', 'pt', 'letter');  
+    // var htmlstring = '';  
+    // var tempVarToCheckPageHeight = 0;  
+    // var pageHeight = 0;  
+    // pageHeight = doc.internal.pageSize.height;  
+    // specialElementHandlers = {  
+    //     // element with id of "bypass" - jQuery style selector  
+    //     '#bypassme': function(element, renderer) {  
+    //         // true = "handled elsewhere, bypass text extraction"  
+    //         return true  
+    //     }  
+    // };  
+    // margins = {  
+    //     top: 150,  
+    //     bottom: 60,  
+    //     left: 40,  
+    //     right: 40,  
+    //     width: 600  
+    // };  
+    // var y = 20;  
+    // doc.setLineWidth(2);  
+    // doc.text(200, y = y + 30, "LIFE FITNESS GYMS - PAYMENTS REPORT");  
+    // doc.autoTable({  
+    //     html: '#payment-report-table',  
+    //     startY: 70,  
+    //     theme: 'plain',  
+    // })  
+    // doc.save('Payments_Report.pdf');  
+    var doc = new jsPDF()
+    doc.text(15, 10, "LIFE FITNESS GYMS - PAYMENTS REPORT"); 
+    doc.autoTable({ 
+      html: '#payment-report-table', 
+      theme: 'plain'
+      })
+    doc.save('Payments_Report.pdf')
+}  
 
 </script>
 

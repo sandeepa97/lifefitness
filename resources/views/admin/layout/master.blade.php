@@ -165,6 +165,7 @@
             <a class="collapse-item"  href="{{url('admin/reports-payment')}}">Payment Reports</a>
             <a class="collapse-item"  href="{{url('admin/reports-attendance')}}">Attendance Reports</a>
             <a class="collapse-item"  href="{{url('admin/reports-member')}}">Member Reports</a>
+            <a class="collapse-item"  href="#">Inventory Reports</a>
           </div>
         </div>
       </li>
@@ -512,6 +513,8 @@
   <!-- Custom scripts for all pages-->
   <script src="{{url('js/sb-admin-2.min.js')}}"></script>
   <script src="{{url('js/select2.min.js')}}"></script>
+  <script src="{{url('js/jspdf.min.js')}}"></script>
+  <script src="{{url('js/jspdf.plugin.autotable.min.js')}}"></script>
 
   <!-- Page level plugins -->
   <script src="{{url('vendor/chart.js/Chart.min.js')}}"></script>
