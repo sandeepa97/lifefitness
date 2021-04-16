@@ -161,8 +161,10 @@
         <div id="collapseUtilities6" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <!-- <h6 class="collapse-header">Custom Components:</h6> -->
-            <a class="collapse-item" href="{{url('admin/profit')}}">View Details</a>
-            <a class="collapse-item" id="member-add" href="#">Generate Reports</a>
+            <a class="collapse-item" href="{{url('admin/reports')}}">Generate Reports</a>
+            <a class="collapse-item"  href="{{url('admin/reports-payment')}}">Payment Reports</a>
+            <a class="collapse-item"  href="{{url('admin/reports-attendance')}}">Attendance Reports</a>
+            <a class="collapse-item"  href="{{url('admin/reports-member')}}">Member Reports</a>
           </div>
         </div>
       </li>

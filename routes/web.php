@@ -68,8 +68,11 @@ Route::resource('admin/member-status', 'MemberStatusController');
 Route::get('admin/get-all-member-status', 'MemberStatusController@getAllMemberStatus');
 Route::get('admin/get-all-member-status-types', 'MemberStatusTypeController@index');
 
-//Admin -> Profit Functions
-Route::resource('admin/profit', 'ProfitController');
+//Admin -> Report Functions
+Route::resource('admin/reports', 'ReportController');
+Route::get('admin/reports-payment', 'ReportController@loadPaymentReports');
+Route::get('admin/reports-attendance', 'ReportController@loadAttendanceReports');
+Route::get('admin/reports-member', 'ReportController@loadMemberReports');
 
 //Admin -> Trainer Functions
 Route::resource('admin/trainers', 'TrainerController');
