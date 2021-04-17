@@ -76,6 +76,8 @@ Route::get('admin/reports-member', 'ReportController@loadMemberReports');
 Route::post('admin/reports-payment-data', 'ReportController@paymentReports');
 Route::get('admin/reports-payment-result', 'ReportController@paymentReportsResult');
 
+Route::get('admin/report-results', 'ReportController@reportResults');
+
 //Admin -> Trainer Functions
 Route::resource('admin/trainers', 'TrainerController');
 Route::get('admin/get-all-trainers', 'TrainerController@getAllTrainers');

@@ -163,8 +163,4 @@ class ReportController extends Controller
     //         return $this->apiResponse->failed($e, 500, 'Error Occured');
     //     }
     // }
-
-    public function reportResults(){
-        return view('admin.reports.reportsResult');
-    }
 }
