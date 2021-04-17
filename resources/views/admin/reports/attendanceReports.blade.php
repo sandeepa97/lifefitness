@@ -20,8 +20,8 @@
                                 <div class="col-md-4">
                                     <label for="report_type">Report Type</label>
                                     <select name="report_type"  id="report_type" class="form-control">
-                                    <option value="">Summary Report</option>
                                     <option value="">Detailed Report</option>
+                                    <option value="">Summary Report</option>
                                     </select>
                                 </div>
                                 </div>
@@ -60,7 +60,7 @@
                     <caption>LIFE FITNESS GYMS - ATTENDANCE REPORT</caption>
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>#</th>
                             <th>Member ID</th>
                             <th>Name</th>
                             <th>Date In</th>
@@ -104,7 +104,11 @@ $('#frm-attendance-reports').submit(function(e){
             ajax: baseUrl+'/admin/get-all-attendance',
             columns:
                 [
-                    { data: 'id' },
+                    {
+                            "render": function ( data, type, full, meta ) {
+                            return  meta.row + 1;
+                            }
+                        },
                     { data: 'member_id' },
                     { 
                         "data": null, 

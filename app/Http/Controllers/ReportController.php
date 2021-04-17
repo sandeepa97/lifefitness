@@ -1,11 +1,23 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Services\ApiResponseService;
 use Illuminate\Http\Request;
+use DB;
+// use Response;
 
 class ReportController extends Controller
 {
+
+    protected $apiResponse;
+
+
+
+    function __construct(
+        ApiResponseService $apiResponseService
+    ) {
+        $this->apiResponse = $apiResponseService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -94,4 +106,61 @@ class ReportController extends Controller
     {
         return view('admin.reports.memberReports');
     }
+
+    public function paymentReports(Request $data)
+    {
+        try {
+            // dd($data);
+            $dateFrom = $data['date_from'];
+            $dateTo = $data['date_to'];
+            $paymentType = $data['payment_type_id'];
+
+            $paymentReport = DB::select(
+            "   SELECT * 
+                FROM lifefitness.member_payments
+                inner join members on members.id = member_payments.member_id
+                inner join payments_type on payments_type.id = member_payments.payment_type_id
+                WHERE payment_type_id= '$paymentType'
+                and date >= '$dateFrom' and date <= '$dateTo'
+            "
+            );
+
+            return response()->json(['data' => $paymentReport]);
+            return $paymentReport->paymentReportsResult();
+
+        } catch (\Exception $e) {
+            // dd($e);
+            return $this->apiResponse->failed($e, 500, 'Error Occured');
+        }
+    }
+    public function paymentReportsResult()
+    {
+        try {
+            return response()->json(['data' => $paymentReport]);
+
+        } catch (\Exception $e) {
+            dd($paymentReport);
+            return $this->apiResponse->failed($e, 500, 'Error Occured');
+        }
+    }
+    // public function paymentReports()
+    // {
+    //     try {
+    //         $paymentReport = DB::select(
+    //         "   SELECT * 
+    //             FROM lifefitness.member_payments
+    //             inner join members on members.id = member_payments.member_id
+    //             inner join payments_type on payments_type.id = member_payments.payment_type_id
+    //             WHERE payment_type_id=2 
+    //             and date >= '2021-02-01' and date <= '2021-04-01'
+    //         "
+    //         );
+
+    //         return response()->json(['data' => $paymentReport]);
+
+    //     } catch (\Exception $e) {
+    //         // dd($e);
+    //         return $this->apiResponse->failed($e, 500, 'Error Occured');
+    //     }
+    // }
 }

@@ -20,8 +20,8 @@
                                 <div class="col-md-4">
                                     <label for="report_type">Report Type</label>
                                     <select name="report_type"  id="report_type" class="form-control">
-                                    <option value="">Summary Report</option>
                                     <option value="">Detailed Report</option>
+                                    <option value="">Summary Report</option>
                                     </select>
                                 </div>
                                 </div>
@@ -60,10 +60,9 @@
                     <caption>LIFE FITNESS GYMS - PAYMENTS REPORT</caption>
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>#</th>
                             <th>Member ID</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
+                            <th>Name</th>
                             <th>Date</th>
                             <th>Payment Type</th>
                             <th>Payment Amount</th>
@@ -101,20 +100,60 @@
 $('#frm-payment-reports').submit(function(e){
 
             e.preventDefault();
-            $('#payment-report-table').DataTable({
+            var paymentType = $("#payment_type_id").val();
+            var dateFrom = $("#date_from").val();
+            var dateTo = $("#date_to").val();
 
-            ajax: baseUrl+'/admin/get-all-payments',
-            columns: 
-                    [
-                        { data: 'id' },
-                        { data: 'member_id' },
-                        { data: 'member.fname' },
-                        { data: 'member.lname' },
-                        { data: 'date' },
-                        { data: 'member_payments.payment_type' },
-                        { data: 'amount' }
-                    ]
-            });
+            // console.log(paymentType);
+            // console.log(date_from);
+            // console.log(date_to);
+
+
+                    $('#payment-report-table').DataTable({
+
+                        ajax: baseUrl+'/admin/get-all-payments',
+                        columns: 
+                                [
+                                    {
+                                        "render": function ( data, type, full, meta ) {
+                                        return  meta.row + 1;
+                                        }
+                                    },
+                                    { data: 'member_id' },
+                                    { 
+                                    "data": null, 
+                                    render: function (data, type, row) {
+                                    var name = row.member.fname + " " + row.member.lname;
+                                    return name;
+                                    }
+                                    },
+                                    { data: 'date' },
+                                    { data: 'member_payments.payment_type' },
+                                    { data: 'amount' }
+                                ]
+                        });
+            //     }
+            // });
+
+            // $('#payment-report-table').DataTable({
+
+            // ajax: baseUrl+'/admin/reports-payment-data',
+            // columns: 
+            //         [
+            //             { data: 'id' },
+            //             { data: 'member_id' },
+            //             { 
+            //             "data": null, 
+            //             render: function (data, type, row) {
+            //             var name = row.fname + " " + row.lname;
+            //             return name;
+            //              }
+            //              },
+            //             { data: 'date' },
+            //             { data: 'payment_type' },
+            //             { data: 'amount' }
+            //         ]
+            // });
         });
 
 

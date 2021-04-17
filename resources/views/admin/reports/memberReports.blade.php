@@ -7,35 +7,22 @@
                 <h5 class="modal-title">Member Reports</h5>
             </div>
 
-            <form data-parsley-validate="" id="frm-payment-reports">
+            <form data-parsley-validate="" id="frm-member-reports">
                 <div class="modal-body">
                     {{csrf_field()}}
                     <div class="form-group">
                             <div class="row">
                                 <div class="col-md-4">
-                                <label for="payment_type">Payment Type</label>
-                                <select name="payment_type_id"  id="payment_type_id" class="form-control">
+                                <label for="member_name">Member Name</label>
+                                <select name="member_name"  id="member_name" class="form-control">
                                 </select>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="report_type">Report Type</label>
                                     <select name="report_type"  id="report_type" class="form-control">
-                                    <option value="">Summary Report</option>
                                     <option value="">Detailed Report</option>
+                                    <option value="">Summary Report</option>
                                     </select>
-                                </div>
-                                </div>
-                              
-                    </div> 
-                    <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <label for="date_from">Date From</label>
-                                    <input type="date" class="form-control" id="date_from" name="date_from" placeholder="Date From">
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="date_to">Date To</label>
-                                    <input type="date" class="form-control" id="date_to" name="date_to" placeholder="Date To">
                                 </div>
                                 </div>
                               
@@ -56,17 +43,18 @@
 <div class="container mt-4">
 
             <div class="col-md-12 ">
-                <table id="payment-report-table" class="table table-bordered">
+                <table id="member-report-table" class="table table-bordered">
                     <caption>LIFE FITNESS GYMS - MEMBER REPORT</caption>
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Member ID</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Date</th>
-                            <th>Payment Type</th>
-                            <th>Payment Amount</th>
+                            <th>#</th>
+                            <th>M_ID</th>
+                            <th>Name</th>
+                            <th>Gender</th>
+                            <th>NIC</th>
+                            <th>Address</th>
+                            <th>Contact</th>
+                            <th>Email</th>
                         </tr>
 
                     </thead>
@@ -84,35 +72,47 @@
         // Get All Payment Types
         $.ajax({
             type: 'GET',
-            url: baseUrl+'/admin/get-all-payment-types',
+            url: baseUrl+'/admin/get-all-members',
             success: function(res){
-                var paymentType = res.data;
+                var member = res.data;
                 var html ='';
-                html+='<option value="0">All Payment Types</option>';
-                for(var x=0; x<paymentType.length; x++){
-                    html+='<option value="'+paymentType[x].id+'">'+paymentType[x].payment_type+'</option>';
+                html+='<option value="0">All Members</option>';
+                for(var x=0; x<member.length; x++){
+                    html+='<option value="'+member[x].id+'">'+member[x].fname+' '+member[x].lname+'</option>';
                 }
-               $('#payment_type_id').html(html);
+               $('#member_name').html(html);
+               $('#member_name').select2();
             }
 
         });
 
 
-$('#frm-payment-reports').submit(function(e){
+$('#frm-member-reports').submit(function(e){
 
             e.preventDefault();
-            $('#payment-report-table').DataTable({
+            $('#member-report-table').DataTable({
 
-            ajax: baseUrl+'/admin/get-all-payments',
+            ajax: baseUrl+'/admin/get-all-members',
             columns: 
                     [
+                        {
+                            "render": function ( data, type, full, meta ) {
+                            return  meta.row + 1;
+                            }
+                        },
                         { data: 'id' },
-                        { data: 'member_id' },
-                        { data: 'member.fname' },
-                        { data: 'member.lname' },
-                        { data: 'date' },
-                        { data: 'member_payments.payment_type' },
-                        { data: 'amount' }
+                        { 
+                        "data": null, 
+                        render: function (data, type, row) {
+                        var name = row.fname + " " + row.lname;
+                        return name;
+                         }
+                        },
+                        { data: 'gender' },
+                        { data: 'nic' },
+                        { data: 'address' },
+                        { data: 'contact' },
+                        { data: 'email' }
                     ]
             });
         });
@@ -149,12 +149,12 @@ function generate() {
     // })  
     // doc.save('Payments_Report.pdf');  
     var doc = new jsPDF()
-    doc.text(15, 10, "LIFE FITNESS GYMS - PAYMENTS REPORT"); 
+    doc.text(15, 10, "LIFE FITNESS GYMS - MEMBER REPORT"); 
     doc.autoTable({ 
-      html: '#payment-report-table', 
+      html: '#member-report-table', 
       theme: 'plain'
       })
-    doc.save('Payments_Report.pdf')
+    doc.save('Member_Report.pdf')
 }  
 
 </script>
