@@ -133,16 +133,16 @@ class ReportController extends Controller
             return $this->apiResponse->failed($e, 500, 'Error Occured');
         }
     }
-    public function paymentReportsResult()
-    {
-        try {
-            return response()->json(['data' => $paymentReport]);
+    // public function paymentReportsResult()
+    // {
+    //     try {
+    //         return response()->json(['data' => $paymentReport]);
 
-        } catch (\Exception $e) {
-            dd($paymentReport);
-            return $this->apiResponse->failed($e, 500, 'Error Occured');
-        }
-    }
+    //     } catch (\Exception $e) {
+    //         dd($paymentReport);
+    //         return $this->apiResponse->failed($e, 500, 'Error Occured');
+    //     }
+    // }
     // public function paymentReports()
     // {
     //     try {
@@ -167,4 +167,29 @@ class ReportController extends Controller
     public function reportResults(){
         return view('admin.reports.reportsResult');
     }
+
+    public function checkReport(Request $request){
+        if ($request->payment_type_id){
+            $payment_type_id = $request->payment_type_id;
+            $payments = DB::table('member_payments')->where('payment_type_id',$request->payment_type_id)->get();
+            $sum = DB::table('member_payments')->where('payment_type_id',$request->payment_type_id)->sum('amount');
+            // dd($payments);
+            // return response()->json(['data' => $payments]);
+            // $this->paymentReportsResult($payments);
+            return view('admin.reports.reportsResult',compact('payments','sum','payment_type_id'));
+        }
+
+    }
+
+    public function paymentReportsResult($payments)
+    {
+        try {
+            return response()->json(['data' => $payments]);
+
+        } catch (\Exception $e) {
+            dd($e);
+            return $this->apiResponse->failed($e, 500, 'Error Occured');
+        }
+    }
+
 }

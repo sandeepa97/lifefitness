@@ -9,7 +9,7 @@
                 <h5 class="modal-title">Payments Reports</h5>
             </div>
 
-            <form data-parsley-validate="" id="frm-payment-reports">
+            <form data-parsley-validate="" id="frm-payment-reports" action="{{url('admin/reports-check')}}" method="POST">
                 <div class="modal-body">
                     {{csrf_field()}}
                     <div class="form-group">
