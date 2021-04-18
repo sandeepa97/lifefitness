@@ -8,13 +8,12 @@
 </div>
 <div class="container mt-4" id="dvContainer">
     <center><h4>LIFE FITNESS GYMS - PAYMENTS REPORT</h4>
- 
+    {{--  <h5>{{$dateFrom}} - {{$dateTo}}</h5> --}}
     </center>
 
     
             <div class="col-md-12 ">
                 <table id="payment-report-table" class="table table-bordered">
-                    <caption>LIFE FITNESS GYMS - PAYMENTS REPORT</caption>
                     <thead>
                         <tr>
                             <th>#</th>
@@ -69,7 +68,8 @@ $("#btnPrint").on("click", function () {
 
     $('#payment-report-table').DataTable({
         "paging": false,
-        "bInfo" : false
+        "bInfo" : false,
+        "searching": false
     });
 
 //Export PDF
