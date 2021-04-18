@@ -3,7 +3,7 @@
 
 <div class="modal-body">
     <input type="button" class="btn btn-success" onclick="generate()" value="Export To PDF" /> 
-    <input type="button"  class="btn btn-dark" value="Detailed Report Print" id="btnPrint" />
+    <input type="button"  class="btn btn-dark" value="Print" id="btnPrint" />
 
 </div>
 <div class="container mt-4" id="dvContainer">

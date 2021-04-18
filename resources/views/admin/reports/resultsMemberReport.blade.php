@@ -7,20 +7,23 @@
 
 </div>
 <div class="container mt-4" id="dvContainer">
-    <center><h4>LIFE FITNESS GYMS - ATTENDANCE REPORT</h4>
-    {{--  <h5>{{$dateFrom}} - {{$dateTo}}</h5> --}}
+    <center><h4>LIFE FITNESS GYMS - MEMBER REPORT</h4>
     </center>
 
     
             <div class="col-md-12 ">
-                <table id="attendance-report-table" class="table table-bordered">
+                <table id="member-report-table" class="table table-bordered">
                     <thead>
                         <tr>
                             <th>#</th>
                             <th>Member ID</th>
                             <th>Name</th>
-                            <th>Date In</th>
-                            <th>Time In</th>
+                            <th>Gender</th>
+                            <th>NIC</th>
+                            <th>Address</th>
+                            <th>Contact</th>
+                            <th>Email</th>
+                         
                         </tr>
                     </thead>
                     <tbody>
@@ -29,13 +32,16 @@
                         $index = 1;
                     @endphp
 
-                    @foreach($attendances as $attendance)
+                    @foreach($members as $member)
                     <tr>
                         <td>{{ $index++ }}</td>
-                        <td>{{ $attendance->member_id }}</td>
-                        <td>{{ $attendance->fname }} {{$attendance->lname}}</td>
-                        <td>{{ $attendance->member_in_date }}</td>
-                        <td>{{ $attendance->member_in_time }}</td>
+                        <td>{{ $member->id }}</td>
+                        <td>{{ $member->fname }} {{$member->lname}}</td>
+                        <td>{{ $member->gender }}</td>
+                        <td>{{ $member->nic }}</td>
+                        <td>{{ $member->address }}</td>
+                        <td>{{ $member->contact }}</td>
+                        <td>{{ $member->email }}</td>
                     </tr>
                     @endforeach
 
@@ -64,7 +70,7 @@ $("#btnPrint").on("click", function () {
 });
 
 
-    $('#attendance-report-table').DataTable({
+    $('#member-report-table').DataTable({
         "paging": false,
         "bInfo" : false,
         "searching": false
@@ -73,12 +79,12 @@ $("#btnPrint").on("click", function () {
 //Export PDF
 function generate() {  
     var doc = new jsPDF()
-    doc.text(15, 10, "LIFE FITNESS GYMS - ATTENDANCE REPORT"); 
+    doc.text(15, 10, "LIFE FITNESS GYMS - MEMBER REPORT"); 
     doc.autoTable({ 
-      html: '#attendance-report-table', 
+      html: '#member-report-table', 
       theme: 'plain'
       })
-    doc.save('Attendance_Report.pdf')
+    doc.save('Members_Report.pdf')
 }  
 
 </script>

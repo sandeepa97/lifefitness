@@ -117,14 +117,14 @@
                 <h5 class="modal-title">Member Reports</h5>
             </div>
 
-            <form data-parsley-validate="" id="frm-member-reports">
+            <form data-parsley-validate="" id="frm-member-reports" action="{{url('admin/reports-member-check')}}" method="POST">
                 <div class="modal-body">
                     {{csrf_field()}}
                     <div class="form-group">
                             <div class="row">
                                 <div class="col-md-4">
-                                <label for="member_name">Member Name</label>
-                                <select name="member_name"  id="member_name" class="form-control">
+                                <label for="member_id">Member Name</label>
+                                <select name="member_id"  id="member_name" class="form-control">
                                 </select>
                                 </div>
                                 <div class="col-md-4">

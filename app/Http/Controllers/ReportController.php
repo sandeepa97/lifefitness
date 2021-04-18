@@ -124,6 +124,27 @@ class ReportController extends Controller
 
     }
 
+    public function checkMemberReport(Request $request){
+        // dd($request);
+        if ($request->member_id != "0"){
+
+            $member_id = $request->member_id;
+
+            $members = DB::table('members')->
+                        where('id',$member_id)->get();
+            $count = count($members);
+            return view('admin.reports.resultsMemberReport',compact('members','count'));
+        
+        } else {
+
+            $members = DB::table('members')->get();
+            $count = count($members);
+            return view('admin.reports.resultsMemberReport',compact('members','count'));
+
+        }
+
+    }
+
 
     
 
