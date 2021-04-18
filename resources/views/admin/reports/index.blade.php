@@ -9,7 +9,7 @@
                 <h5 class="modal-title">Payments Reports</h5>
             </div>
 
-            <form data-parsley-validate="" id="frm-payment-reports" action="{{url('admin/reports-check')}}" method="POST">
+            <form data-parsley-validate="" id="frm-payment-reports" action="{{url('admin/reports-payments-check')}}" method="POST">
                 <div class="modal-body">
                     {{csrf_field()}}
                     <div class="form-group">
@@ -63,14 +63,14 @@
                 <h5 class="modal-title">Attendance Reports</h5>
             </div>
 
-            <form data-parsley-validate="" id="frm-attendance-reports">
+            <form data-parsley-validate="" id="frm-attendance-reports" action="{{url('admin/reports-attendance-check')}}" method="POST">
                 <div class="modal-body">
                     {{csrf_field()}}
                     <div class="form-group">
                             <div class="row">
                                 <div class="col-md-4">
-                                <label for="member_name">Attendee</label>
-                                <select name="member_name"  id="attendee" class="form-control">
+                                <label for="member_id">Attendee</label>
+                                <select name="member_id"  id="attendee" class="form-control">
                                 </select>
                                 </div>
                                 <div class="col-md-4">
