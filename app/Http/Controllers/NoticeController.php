@@ -2,10 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\ApiResponseService;
+use App\Services\NoticeService;
+
 use Illuminate\Http\Request;
 
 class NoticeController extends Controller
 {
+
+
+    protected $noticeService;
+
+
+    protected $apiResponse;
+
+
+
+    function __construct(
+        NoticeService $notice,
+        ApiResponseService $apiResponseService
+    ) {
+        $this->noticeService = $notice;
+        $this->apiResponse = $apiResponseService;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -14,6 +35,10 @@ class NoticeController extends Controller
     public function index()
     {
         return view('admin.notices.index');
+    }
+    public function postNotice()
+    {
+        return view('admin.notices.postNotice');
     }
 
     /**
@@ -34,7 +59,12 @@ class NoticeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $notice = $this->noticeService->store($request->all());
+            return $this->apiResponse->success(200,$notice, 'Notice Posted Successfully');
+        }catch(\Exception $e){
+            return $this->apiResponse->failed($e, 500, 'Error Occured');
+        }
     }
 
     /**
@@ -68,7 +98,13 @@ class NoticeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $notices = $this->noticeService->update($request->all(), $id);
+            return $this->apiResponse->success(200, $notices, 'Notice has been updated');
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return $this->apiResponse->failed($e, 500, 'Error ocurred');
+        }
     }
 
     /**
@@ -79,6 +115,21 @@ class NoticeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $this->noticeService->delete($id);
+            return $this->apiResponse->success(200, [], 'Notice has been deleted');
+        } catch (\Exception $e) {
+            return $this->apiResponse->failed($e, 500, 'Notice has not been deleted');
+        }
+    }
+
+    public function getAllNotices()
+    {
+        try {
+            $notices = $this->noticeService->fetchAll();
+            return response()->json(['data' => $notices]);
+        } catch (\Exception $e) {
+            return $this->apiResponse->failed($e, 500, 'Error Occured');
+        }
     }
 }

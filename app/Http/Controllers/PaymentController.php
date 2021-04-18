@@ -2,15 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\ApiResponseService;
+use App\Services\PaymentService;
 use Illuminate\Http\Request;
+use DB;
 
 class PaymentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    protected $paymentService;
+
+
+    protected $apiResponse;
+
+
+
+    function __construct(
+        paymentService $payment,
+        ApiResponseService $apiResponseService
+    ) {
+        $this->paymentService = $payment;
+        $this->apiResponse = $apiResponseService;
+    }
+
+
+
     public function index()
     {
         return view('admin.payments.index');
@@ -34,7 +50,19 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        try {
+            
+            $payments = $this->paymentService->store($request->all());
+            // dd($e->getMessage());
+            // dd($payments);
+            return $this->apiResponse->success(200, $payments, 'Payment Added Successfully');
+        } catch (\Exception $e) {
+            
+            // dd($payments);
+            // dd($e->getMessage());
+            return $this->apiResponse->failed($e, 500, 'Error Occured');
+        }
     }
 
     /**
@@ -68,7 +96,13 @@ class PaymentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $payments = $this->paymentService->update($request->all(), $id);
+            return $this->apiResponse->success(200, $payments, 'Payment has been updated');
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return $this->apiResponse->failed($e, 500, 'Error ocurred');
+        }
     }
 
     /**
@@ -79,6 +113,68 @@ class PaymentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $this->paymentService->delete($id);
+            return $this->apiResponse->success(200, [], 'Payment has been deleted');
+        } catch (\Exception $e) {
+            return $this->apiResponse->failed($e, 500, 'Payment has not been deleted');
+        }
+    }
+    public function getAllMemberPayments()
+    {
+        try {
+            $payments = $this->paymentService->fetchAll();
+            return response()->json(['data' => $payments]);
+        } catch (\Exception $e) {
+            return $this->apiResponse->failed($e, 500, 'Error Occured');
+        }
+    }
+
+    // public function getMonthlyPayments()
+    // {
+    //     try {
+    //         $monthlyPayments = DB::select(
+    //         "   SELECT SELECT SUM(amount) total_month
+    //             FROM member_payments
+    //             WHERE MONTH(date) = MONTH(CURRENT_DATE())
+    //             AND YEAR(date) = YEAR(CURRENT_DATE()) "
+    //         );
+
+    //         return response()->json(['data' => $monthlyPayments]);
+
+    //     } catch (\Exception $e) {
+    //         // dd($e);
+    //         return $this->apiResponse->failed($e, 500, 'Error Occured');
+    //     }
+    // }
+    public function getAnnualPayments()
+    {
+        try {
+            $annualPayments = DB::select(
+            "   SELECT SUM(amount) total_annual
+                FROM member_payments
+                WHERE YEAR(date) = YEAR(CURRENT_DATE()) "
+            );
+
+            return response()->json(['data' => $annualPayments]);
+
+        } catch (\Exception $e) {
+            return $this->apiResponse->failed($e, 500, 'Error Occured');
+        }
+    }
+    public function getMonthlyPayments()
+    {
+        try {
+            $monthlyPayments = DB::select(
+            "   SELECT SUM(amount) total_monthly
+                FROM member_payments
+                WHERE MONTH(date) = MONTH(CURRENT_DATE()) AND YEAR(date) = YEAR(CURRENT_DATE()) "
+            );
+
+            return response()->json(['data' => $monthlyPayments]);
+
+        } catch (\Exception $e) {
+            return $this->apiResponse->failed($e, 500, 'Error Occured');
+        }
     }
 }

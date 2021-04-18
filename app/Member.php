@@ -27,4 +27,15 @@ class Member extends Model
      * @var array
      */
     protected $casts = [];
+
+    public function memberPayments()
+    {
+        return $this->hasMany(MemberPayment::class, 'member_id','id');
+    }
+
+    public function members()
+    {
+        return $this->hasMany(Member::class,'payment_type_id','id');
+    }
+
 }

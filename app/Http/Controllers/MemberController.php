@@ -53,7 +53,7 @@ class MemberController extends Controller
         try {
             
             $members = $this->memberService->store($request->all());
-            return $this->apiResponse->success(200, $members, 'success');
+            return $this->apiResponse->success(200, $members, 'Member Added Successfully');
         } catch (\Exception $e) {
       
             dd($e->getMessage());

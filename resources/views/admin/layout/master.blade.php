@@ -16,10 +16,15 @@
 
   <!-- Custom styles for this template-->
   <link href="{{url('css/sb-admin-2.min.css')}}" rel="stylesheet">
+  <link href="{{url('css/custom.css')}}" rel="stylesheet">
+  <link href="{{url('css/select2.min.css')}}" rel="stylesheet">
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
 
   <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
 
   @yield('custom-css')
 
@@ -64,7 +69,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
-          <span>Customer Registration</span>
+          <span>Member Details</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -98,8 +103,9 @@
         <div id="collapseUtilities2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <!-- <h6 class="collapse-header">Custom Components:</h6> -->
-            <a class="collapse-item" href="{{url('admin/member-attendance')}}">View Member Attendance</a>
-            <a class="collapse-item" id="member-add" href="#">Mark Attendance</a>
+            <a class="collapse-item" href="{{url('admin/member-attendance')}}">Mark Member Attendance</a>
+            <a class="collapse-item" href="{{url('admin/view-member-attendance')}}">View Member Attendance</a>
+            <a class="collapse-item" id="member-add" href="#">Quick Attendance Mark</a>
           </div>
         </div>
       </li>
@@ -128,8 +134,8 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <!-- <h6 class="collapse-header">Custom Components:</h6> -->
             <a class="collapse-item" href="{{url('admin/notices')}}">View Notices</a>
-            <a class="collapse-item" id="member-add" href="#">Add Notice</a>
-            <a class="collapse-item" id="member-add" href="#">Gym Status</a>
+            <a class="collapse-item" id="member-add" href="{{url('admin/post-notice')}}">Post Notice</a>
+            <!-- <a class="collapse-item" id="member-add" href="#">Gym Status</a> -->
           </div>
         </div>
       </li>
@@ -142,7 +148,7 @@
         <div id="collapseUtilities5" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <!-- <h6 class="collapse-header">Custom Components:</h6> -->
-            <a class="collapse-item" href="{{url('admin/members-status')}}">View Member Status</a>
+            <a class="collapse-item" href="{{url('admin/member-status')}}">View Member Status</a>
           </div>
         </div>
       </li>
@@ -150,13 +156,16 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities6" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-fw fa-wrench"></i>
-          <span>Profit and Loss</span>
+          <span>Management Reports</span>
         </a>
         <div id="collapseUtilities6" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <!-- <h6 class="collapse-header">Custom Components:</h6> -->
-            <a class="collapse-item" href="{{url('admin/profit')}}">View Details</a>
-            <a class="collapse-item" id="member-add" href="#">Generate Reports</a>
+            <a class="collapse-item" href="{{url('admin/reports')}}">Generate Reports</a>
+            <a class="collapse-item"  href="{{url('admin/reports-payment')}}">Payment Reports</a>
+            <a class="collapse-item"  href="{{url('admin/reports-attendance')}}">Attendance Reports</a>
+            <a class="collapse-item"  href="{{url('admin/reports-member')}}">Member Reports</a>
+            <a class="collapse-item"  href="#">Inventory Reports</a>
           </div>
         </div>
       </li>
@@ -220,7 +229,7 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#">View Blog</a>
+            <a class="collapse-item" href="{{url('admin/fitness-blog')}}">View Blog</a>
             <a class="collapse-item" href="#">Add Post</a>
           </div>
         </div>
@@ -233,16 +242,15 @@
           <span>Online Store</span></a>
           <div id="collapsePagesStore" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#">View Store</a>
-            <a class="collapse-item" href="#">View Stock</a>
-            <a class="collapse-item" href="#">View Orders</a>
+            <a class="collapse-item" href="{{url('admin/online-store')}}">View Store</a>
+            <a class="collapse-item" href="#">Add Item</a>
           </div>
         </div>
       </li>
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="{{url('admin/online-coach')}}">
           <i class="fas fa-fw fa-table"></i>
           <span>Online Coaching</span></a>
       </li>
@@ -418,7 +426,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->fname}} {{Auth::user()->lname}}</span>
-                <img class="img-profile rounded-circle" src="{{url('img/pro.jpg')}}">
+                <img class="img-profile rounded-circle" src="{{url('img/pro.png')}}">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -504,6 +512,9 @@
 
   <!-- Custom scripts for all pages-->
   <script src="{{url('js/sb-admin-2.min.js')}}"></script>
+  <script src="{{url('js/select2.min.js')}}"></script>
+  <script src="{{url('js/jspdf.min.js')}}"></script>
+  <script src="{{url('js/jspdf.plugin.autotable.min.js')}}"></script>
 
   <!-- Page level plugins -->
   <script src="{{url('vendor/chart.js/Chart.min.js')}}"></script>

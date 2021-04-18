@@ -31,6 +31,9 @@ class LoginController extends Controller
         }
         
         return Redirect::to("login")->withSuccess('Invalid Email or Password');
+        // echo '<script type="text/javascript">';
+        // echo ' alert("Invalid Email or Password")';
+        // echo '</script>';
     }
  
      
