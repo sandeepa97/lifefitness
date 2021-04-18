@@ -164,32 +164,47 @@ class ReportController extends Controller
     //     }
     // }
 
-    public function reportResults(){
-        return view('admin.reports.reportsResult');
-    }
+    // public function reportResults(){
+    //     return view('admin.reports.reportsResult');
+    // }
 
     public function checkReport(Request $request){
-        if ($request->payment_type_id){
+        // dd($request);
+        if ($request->payment_type_id != "0" && $request->date_from != null && $request->date_to != null){
+
             $payment_type_id = $request->payment_type_id;
-            $payments = DB::table('member_payments')->where('payment_type_id',$request->payment_type_id)->get();
-            $sum = DB::table('member_payments')->where('payment_type_id',$request->payment_type_id)->sum('amount');
-            // dd($payments);
-            // return response()->json(['data' => $payments]);
-            // $this->paymentReportsResult($payments);
-            return view('admin.reports.reportsResult',compact('payments','sum','payment_type_id'));
+            $dateFrom = $request->date_from;
+            $dateTo = $request->date_to;
+
+            $payments = DB::table('member_payments')->
+                        join('payments_type', 'payments_type.id', '=', 'member_payments.payment_type_id')->
+                        join('members', 'members.id', '=', 'member_payments.member_id')->
+                        where('payment_type_id',$payment_type_id)->whereBetween('date',[$dateFrom, $dateTo])->get();
+            $sum = DB::table('member_payments')->where('payment_type_id',$payment_type_id)->whereBetween('date',[$dateFrom, $dateTo])->sum('amount');
+            return view('admin.reports.reportsResult',compact('payments','sum','payment_type_id','dateFrom','dateTo'));
+        
+        }else if($request->date_from != null && $request->date_to != null) {
+
+            $dateFrom = $request->date_from;
+            $dateTo = $request->date_to;
+            $payments = DB::table('member_payments')->
+                        join('payments_type', 'payments_type.id', '=', 'member_payments.payment_type_id')->
+                        join('members', 'members.id', '=', 'member_payments.member_id')->
+                        whereBetween('date',[$dateFrom, $dateTo])->get();
+            $sum = DB::table('member_payments')->whereBetween('date',[$dateFrom, $dateTo])->sum('amount');
+            return view('admin.reports.reportsResult',compact('payments','sum','dateFrom','dateTo')); 
+
+        }else {
+            $payments = DB::table('member_payments')->
+                        join('payments_type', 'payments_type.id', '=', 'member_payments.payment_type_id')->
+                        join('members', 'members.id', '=', 'member_payments.member_id')->
+                        get();
+
+            $sum = DB::table('member_payments')->sum('amount');
+            return view('admin.reports.reportsResult',compact('payments','sum')); 
         }
 
-    }
 
-    public function paymentReportsResult($payments)
-    {
-        try {
-            return response()->json(['data' => $payments]);
-
-        } catch (\Exception $e) {
-            dd($e);
-            return $this->apiResponse->failed($e, 500, 'Error Occured');
-        }
     }
 
 }

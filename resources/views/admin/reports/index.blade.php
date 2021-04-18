@@ -163,7 +163,7 @@
             success: function(res){
                 var paymentType = res.data;
                 var html ='';
-                html+='<option value="0">All Payment Types</option>';
+                html+='<option value= "0" >All Payment Types</option>';
                 for(var x=0; x<paymentType.length; x++){
                     html+='<option value="'+paymentType[x].id+'">'+paymentType[x].payment_type+'</option>';
                 }
