@@ -18,7 +18,7 @@
                 <table id="attendancetable" class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>#</th>
                             <th>Member ID</th>
                             <th>Name</th>
                             <th>Date In</th>
@@ -63,10 +63,17 @@
 
         //load data to Table
         $('#attendancetable').DataTable({
+            "paging": false,
+            "bInfo" : false,
+            order: [[0, 'desc']],
             ajax: baseUrl+'/admin/get-all-attendance',
             columns:
                 [
-                    { data: 'id' },
+                    {
+                        "render": function ( data, type, full, meta ) {
+                        return  meta.row + 1;
+                        }
+                    },
                     { data: 'member_id' },
                     { 
                         "data": null, 
