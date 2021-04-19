@@ -82,4 +82,9 @@ class MemberDashboardController extends Controller
     {
         //
     }
+
+    public function loadWorkoutSchedules()
+    {
+        return view('member.workout_schedules.index');
+    }
 }

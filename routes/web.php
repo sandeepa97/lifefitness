@@ -8,6 +8,8 @@ Route::get('/','Home\HomeController@index' );
 Route::get('/home','Home\HomeController@index2' );
 Route::get('/about','Home\HomeController@about' );
 Route::get('/contact','Home\HomeController@contact' );
+Route::get('/member-login','Home\HomeController@memberLogin' );
+
 Route::get('/blog','Blog\BlogController@index' );
 Route::get('/store','Store\StoreController@index' );
 Route::get('/coaching','Coaching\CoachController@index' );
@@ -15,6 +17,8 @@ Route::get('/coaching','Coaching\CoachController@index' );
 //login and logout process
 Route::get('login', 'LoginController@index');
 Route::post('post-login', 'LoginController@postLogin');
+Route::post('post-member-login', 'LoginController@postMemberLogin');
+
 Route::get('admin-dashboard', 'LoginController@dashboard'); 
 Route::get('logout', 'LoginController@logout');
 
@@ -101,6 +105,7 @@ Route::get('admin/get-all-online-coach-packages', 'OnlineCoachPackageController@
 
 //Member ->
 Route::resource('member-dashboard', 'Member\MemberDashboardController'); 
+Route::get('member/workout-schedules', 'Member\MemberDashboardController@loadWorkoutSchedules'); 
 
 
 //Trainer ->

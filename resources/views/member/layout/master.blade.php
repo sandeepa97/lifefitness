@@ -63,27 +63,27 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link" href="{{url('admin/online-coach')}}">
+        <a class="nav-link" href="{{url('member/workout-schedules')}}">
           <i class="fas fa-fw fa-table"></i>
           <span>Workout Schedules</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{url('admin/online-coach')}}">
+        <a class="nav-link" href="{{url('member/payment-details')}}">
           <i class="fas fa-fw fa-table"></i>
           <span>Payment Details</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{url('admin/online-coach')}}">
+        <a class="nav-link" href="{{url('member/notifications')}}">
           <i class="fas fa-fw fa-table"></i>
           <span>Notifications</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{url('admin/online-coach')}}">
+        <a class="nav-link" href="{{url('member/feedbacks-reviews')}}">
           <i class="fas fa-fw fa-table"></i>
           <span>Feedbacks & Reviews</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{url('admin/online-coach')}}">
+        <a class="nav-link" href="{{url('member/online-coach')}}">
           <i class="fas fa-fw fa-table"></i>
           <span>Online Coaching</span></a>
       </li>
@@ -261,7 +261,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->fname}} {{Auth::user()->lname}}</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::guard('member')->user()->fname }} {{Auth::guard('member')->user()->lname }}</span>
                 <img class="img-profile rounded-circle" src="{{url('img/pro.png')}}">
               </a>
               <!-- Dropdown - User Information -->

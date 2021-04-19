@@ -48,11 +48,11 @@
 						{{ csrf_field() }}
 
 							<div class="input-group form-group">
-								<input type="text" class="form-control" placeholder="email" name="email">	
+								<input type="text" class="form-control" placeholder="email" name="email" required="required">	
 	  
 							</div>
 							<div class="input-group form-group">
-								<input type="password" class="form-control" placeholder="password" name="password">
+								<input type="password" class="form-control" placeholder="password" name="password" required="required">
 		
 							</div>
 							<div class="form-group">
@@ -62,6 +62,7 @@
                             
 							</div>
 							<a href="#" class = "link">Forgot password?</a>
+							<a href="{{url('/member-login')}}" class = "btn btn-sm btn-primary">Member Login</a>
 						</form>
 					</div>
 				</div>
