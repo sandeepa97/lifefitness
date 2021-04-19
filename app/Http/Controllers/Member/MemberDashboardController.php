@@ -101,4 +101,17 @@ class MemberDashboardController extends Controller
         // dd($payments);
         return view('member.payment_details.index',compact('payments'));
     }
+    public function loadNotifications()
+    {
+        return view('member.notifications.index');
+    }
+    public function loadFeedbacks()
+    {
+        return view('member.feedbacks.index');
+    }
+    public function loadOnlineCoach()
+    {
+        return view('member.online-coach.index');
+    }
+
 }

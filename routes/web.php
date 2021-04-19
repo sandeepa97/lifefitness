@@ -107,6 +107,9 @@ Route::get('admin/get-all-online-coach-packages', 'OnlineCoachPackageController@
 Route::resource('member-dashboard', 'Member\MemberDashboardController'); 
 Route::get('member/workout-schedules', 'Member\MemberDashboardController@loadWorkoutSchedules'); 
 Route::get('member/payment-details', 'Member\MemberDashboardController@loadPaymentDetails'); 
+Route::get('member/notifications', 'Member\MemberDashboardController@loadNotifications'); 
+Route::get('member/feedbacks-reviews', 'Member\MemberDashboardController@loadFeedbacks'); 
+Route::get('member/online-coach', 'Member\MemberDashboardController@loadOnlineCoach'); 
 
 
 //Trainer ->
