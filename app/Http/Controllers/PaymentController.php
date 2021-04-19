@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Services\ApiResponseService;
 use App\Services\PaymentService;
 use Illuminate\Http\Request;
@@ -130,23 +129,6 @@ class PaymentController extends Controller
         }
     }
 
-    // public function getMonthlyPayments()
-    // {
-    //     try {
-    //         $monthlyPayments = DB::select(
-    //         "   SELECT SELECT SUM(amount) total_month
-    //             FROM member_payments
-    //             WHERE MONTH(date) = MONTH(CURRENT_DATE())
-    //             AND YEAR(date) = YEAR(CURRENT_DATE()) "
-    //         );
-
-    //         return response()->json(['data' => $monthlyPayments]);
-
-    //     } catch (\Exception $e) {
-    //         // dd($e);
-    //         return $this->apiResponse->failed($e, 500, 'Error Occured');
-    //     }
-    // }
     public function getAnnualPayments()
     {
         try {

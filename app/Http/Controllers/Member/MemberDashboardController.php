@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Member;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use DB;
 
 class MemberDashboardController extends Controller
 {
@@ -86,5 +88,17 @@ class MemberDashboardController extends Controller
     public function loadWorkoutSchedules()
     {
         return view('member.workout_schedules.index');
+    }
+    public function loadPaymentDetails()
+    {
+        $memberId = Auth::guard('member')->user()->id;
+        
+        $payments = DB::table('member_payments')->
+                    join('payments_type', 'payments_type.id', '=', 'member_payments.payment_type_id')->
+                    where('member_id', $memberId)->
+                    select('member_payments.id as paymentId', 'member_payments.*', 'payments_type.*')->
+                    get();
+        // dd($payments);
+        return view('member.payment_details.index',compact('payments'));
     }
 }
