@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Session;
 use App\Member;
+use App\Trainer;
  
 class LoginController extends Controller
 {
@@ -33,6 +34,10 @@ class LoginController extends Controller
         else if (Auth::guard('member')->attempt($credentials)) {
             
                 return redirect()->intended('member-dashboard');
+            }
+        else if (Auth::guard('trainer')->attempt($credentials)) {
+            
+                return redirect()->intended('trainer-dashboard');
             }
         return Redirect::to("login")->withSuccess('Invalid Email or Password');
         // echo '<script type="text/javascript">';
