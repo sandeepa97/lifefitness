@@ -108,4 +108,10 @@ class MemberFeedbackController extends Controller
             return $this->apiResponse->failed($e, 500, 'Error Occured');
         }
     }
+
+    public function loadMemberFeedbacksAdmin()
+    {
+        return view('admin.feedbacks.index');
+    }
+
 }

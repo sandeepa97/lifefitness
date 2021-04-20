@@ -102,6 +102,9 @@ Route::resource('admin/online-coach', 'OnlineCoachController');
 Route::get('admin/get-all-online-clients', 'OnlineCoachController@getAllOnlineClients');
 Route::get('admin/get-all-online-coach-packages', 'OnlineCoachPackageController@index');
 
+//Admin -> Member Feedbacks & Reviews
+Route::get('admin/member-feedbacks', 'Member\MemberFeedbackController@loadMemberFeedbacksAdmin'); 
+
 
 //Member ->
 Route::resource('member-dashboard', 'Member\MemberDashboardController'); 
@@ -112,6 +115,7 @@ Route::get('member/feedbacks-reviews', 'Member\MemberDashboardController@loadFee
 Route::get('member/online-coach', 'Member\MemberDashboardController@loadOnlineCoach'); 
 Route::resource('member/feedbacks', 'Member\MemberFeedbackController'); 
 Route::get('member/get-all-feedbacks', 'Member\MemberFeedbackController@getAllmemberFeedbacks'); 
+
 
 
 //Trainer ->

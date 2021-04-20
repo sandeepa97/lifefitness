@@ -213,6 +213,18 @@
         </div>
       </li>
 
+      <li class="nav-item">
+        <a class="nav-link" href="{{url('admin/member-feedbacks')}}">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Member Feedbacks</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{url('admin/member-feedbacks')}}">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Trainer Feedbacks</span></a>
+      </li>
+
       <!-- Divider -->
       <hr class="sidebar-divider">
 
