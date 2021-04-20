@@ -11,11 +11,12 @@
           <div class="container card">
           <div id="notice_posts">
 
-          <div class="col-md-12">
+          <hr>
+
 
             <!-- dynamic notice content -->
 
-          </div>
+
           </div>
 
           </div>
@@ -43,11 +44,11 @@ $.ajax({
     for (var x = 0; x<20; x++)
     {
       var html = '<div class="col-md-12">';
-	  html += '<h2>'+notice[x].notice_subject+'</h2>';
+	  html += '<h5>'+notice[x].notice_subject+'</h5>';
 	  html += '<p>'+notice[x].notice_content+'</p>';
 	  html += '<div>';
     html += '<div class="pull-right"><span class="badge badge-success">'+notice[x].notice_type.notice_type+'</span></div>   ';
-	  html += '<span class="badge">Posted '+notice[x].updated_at+'</span>';
+	  html += '<span class="badge">Posted on '+notice[x].notice_date+' at '+notice[x].notice_time+'</span>';
 	  html += '</div>';
 	  html += '<hr>';
 	  html += '</div>';

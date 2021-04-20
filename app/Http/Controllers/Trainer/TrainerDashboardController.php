@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Trainer;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use DB;
 
 class TrainerDashboardController extends Controller
 {
@@ -81,5 +83,40 @@ class TrainerDashboardController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function loadWorkoutSchedules()
+    {
+        return view('trainer.workout_schedules.index');
+    }
+    public function loadPaymentDetails()
+    {
+        $trainerId = Auth::guard('trainer')->user()->id;
+        
+        $payments = DB::table('trainer_payments')->
+                    where('trainer_id', $trainerId)->
+                    select('trainer_payments.id as paymentId', 'trainer_payments.*')->
+                    get();
+        // dd($payments);
+        return view('trainer.payment_details.index',compact('payments'));
+    }
+    public function loadNotifications()
+    {
+        return view('trainer.notifications.index');
+    }
+    public function loadFeedbacks()
+    {
+        return view('trainer.feedbacks.index');
+    }
+    public function loadShifts()
+    {
+        $trainerId = Auth::guard('trainer')->user()->id;
+        
+        $shifts = DB::table('trainer_shifts')->
+                    join('trainer_shifts_type', 'trainer_shifts_type.id', '=', 'trainer_shifts.shift_type_id')->
+                    where('trainer_id', $trainerId)->
+                    get();
+
+        return view('trainer.shifts.index',compact('shifts'));
     }
 }

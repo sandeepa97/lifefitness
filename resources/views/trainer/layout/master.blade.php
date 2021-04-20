@@ -63,27 +63,27 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link" href="{{url('admin/online-coach')}}">
+        <a class="nav-link" href="{{url('trainer/workout-schedules')}}">
           <i class="fas fa-fw fa-table"></i>
           <span>Workout Schedules</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{url('admin/online-coach')}}">
+        <a class="nav-link" href="{{url('trainer/shifts')}}">
           <i class="fas fa-fw fa-table"></i>
           <span>Available Shifts</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{url('admin/online-coach')}}">
+        <a class="nav-link" href="{{url('trainer/payments')}}">
           <i class="fas fa-fw fa-table"></i>
           <span>Payment Details</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{url('admin/online-coach')}}">
+        <a class="nav-link" href="{{url('trainer/notifications')}}">
           <i class="fas fa-fw fa-table"></i>
           <span>Notifications</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{url('admin/online-coach')}}">
+        <a class="nav-link" href="{{url('trainer/feedbacks')}}">
           <i class="fas fa-fw fa-table"></i>
           <span>Feedbacks & Reviews</span></a>
       </li>

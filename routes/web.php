@@ -123,4 +123,9 @@ Route::get('member/get-all-feedbacks', 'Member\MemberFeedbackController@getAllme
 
 
 //Trainer ->
-Route::resource('trainer-dashboard', 'Trainer\TrainerDashboardController'); 
+Route::resource('trainer-dashboard', 'Trainer\TrainerDashboardController');
+Route::get('trainer/workout-schedules', 'Trainer\TrainerDashboardController@loadWorkoutSchedules');  
+Route::get('trainer/shifts', 'Trainer\TrainerDashboardController@loadWorkoutSchedules');  
+Route::get('trainer/payments', 'Trainer\TrainerDashboardController@loadPaymentDetails');  
+Route::get('trainer/notifications', 'Trainer\TrainerDashboardController@loadNotifications');  
+Route::get('trainer/shifts', 'Trainer\TrainerDashboardController@loadShifts');  
