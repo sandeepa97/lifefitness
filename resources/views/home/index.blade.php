@@ -62,7 +62,6 @@
                             
 							</div>
 							<a href="#" class = "link">Forgot password?</a>
-							<a href="{{url('/member-login')}}" class = "btn btn-sm btn-primary">Member Login</a>
 						</form>
 					</div>
 				</div>

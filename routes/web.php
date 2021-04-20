@@ -110,6 +110,8 @@ Route::get('member/payment-details', 'Member\MemberDashboardController@loadPayme
 Route::get('member/notifications', 'Member\MemberDashboardController@loadNotifications'); 
 Route::get('member/feedbacks-reviews', 'Member\MemberDashboardController@loadFeedbacks'); 
 Route::get('member/online-coach', 'Member\MemberDashboardController@loadOnlineCoach'); 
+Route::resource('member/feedbacks', 'Member\MemberFeedbackController'); 
+Route::get('member/get-all-feedbacks', 'Member\MemberFeedbackController@getAllmemberFeedbacks'); 
 
 
 //Trainer ->

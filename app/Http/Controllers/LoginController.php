@@ -30,7 +30,10 @@ class LoginController extends Controller
             // Authentication passed...
             return redirect()->intended('admin-dashboard');
         }
-        
+        else if (Auth::guard('member')->attempt($credentials)) {
+            
+                return redirect()->intended('member-dashboard');
+            }
         return Redirect::to("login")->withSuccess('Invalid Email or Password');
         // echo '<script type="text/javascript">';
         // echo ' alert("Invalid Email or Password")';

@@ -14,29 +14,29 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form data-parsley-validate="" id="frmcreatenotice">
+            <form data-parsley-validate="" id="frmcreatefeedback">
                 <div class="modal-body">
                     {{csrf_field()}}
                     <div class="form-group">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <label for="notice_subject">Subject</label>
-                                    <input type="text" name="notice_subject" id="notice_subject" class="form-control" placeholder="Subject"/>
+                                    <label for="feedback_subject">Subject</label>
+                                    <input type="text" name="feedback_subject" id="feedback_subject" class="form-control" placeholder="Subject"/>
                                     </select>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <label for="notice_content">Content</label>
-                                    <textarea name="notice_content" id="notice_content" cols="30" rows="6" class="form-control"></textarea>
-                                    <!-- <input type="text" name="notice_content" id="notice_content"  class="form-control"> -->
+                                    <label for="feedback_content">Content</label>
+                                    <textarea name="feedback_content" id="feedback_content" cols="30" rows="6" class="form-control"></textarea>
+                                    <!-- <input type="text" name="feedback_content" id="feedback_content"  class="form-control"> -->
                                 </div>
                             </div>
                         </div>
-                                <input type="hidden" class="form-control" id="notice_date" name="notice_date" placeholder="Publish Date" 
+                                <input type="hidden" class="form-control" id="feedback_date" name="feedback_date" placeholder="Publish Date" 
                                 step = "any" value="<?php echo date('Y-m-d'); ?>">
 
-                                <input type="hidden" class="form-control" id="notice_time" name="notice_time" placeholder="Publish Time"
+                                <input type="hidden" class="form-control" id="feedback_time" name="feedback_time" placeholder="Publish Time"
                                 step = "any" value="<?php echo date('h:i:s'); ?>">
 
                 </div>
@@ -56,30 +56,20 @@
 
 
 <script>
-var baseUrl = '{{url('/')}}';
 
-$.ajax({
-  type: 'GET',
-  url: baseUrl+'/admin/get-all-notices',
-  success: function(res){
-    var notice = res.data;
-    for (var x = 0; x<20; x++)
-    {
-      var html = '<div class="col-md-12">';
-	  html += '<h2>'+notice[x].notice_subject+'</h2>';
-	  html += '<p>'+notice[x].notice_content+'</p>';
-	  html += '<div>';
-    html += '<div class="pull-right"><span class="badge badge-success">'+notice[x].notice_type.notice_type+'</span></div>   ';
-	  html += '<span class="badge">Posted '+notice[x].updated_at+'</span>';
-	  html += '</div>';
-	  html += '<hr>';
-	  html += '</div>';
-
-
-      $('#notice_posts').append(html);
-    }
-  }
-});
+    $('#frmcreatefeedback').submit(function(e){
+        e.preventDefault();
+        $.ajax({
+            url: "{{ url('/member/feedbacks')}}",
+            type: 'POST',
+            data: $('#frmcreatefeedback').serialize(),
+            success: function(response){
+                console.log(response.msg);
+                alert(response.msg);
+                location.reload();
+            }
+        });
+    });
 
 </script>
 
