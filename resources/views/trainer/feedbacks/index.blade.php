@@ -1,4 +1,4 @@
-@extends('member.layout.master')
+@extends('trainer.layout.master')
 @section('content')
 <div class="container">
     <div class="row">
@@ -57,7 +57,7 @@
     $('#frmcreatefeedback').submit(function(e){
         e.preventDefault();
         $.ajax({
-            url: "{{ url('/member/feedbacks')}}",
+            url: "{{ url('/trainer/feedbacks')}}",
             type: 'POST',
             data: $('#frmcreatefeedback').serialize(),
             success: function(response){

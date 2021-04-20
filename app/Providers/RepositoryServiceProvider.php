@@ -20,6 +20,7 @@ use App\Repositories\Contract\OnlineCoachRepositoryInterface;
 use App\Repositories\Contract\TrainerPaymentRepositoryInterface;
 
 use App\Repositories\Contract\MemberFeedbackRepositoryInterface;
+use App\Repositories\Contract\TrainerFeedbackRepositoryInterface;
 
 use App\Repositories\UserRepository;
 use App\Repositories\MemberRepository;
@@ -39,6 +40,7 @@ use App\Repositories\OnlineCoachRepository;
 use App\Repositories\TrainerPaymentRepository;
 
 use App\Repositories\MemberFeedbackRepository;
+use App\Repositories\TrainerFeedbackRepository;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -80,6 +82,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(TrainerPaymentRepositoryInterface::class, TrainerPaymentRepository::class);
 
         $this->app->bind(MemberFeedbackRepositoryInterface::class, MemberFeedbackRepository::class);
+        $this->app->bind(TrainerFeedbackRepositoryInterface::class, TrainerFeedbackRepository::class);
 
     }
 }

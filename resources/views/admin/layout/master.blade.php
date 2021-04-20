@@ -225,7 +225,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="{{url('admin/member-feedbacks')}}">
+        <a class="nav-link" href="{{url('admin/trainer-feedbacks')}}">
           <i class="fas fa-fw fa-table"></i>
           <span>Trainer Feedbacks</span></a>
       </li>
@@ -454,10 +454,6 @@
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                   Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">

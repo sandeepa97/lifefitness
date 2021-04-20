@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h3>Member Feedbacks & Reviews</h3>
+            <h3>Trainer Feedbacks & Reviews</h3>
         </div>
     </div>
 
@@ -32,7 +32,7 @@ var baseUrl = '{{url('/')}}';
 
 $.ajax({
   type: 'GET',
-  url: baseUrl+'/member/get-all-feedbacks',
+  url: baseUrl+'/trainer/get-all-feedbacks',
   success: function(res){
     var feedback = res.data;
     for (var x = 0; x<20; x++)
@@ -42,7 +42,7 @@ $.ajax({
 	  html += '<p>'+feedback[x].feedback_content+'</p>';
 	  html += '<div>';
 	  html += '<span class="badge" id="fb_id" data-id="'+feedback[x].id+'">'+feedback[x].id+'</span>';
-	  html += '<span class="badge">Feedback by '+feedback[x].member.fname+' '+feedback[x].member.lname+'</span>';
+	  html += '<span class="badge">Feedback by '+feedback[x].trainer.fname+' '+feedback[x].trainer.lname+'</span>';
 	  html += '<div class =  "text-right">';
 	  html += '<span class="badge">Posted on '+feedback[x].feedback_date+' at '+feedback[x].feedback_time+'</span>';
 	  html += '<a href="" class="ml-4 remove_feedback btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>';
@@ -72,7 +72,7 @@ $.ajax({
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                   type: 'DELETE',
-                  url: baseUrl+'/member/feedbacks/'+feedback_id,
+                  url: baseUrl+'/trainer/feedbacks/'+feedback_id,
                   success: function(res){
                       alert(res.msg);
                       setTimeout(function(){

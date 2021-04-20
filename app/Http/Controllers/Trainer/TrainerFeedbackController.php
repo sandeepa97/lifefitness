@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Member;
+namespace App\Http\Controllers\Trainer;
 
 use App\Services\ApiResponseService;
-use App\Services\MemberFeedbackService;
+use App\Services\TrainerFeedbackService;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class MemberFeedbackController extends Controller
+class TrainerFeedbackController extends Controller
 {
 
 
-    protected $memberFeedbackService;
+    protected $trainerFeedbackService;
 
 
     protected $apiResponse;
@@ -19,10 +19,10 @@ class MemberFeedbackController extends Controller
 
 
     function __construct(
-        MemberFeedbackService $memberFeedback,
+        TrainerFeedbackService $trainerFeedback,
         ApiResponseService $apiResponseService
     ) {
-        $this->memberFeedbackService = $memberFeedback;
+        $this->trainerFeedbackService = $trainerFeedback;
         $this->apiResponse = $apiResponseService;
     }
 
@@ -36,8 +36,8 @@ class MemberFeedbackController extends Controller
     public function store(Request $request)
     {
         try{
-            $memberFeedback = $this->memberFeedbackService->store($request->all());
-            return $this->apiResponse->success(200,$memberFeedback, 'Member Feedback Posted Successfully');
+            $trainerFeedback = $this->trainerFeedbackService->store($request->all());
+            return $this->apiResponse->success(200,$trainerFeedback, 'Trainer Feedback Posted Successfully');
         }catch(\Exception $e){
             return $this->apiResponse->failed($e, 500, 'Error Occured');
         }
@@ -75,8 +75,8 @@ class MemberFeedbackController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            $memberFeedbacks = $this->memberFeedbackService->update($request->all(), $id);
-            return $this->apiResponse->success(200, $memberFeedbacks, 'Member Feedback has been updated');
+            $trainerFeedbacks = $this->trainerFeedbackService->update($request->all(), $id);
+            return $this->apiResponse->success(200, $trainerFeedbacks, 'Trainer Feedback has been updated');
         } catch (\Exception $e) {
             dd($e->getMessage());
             return $this->apiResponse->failed($e, 500, 'Error ocurred');
@@ -92,26 +92,26 @@ class MemberFeedbackController extends Controller
     public function destroy($id)
     {
         try {
-            $this->memberFeedbackService->delete($id);
-            return $this->apiResponse->success(200, [], 'Member Feedback has been deleted');
+            $this->trainerFeedbackService->delete($id);
+            return $this->apiResponse->success(200, [], 'Trainer Feedback has been deleted');
         } catch (\Exception $e) {
-            return $this->apiResponse->failed($e, 500, 'Member Feedback has not been deleted');
+            return $this->apiResponse->failed($e, 500, 'Trainer Feedback has not been deleted');
         }
     }
 
-    public function getAllMemberFeedbacks()
+    public function getAllTrainerFeedbacks()
     {
         try {
-            $memberFeedbacks = $this->memberFeedbackService->fetchAll();
-            return response()->json(['data' => $memberFeedbacks]);
+            $trainerFeedbacks = $this->trainerFeedbackService->fetchAll();
+            return response()->json(['data' => $trainerFeedbacks]);
         } catch (\Exception $e) {
             return $this->apiResponse->failed($e, 500, 'Error Occured');
         }
     }
 
-    public function loadMemberFeedbacksAdmin()
+    public function loadTrainerFeedbacksAdmin()
     {
-        return view('admin.feedbacks.member');
+        return view('admin.feedbacks.trainer');
     }
 
 }

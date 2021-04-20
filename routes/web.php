@@ -15,7 +15,6 @@ Route::get('/store','Store\StoreController@index' );
 Route::get('/coaching','Coaching\CoachController@index' );
 
 //login and logout process
-Route::get('login', 'LoginController@index');
 Route::post('post-login', 'LoginController@postLogin');
 Route::post('post-member-login', 'LoginController@postMemberLogin');
 
@@ -108,6 +107,8 @@ Route::get('admin/get-all-online-coach-packages', 'OnlineCoachPackageController@
 
 //Admin -> Member Feedbacks & Reviews
 Route::get('admin/member-feedbacks', 'Member\MemberFeedbackController@loadMemberFeedbacksAdmin'); 
+//Admin -> Trainer Feedbacks & Reviews
+Route::get('admin/trainer-feedbacks', 'Trainer\TrainerFeedbackController@loadTrainerFeedbacksAdmin'); 
 
 
 //Member ->
@@ -118,7 +119,7 @@ Route::get('member/notifications', 'Member\MemberDashboardController@loadNotific
 Route::get('member/feedbacks-reviews', 'Member\MemberDashboardController@loadFeedbacks'); 
 Route::get('member/online-coach', 'Member\MemberDashboardController@loadOnlineCoach'); 
 Route::resource('member/feedbacks', 'Member\MemberFeedbackController'); 
-Route::get('member/get-all-feedbacks', 'Member\MemberFeedbackController@getAllmemberFeedbacks'); 
+Route::get('member/get-all-feedbacks', 'Member\MemberFeedbackController@getAllMemberFeedbacks'); 
 
 
 
@@ -129,3 +130,6 @@ Route::get('trainer/shifts', 'Trainer\TrainerDashboardController@loadWorkoutSche
 Route::get('trainer/payments', 'Trainer\TrainerDashboardController@loadPaymentDetails');  
 Route::get('trainer/notifications', 'Trainer\TrainerDashboardController@loadNotifications');  
 Route::get('trainer/shifts', 'Trainer\TrainerDashboardController@loadShifts');  
+Route::get('trainer/feedbacks-reviews', 'Trainer\TrainerDashboardController@loadFeedbacks');  
+Route::resource('trainer/feedbacks', 'Trainer\TrainerFeedbackController');
+Route::get('trainer/get-all-feedbacks', 'Trainer\TrainerFeedbackController@getAllTrainerFeedbacks');  
