@@ -1,17 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Member;
-
+namespace App\Http\Controllers;
 use App\Services\ApiResponseService;
-use App\Services\MemberFeedbackService;
-use App\Http\Controllers\Controller;
+use App\Services\TrainerPaymentService;
 use Illuminate\Http\Request;
 
-class MemberFeedbackController extends Controller
+class TrainerPaymentController extends Controller
 {
 
-
-    protected $memberFeedbackService;
+    protected $trainerPaymentService;
 
 
     protected $apiResponse;
@@ -19,13 +16,29 @@ class MemberFeedbackController extends Controller
 
 
     function __construct(
-        MemberFeedbackService $memberFeedback,
+        TrainerPaymentService $trainerPayment,
         ApiResponseService $apiResponseService
     ) {
-        $this->memberFeedbackService = $memberFeedback;
+        $this->trainerPaymentService = $trainerPayment;
         $this->apiResponse = $apiResponseService;
     }
 
+
+
+    public function index()
+    {
+        return view('admin.trainer_payments.index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,10 +48,16 @@ class MemberFeedbackController extends Controller
      */
     public function store(Request $request)
     {
-        try{
-            $memberFeedback = $this->memberFeedbackService->store($request->all());
-            return $this->apiResponse->success(200,$memberFeedback, 'Member Feedback Posted Successfully');
-        }catch(\Exception $e){
+        // dd($request);
+        try {
+            
+            $trainerPayments = $this->trainerPaymentService->store($request->all());
+            return $this->apiResponse->success(200, $trainerPayments, 'Trainer Payment Added Successfully');
+        } catch (\Exception $e) {
+            
+            // dd($trainerPayments);
+            // dd($e->getMessage());
+            dd($e);
             return $this->apiResponse->failed($e, 500, 'Error Occured');
         }
     }
@@ -75,8 +94,8 @@ class MemberFeedbackController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            $memberFeedbacks = $this->memberFeedbackService->update($request->all(), $id);
-            return $this->apiResponse->success(200, $memberFeedbacks, 'Member Feedback has been updated');
+            $trainerPayments = $this->trainerPaymentService->update($request->all(), $id);
+            return $this->apiResponse->success(200, $trainerPayments, 'Trainer Payment has been updated');
         } catch (\Exception $e) {
             dd($e->getMessage());
             return $this->apiResponse->failed($e, 500, 'Error ocurred');
@@ -92,26 +111,19 @@ class MemberFeedbackController extends Controller
     public function destroy($id)
     {
         try {
-            $this->memberFeedbackService->delete($id);
-            return $this->apiResponse->success(200, [], 'Member Feedback has been deleted');
+            $this->trainerPaymentService->delete($id);
+            return $this->apiResponse->success(200, [], 'Trainer Payment has been deleted');
         } catch (\Exception $e) {
-            return $this->apiResponse->failed($e, 500, 'Member Feedback has not been deleted');
+            return $this->apiResponse->failed($e, 500, 'Trainer Payment has not been deleted');
         }
     }
-
-    public function getAllmemberFeedbacks()
+    public function getAllTrainerPayments()
     {
         try {
-            $memberFeedbacks = $this->memberFeedbackService->fetchAll();
-            return response()->json(['data' => $memberFeedbacks]);
+            $trainerPayments = $this->trainerPaymentService->fetchAll();
+            return response()->json(['data' => $trainerPayments]);
         } catch (\Exception $e) {
             return $this->apiResponse->failed($e, 500, 'Error Occured');
         }
     }
-
-    public function loadMemberFeedbacksAdmin()
-    {
-        return view('admin.feedbacks.member');
-    }
-
 }

@@ -87,6 +87,10 @@ Route::get('admin/get-all-inventory', 'InventoryController@getAllInventory');
 Route::get('admin/get-all-inventory-category', 'InventoryItemCategoryController@index');
 Route::get('admin/get-next-service', 'InventoryController@getNextService');
 
+// Admin -> Trainer Payments
+Route::resource('admin/trainer-payments','TrainerPaymentController');
+Route::get('admin/get-all-trainer-payments','TrainerPaymentController@getAllTrainerPayments');
+
 //Admin -> Fitness Blog
 Route::resource('admin/fitness-blog', 'FitnessBlogController');
 Route::get('admin/get-all-fitness-blog', 'FitnessBlogController@getAllBlogs');

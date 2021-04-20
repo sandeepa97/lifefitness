@@ -214,6 +214,11 @@
       </li>
 
       <li class="nav-item">
+        <a class="nav-link" href="{{url('admin/trainer-payments')}}">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Trainer Payments</span></a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="{{url('admin/member-feedbacks')}}">
           <i class="fas fa-fw fa-table"></i>
           <span>Member Feedbacks</span></a>

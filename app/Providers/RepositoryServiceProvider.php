@@ -17,6 +17,7 @@ use App\Repositories\Contract\WorkoutScheduleRepositoryInterface;
 use App\Repositories\Contract\OnlineStoreRepositoryInterface;
 use App\Repositories\Contract\FitnessBlogRepositoryInterface;
 use App\Repositories\Contract\OnlineCoachRepositoryInterface;
+use App\Repositories\Contract\TrainerPaymentRepositoryInterface;
 
 use App\Repositories\Contract\MemberFeedbackRepositoryInterface;
 
@@ -35,6 +36,7 @@ use App\Repositories\WorkoutScheduleRepository;
 use App\Repositories\OnlineStoreRepository;
 use App\Repositories\FitnessBlogRepository;
 use App\Repositories\OnlineCoachRepository;
+use App\Repositories\TrainerPaymentRepository;
 
 use App\Repositories\MemberFeedbackRepository;
 
@@ -75,6 +77,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(OnlineStoreRepositoryInterface::class, OnlineStoreRepository::class);
         $this->app->bind(FitnessBlogRepositoryInterface::class, FitnessBlogRepository::class);
         $this->app->bind(OnlineCoachRepositoryInterface::class, OnlineCoachRepository::class);
+        $this->app->bind(TrainerPaymentRepositoryInterface::class, TrainerPaymentRepository::class);
 
         $this->app->bind(MemberFeedbackRepositoryInterface::class, MemberFeedbackRepository::class);
 
