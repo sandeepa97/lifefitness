@@ -195,10 +195,10 @@
 
     // });
 
-            //Submit Status
-            $('#frmgymstatus').submit(function(e){
-            e.preventDefault();
-                var statusID = 1;
+      //Submit Status
+      $('#frmgymstatus').submit(function(e){
+      e.preventDefault();
+          var statusID = 1;
 
             $.ajax({
                 type: 'PUT',

@@ -6,6 +6,7 @@ use App\Services\ApiResponseService;
 use App\Services\MemberFeedbackService;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use DB;
 
 class MemberFeedbackController extends Controller
 {
@@ -112,6 +113,23 @@ class MemberFeedbackController extends Controller
     public function loadMemberFeedbacksAdmin()
     {
         return view('admin.feedbacks.member');
+    }
+
+    public function getAllFeedbacksCount()
+    {
+        try {
+            $feedbackCount = DB::select(
+            "   SELECT COUNT(id) total_feedbacks
+                FROM member_feedbacks
+             "
+            );
+
+            return response()->json(['data' => $feedbackCount]);
+
+        } catch (\Exception $e) {
+            // dd($e);
+            return $this->apiResponse->failed($e, 500, 'Error Occured');
+        }
     }
 
 }

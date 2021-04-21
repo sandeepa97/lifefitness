@@ -51,10 +51,10 @@ Route::get('admin/get-all-exercises', 'ExerciseController@getAllExercises');
 
 //Admin -> Notice Functions
 Route::resource('admin/notices', 'NoticeController');
-// Route::get('admin/post-notice', 'NoticeController@postNotice');
 Route::get('admin/get-all-notices', 'NoticeController@getAllNotices');
 Route::get('admin/get-all-notice-types', 'NoticeTypeController@index');
 Route::get('admin/get-all-notice-recipients', 'NoticeRecipientController@index');
+Route::get('admin/get-all-notice-count', 'NoticeController@getAllNoticesCount');
 
 //Admin -> Member Status Functions
 Route::resource('admin/member-status', 'MemberStatusController');
@@ -125,6 +125,7 @@ Route::get('member/feedbacks-reviews', 'Member\MemberDashboardController@loadFee
 Route::get('member/online-coach', 'Member\MemberDashboardController@loadOnlineCoach'); 
 Route::resource('member/feedbacks', 'Member\MemberFeedbackController'); 
 Route::get('member/get-all-feedbacks', 'Member\MemberFeedbackController@getAllMemberFeedbacks'); 
+Route::get('member/get-all-feedbacks-count', 'Member\MemberFeedbackController@getAllFeedbacksCount'); 
 
 
 

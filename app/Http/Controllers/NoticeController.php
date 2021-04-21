@@ -6,7 +6,7 @@ use App\Services\ApiResponseService;
 use App\Services\NoticeService;
 
 use Illuminate\Http\Request;
-
+use DB;
 class NoticeController extends Controller
 {
 
@@ -35,10 +35,6 @@ class NoticeController extends Controller
     public function index()
     {
         return view('admin.notices.index');
-    }
-    public function postNotice()
-    {
-        return view('admin.notices.postNotice');
     }
 
     /**
@@ -129,6 +125,22 @@ class NoticeController extends Controller
             $notices = $this->noticeService->fetchAll();
             return response()->json(['data' => $notices]);
         } catch (\Exception $e) {
+            return $this->apiResponse->failed($e, 500, 'Error Occured');
+        }
+    }
+    public function getAllNoticesCount()
+    {
+        try {
+            $noticesCount = DB::select(
+            "   SELECT COUNT(id) total_notices
+                FROM notices
+             "
+            );
+
+            return response()->json(['data' => $noticesCount]);
+
+        } catch (\Exception $e) {
+            // dd($e);
             return $this->apiResponse->failed($e, 500, 'Error Occured');
         }
     }
