@@ -13,11 +13,11 @@
                     <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <input type="text"  class="form-control" id="editfname" name="fname" placeholder="First Name" readonly>
+                                    <input type="text"  class="form-control" id="editfnamet" name="fname" placeholder="First Name" readonly>
                                 </div>
                                 <input type="hidden" name="hdntrainerid" id="hdntrainerid"/>
                                 <div class="col-md-6">
-                                    <input type="text"  class="form-control" id="editlname" name="lname" placeholder="Last Name" readonly>
+                                    <input type="text"  class="form-control" id="editlnamet" name="lname" placeholder="Last Name" readonly>
                                 </div>
                             </div>
                         </div>

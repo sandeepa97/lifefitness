@@ -32,6 +32,7 @@ class TrainerRepository implements TrainerRepositoryInterface
         $trainers->address = $data['address'];
         $trainers->contact = $data['contact'];
         $trainers->email = $data['email'];
+        // $trainers->password = bcrypt($data['password']);
         $trainers->updated_by = Auth::id();
         $trainers->save();
         return $trainers;

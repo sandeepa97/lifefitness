@@ -152,8 +152,8 @@
         e.preventDefault();
         var data1 = $('#trainertable').DataTable().row($(this).parents('tr')).data();
        
-        $('#editfname').val(data1.fname);
-        $('#editlname').val(data1.lname);
+        $('#editfnamet').val(data1.fname);
+        $('#editlnamet').val(data1.lname);
         $('#hdntrainerid').val(data1.id);
         $('#trainereditmodal').modal('toggle');
 
