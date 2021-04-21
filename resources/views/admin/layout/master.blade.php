@@ -65,39 +65,20 @@
         MAIN
       </div>
 
-      <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link" href="{{url('admin/members')}}">
           <i class="fas fa-fw fa-cog"></i>
-          <span>Member Details</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <!-- <h6 class="collapse-header">Custom Components:</h6> -->
-            <a class="collapse-item" href="{{url('admin/members')}}">View Members</a>
-            <a class="collapse-item" id="member-add" href="#">Add Member</a>
-          </div>
-        </div>
+          <span>Member Management</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{url('admin/payments')}}">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Payments</span></a>
       </li>
 
-      <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities1" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>Payments</span>
-        </a>
-        <div id="collapseUtilities1" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-            <!-- <h6 class="collapse-header">Custom Components:</h6> -->
-            <a class="collapse-item" href="{{url('admin/payments')}}">View Payments</a>
-            <a class="collapse-item" id="member-add" href="#">Mark Payment</a>
-          </div>
-        </div>
-      </li>
-      <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities2" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-wrench"></i>
+          <i class="fas fa-fw fa-cog"></i>
           <span>Member Attendance</span>
         </a>
         <div id="collapseUtilities2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
@@ -105,57 +86,29 @@
             <!-- <h6 class="collapse-header">Custom Components:</h6> -->
             <a class="collapse-item" href="{{url('admin/member-attendance')}}">Mark Member Attendance</a>
             <a class="collapse-item" href="{{url('admin/view-member-attendance')}}">View Member Attendance</a>
-            <a class="collapse-item" id="member-add" href="#">Quick Attendance Mark</a>
           </div>
         </div>
       </li>
-      <!-- Nav Item - Utilities Collapse Menu -->
+
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities3" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>Workout Schedules</span>
-        </a>
-        <div id="collapseUtilities3" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-            <!-- <h6 class="collapse-header">Custom Components:</h6> -->
-            <a class="collapse-item" href="{{url('admin/schedules')}}">View Schedules</a>
-            <a class="collapse-item" id="member-add" href="#">Add Schedule</a>
-            <a class="collapse-item" id="member-add" href="#">Assign Schedule</a>
-          </div>
-        </div>
+        <a class="nav-link" href="{{url('admin/schedules')}}">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Workout Schedules</span></a>
       </li>
-      <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities4" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>Push Notices</span>
-        </a>
-        <div id="collapseUtilities4" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-            <!-- <h6 class="collapse-header">Custom Components:</h6> -->
-            <a class="collapse-item" href="{{url('admin/notices')}}">View Notices</a>
-            <a class="collapse-item" id="member-add" href="{{url('admin/post-notice')}}">Post Notice</a>
-            <!-- <a class="collapse-item" id="member-add" href="#">Gym Status</a> -->
-          </div>
-        </div>
+        <a class="nav-link" href="{{url('admin/notices')}}">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Notices</span></a>
       </li>
-      <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities5" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>Member Status</span>
-        </a>
-        <div id="collapseUtilities5" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-            <!-- <h6 class="collapse-header">Custom Components:</h6> -->
-            <a class="collapse-item" href="{{url('admin/member-status')}}">View Member Status</a>
-          </div>
-        </div>
+        <a class="nav-link" href="{{url('admin/member-status')}}">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Member Status</span></a>
       </li>
-      <!-- Nav Item - Utilities Collapse Menu -->
+
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities6" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-wrench"></i>
+          <i class="fas fa-fw fa-cog"></i>
           <span>Management Reports</span>
         </a>
         <div id="collapseUtilities6" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
@@ -165,68 +118,39 @@
             <a class="collapse-item"  href="{{url('admin/reports-payment')}}">Payment Reports</a>
             <a class="collapse-item"  href="{{url('admin/reports-attendance')}}">Attendance Reports</a>
             <a class="collapse-item"  href="{{url('admin/reports-member')}}">Member Reports</a>
-            <a class="collapse-item"  href="#">Inventory Reports</a>
-          </div>
-        </div>
-      </li>
-      <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities7" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>Trainer Shifts</span>
-        </a>
-        <div id="collapseUtilities7" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-            <!-- <h6 class="collapse-header">Custom Components:</h6> -->
-            <a class="collapse-item" href="{{url('admin/trainer-shifts')}}">View Ongoing Shifts</a>
-            <a class="collapse-item" id="member-add" href="#">Assign Shifts</a>
-          </div>
-        </div>
-      </li>
-      <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities8" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>Inventory</span>
-        </a>
-        <div id="collapseUtilities8" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-            <!-- <h6 class="collapse-header">Custom Components:</h6> -->
-            <a class="collapse-item" href="{{url('admin/inventory')}}">View Inventory</a>
-            <a class="collapse-item" id="member-add" href="#">Add Equipment</a>
-            <a class="collapse-item" id="member-add" href="#">View Service Dates</a>
-          </div>
-        </div>
-      </li>
-      <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities9" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>Trainers</span>
-        </a>
-        <div id="collapseUtilities9" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-            <!-- <h6 class="collapse-header">Custom Components:</h6> -->
-            <a class="collapse-item" href="{{url('admin/trainers')}}">View Trainers</a>
-            <a class="collapse-item" id="member-add" href="#">Add Trainer</a>
+            <!-- <a class="collapse-item"  href="#">Inventory Reports</a> -->
           </div>
         </div>
       </li>
 
       <li class="nav-item">
+        <a class="nav-link" href="{{url('admin/trainer-shifts')}}">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Trainer Shifts</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{url('admin/inventory')}}">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Inventory</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{url('admin/trainers')}}">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Trainers</span></a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="{{url('admin/trainer-payments')}}">
-          <i class="fas fa-fw fa-table"></i>
+          <i class="fas fa-fw fa-cog"></i>
           <span>Trainer Payments</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{url('admin/member-feedbacks')}}">
-          <i class="fas fa-fw fa-table"></i>
+          <i class="fas fa-fw fa-cog"></i>
           <span>Member Feedbacks</span></a>
       </li>
-
       <li class="nav-item">
         <a class="nav-link" href="{{url('admin/trainer-feedbacks')}}">
-          <i class="fas fa-fw fa-table"></i>
+          <i class="fas fa-fw fa-cog"></i>
           <span>Trainer Feedbacks</span></a>
       </li>
 
@@ -238,34 +162,16 @@
         OTHER
       </div>
 
-      <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+        <a class="nav-link" href="{{url('admin/fitness-blog')}}">
           <i class="fas fa-fw fa-folder"></i>
-          <span>Fitness Blog</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="{{url('admin/fitness-blog')}}">View Blog</a>
-            <a class="collapse-item" href="#">Add Post</a>
-          </div>
-        </div>
+          <span>Fitness Blog</span></a>
       </li>
-
-      <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePagesStore" aria-expanded="true" aria-controls="collapsePages">
+        <a class="nav-link" href="{{url('admin/online-store')}}">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Online Store</span></a>
-          <div id="collapsePagesStore" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="{{url('admin/online-store')}}">View Store</a>
-            <a class="collapse-item" href="#">Add Item</a>
-          </div>
-        </div>
       </li>
-
-      <!-- Nav Item - Tables -->
       <li class="nav-item">
         <a class="nav-link" href="{{url('admin/online-coach')}}">
           <i class="fas fa-fw fa-table"></i>
