@@ -19,12 +19,11 @@
 
 	<div class="container">
 <div id="blog_posts">
+	<hr>
 
-<div class="col-md-12">
 
 	<!-- dynamic blog content -->
 
-</div>
 </div>
 
 </div>
@@ -45,7 +44,7 @@ $.ajax({
     for (var x = 0; x<20; x++)
     {
       var html = '<div class="col-md-12">';
-	  html += '<h2>'+blog[x].blog_subject+'</h2>';
+	  html += '<h4>'+blog[x].blog_subject+'</h4>';
 	  html += '<p>'+blog[x].blog_content+'</p>';
 	  html += '<div>';
 	  html += '<span class="badge">Posted '+blog[x].updated_at+'</span>';

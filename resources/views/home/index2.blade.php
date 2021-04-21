@@ -1292,8 +1292,8 @@ input {
       <div class="col1 clearfix">
         <li class="tile tile-big tile-5" data-page-type="r-page" data-page-name="random-r-page">
           <div>
-          <p><span class="glyphicon glyphicon-asterisk"></span>LIFE FITNESS GYMS</p>
-          <!-- <img src="img/logo-t.png" alt="Life Fitness Gyms"> -->
+          <!-- <p><span class="glyphicon glyphicon-asterisk"></span>LIFE FITNESS GYMS</p> -->
+          <img src="img/logo-t.png" alt="Life Fitness Gyms">
           </div>
         </li>
         <li class="tile tile-small title tile-2" data-page-type="s-page" data-page-name="random-r-page">

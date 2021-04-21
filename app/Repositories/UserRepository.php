@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Repositories\Contract\UserRepositoryInterface;
 use App\User;
-
+use Illuminate\Support\Facades\Auth;
 class UserRepository implements UserRepositoryInterface
 {
 
@@ -54,12 +54,8 @@ class UserRepository implements UserRepositoryInterface
         $user = User::find($id);
         $user->fname = $data['fname'];
         $user->lname = $data['lname'];
-        $user->gender = $data['lname'];
-        $user->nic = $data['lname'];
-        $user->address = $data['lname'];
-        $user->contact = $data['mobile'];
         $user->email = $data['email'];
-        $user->password = bcrypt($data['txtpasswords']);
+        $user->password = bcrypt($data['password']);
         $user->updated_by = Auth::id();
         $user->save();
         return $user;

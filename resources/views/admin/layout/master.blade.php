@@ -447,11 +447,11 @@
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="{{url('admin/profile')}}">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="{{url('admin/settings')}}">
                   <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                   Settings
                 </a>
@@ -543,12 +543,12 @@
   <script type="text/javascript">
     var baseUrl = '{{url('/')}}';
 
-    $('#member-add').click(function(){
-            $('#memberaddmodal').modal('toggle');
-        });
+    // $('#member-add').click(function(){
+    //         $('#memberaddmodal').modal('toggle');
+    //     });
   </script>
-{{-- Include User Modal --}}
-@include('admin.member.components.member-add-modal')
+  
+<!-- @include('admin.member.components.member-add-modal') -->
 
   @yield('custom-js')
 
