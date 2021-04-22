@@ -73,23 +73,24 @@
                 var html ='';
                 html+='<option value="0">Member ID</option>';
                 for(var x=0; x<memberData.length; x++){
-                    html+='<option value="'+memberData[x].id+'">'+memberData[x].id+'</option>';
+                    html+='<option value="'+memberData[x].id+'">'+memberData[x].id+' '+memberData[x].fname+' '+memberData[x].lname+'</option>';
                 }
                $('#member_id').html(html);
-                // #First Name
-                var html ='';
-                html+='<option value="0">First Name</option>';
-                for(var x=0; x<memberData.length; x++){
-                    html+='<option value="'+memberData[x].id+'">'+memberData[x].fname+'</option>';
-                }
-               $('#fname').html(html);
-                // #Last Name
-                var html ='';
-                html+='<option value="0">Last Name</option>';
-                for(var x=0; x<memberData.length; x++){
-                    html+='<option value="'+memberData[x].id+'">'+memberData[x].lname+'</option>';
-                }
-               $('#lname').html(html);
+               $('#member_id').select2();
+            //     // #First Name
+            //     var html ='';
+            //     html+='<option value="0">First Name</option>';
+            //     for(var x=0; x<memberData.length; x++){
+            //         html+='<option value="'+memberData[x].id+'">'+memberData[x].fname+'</option>';
+            //     }
+            //    $('#fname').html(html);
+            //     // #Last Name
+            //     var html ='';
+            //     html+='<option value="0">Last Name</option>';
+            //     for(var x=0; x<memberData.length; x++){
+            //         html+='<option value="'+memberData[x].id+'">'+memberData[x].lname+'</option>';
+            //     }
+            //    $('#lname').html(html);
             }
 
         });

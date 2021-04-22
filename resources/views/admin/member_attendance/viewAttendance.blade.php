@@ -55,9 +55,10 @@
                 var html = '';
                 html += '<option value="0">Member ID</option>';
                 for(var x=0; x<memberData.length; x++){
-                    html+='<option value="'+memberData[x].id+'">'+ memberData[x].id+'</option>';
+                    html+='<option value="'+memberData[x].id+'">'+memberData[x].id+' '+memberData[x].fname+' '+memberData[x].lname+'</option>';
                 }
                 $('#member_id').html(html);
+                $('#member_id').select2();
             }
         });
 

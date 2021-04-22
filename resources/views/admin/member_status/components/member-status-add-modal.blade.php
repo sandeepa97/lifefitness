@@ -15,7 +15,7 @@
                                 <div class="col-md-6">
                                     <label for="member_id">Member ID</label>
                                     <!-- <input type="text"  class="form-control" id="member_id" name="member_id" placeholder="Member ID"> -->
-                                    <select name="member_id"  id="member_id" class="form-control">
+                                    <select name="member_id"  id="member_id" class="form-control" style="width: 75%">
                                     </select>
                                 </div>
                             </div>

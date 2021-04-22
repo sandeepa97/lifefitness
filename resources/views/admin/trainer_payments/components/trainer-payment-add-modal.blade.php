@@ -15,7 +15,7 @@
                                 <div class="col-md-6">
                                     <label for="trainer_id">Trainer Name</label> <br>
                                     <!-- <input type="text"  class="form-control" id="trainer_id" name="trainer_id" placeholder="trainer ID"> -->
-                                    <select name="trainer_id"  id="trainer_id" class="form-control">
+                                    <select name="trainer_id"  id="trainer_id" class="form-control" style="width: 75%">
                                     </select>
                                 </div>
                             </div>

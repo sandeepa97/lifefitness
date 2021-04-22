@@ -15,7 +15,7 @@
                                 <div class="col-md-6">
                                     <label for="member_id">Member ID</label>
                                     <!-- <input type="text"  class="form-control" id="member_id" name="member_id" placeholder="Member ID"> -->
-                                    <select name="member_id"  id="member_id" class="form-control">
+                                    <select name="member_id"  id="member_id" class="form-control" style="width: 75%">
                                     </select>
                                 </div>
                             </div>
@@ -40,7 +40,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="date">Date</label>
-                                <input type="date" class="form-control" id="date" name="date" placeholder="Date">
+                                <input type="date" class="form-control" id="date" name="date" placeholder="Date" value="<?php echo date('Y-m-d'); ?>">
                             </div>
                             <div class="col-md-4">
                                 <label for="payment_type">Payment Type</label>
