@@ -9,6 +9,7 @@ Route::get('/home','Home\HomeController@index2' );
 Route::get('/about','Home\HomeController@about' );
 Route::get('/contact','Home\HomeController@contact' );
 Route::get('/member-login','Home\HomeController@memberLogin' );
+Route::post('home/forgot-password', 'Member\MemberFeedbackController@forgotPassword'); 
 
 Route::get('/blog','Blog\BlogController@index' );
 Route::get('/store','Store\StoreController@index' );
@@ -112,6 +113,7 @@ Route::get('admin/settings', 'UserSettingsController@loadSettings');
 
 //Admin -> Member Feedbacks & Reviews
 Route::get('admin/member-feedbacks', 'Member\MemberFeedbackController@loadMemberFeedbacksAdmin'); 
+
 //Admin -> Trainer Feedbacks & Reviews
 Route::get('admin/trainer-feedbacks', 'Trainer\TrainerFeedbackController@loadTrainerFeedbacksAdmin'); 
 

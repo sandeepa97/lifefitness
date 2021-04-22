@@ -6,6 +6,7 @@ use App\Services\ApiResponseService;
 use App\Services\MemberFeedbackService;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\MemberFeedback;
 use DB;
 
 class MemberFeedbackController extends Controller
@@ -132,4 +133,20 @@ class MemberFeedbackController extends Controller
         }
     }
 
+
+
+    public function forgotPassword(Request $data)
+    {
+        $array = [
+            'member_id'=>"Guest",
+            'feedback_subject'=>"Forgot Password",
+            'feedback_content'=>"Member ID:".$data['user_id']." FName:".$data['fname']." LName:".$data['lname']." NIC:".$data['nic']." Email:".$data['email'],
+            'feedback_date'=>date('Y-m-d'),
+            'feedback_time'=>date('h:i:s'),
+        ];
+
+        // dd($array);
+        MemberFeedback::create($array);
+        return redirect('/');
+    }
 }

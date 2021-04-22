@@ -61,7 +61,7 @@
                                 <!-- <input type="submit" value="Login" class="btn float-left login_btn"> -->
                             
 							</div>
-							<a href="#" class = "link">Forgot password?</a>
+							<a href="#" id = "forgot-password" class = "link">Forgot password?</a>
 						</form>
 					</div>
 				</div>
@@ -76,6 +76,8 @@
 
 </div>
 
+@include('home.components.forgot-password-modal')
+
 <script type="text/javascript">
 
 		var today = new Date();
@@ -86,6 +88,26 @@
 
 		document.getElementById("dateTime").innerHTML = dateTime;
 
+        //Forgot Password
+        $('#forgot-password').click(function(){
+            $('#forgotaddmodal').modal('toggle');
+        });
+
+        // $('#frmforgotpwd').submit(function(e){
+        //     e.preventDefault();
+		// 	var data = $('#frmforgotpwd').serializeArray();
+		// 	console.log(data);
+        //     $.ajax({
+				
+        //         // url: "{{ url('/member/feedbacks/')}}",
+        //         // type: 'POST',
+        //         // data: $('#frmforgotpwd').serialize(),
+        //         // success: function(response){
+        //         //     alert(response.msg);
+        //         //     location.reload();
+        //         // }
+        //     });
+        // });
 
 </script>
 
