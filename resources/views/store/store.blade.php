@@ -22,15 +22,19 @@
     <!-- dynamic card contents -->
 
 </div>
-
+<hr>
 </div>
-
+@include('home.components.forgot-password-modal')
 @endsection
 
 @section('custom-js')
 
 
 <script>
+        //Forgot Password
+        $('#forgot-password1').click(function(){
+            $('#forgotaddmodal').modal('toggle');
+        });
 var baseUrl = '{{url('/')}}';
 
 $.ajax({
@@ -41,7 +45,7 @@ $.ajax({
     for (var x = 0; x<20; x++)
     {
       // var html = '<div class="card" style="width: 18rem;">';
-      var html = '<div class="col-md-6 col-lg-4 col-12">';
+      var html = '<div class="col-md-6 col-lg-4 col-12 mt-3">';
       html += '<div class="card" style="width: 18rem;">';
       html += '<img class="card-img-top" height="170px" src="'+store[x].img_url+'" alt="Card image cap">';
       html += '<div id="module" class="card-body">';
@@ -55,7 +59,7 @@ $.ajax({
       html += '</ul>';
       html += '<div class="card-body mt-0">';
       html += '<a href="#" class="card-link"><span class="badge badge-warning">'+store[x].item_category.category_name+'</span></a>';
-      html += '<a href="#" class="card-link"><span class="badge badge-primary">Buy</span></a>';
+      html += '<a href="" class="card-link" id = "forgot-password1"><span class="badge badge-primary">Buy</span></a>';
       html += '</div>';
       html += '</div>';
       html += '</div>';
@@ -64,6 +68,8 @@ $.ajax({
     }
   }
 });
+
+
 
 </script>
 

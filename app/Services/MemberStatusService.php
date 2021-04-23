@@ -40,6 +40,11 @@ class MemberStatusService implements ServiceInterface
      */
     public function store($data)
     {
+        // dd($data);
+        // $height = $data->height_cm;
+        // $weight = $data->weight_kg;
+        // $bmi = ($weight/($height/100)**2);
+
         $array = [
             'member_id'=>$data['member_id'],
             'height_cm'=>$data['height_cm'],
@@ -48,6 +53,7 @@ class MemberStatusService implements ServiceInterface
             'member_status_type_id'=>$data['member_status_type_id'],
 
         ];
+        
         return $this->memberStatusRepository->create($array);
     }
 

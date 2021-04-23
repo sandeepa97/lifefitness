@@ -35,7 +35,7 @@
         <i class="fas fa-phone" style="color:#000"></i> <a href="tel:+94377254789"> +94 377 254789 </a><br>
         <i class="fab fa-whatsapp" style="color:#000"></i><a href="tel:+94777658745"> +94 777 658745 </a><br>
         <h4 class="pt-2">Email</h4>
-        <i class="fa fa-envelope" style="color:#000"></i> <a href="">lifefitness@gmail.com</a><br>
+        <i class="fa fa-envelope" style="color:#000"></i> <a href="mailto:lifefitness@gmail.com">lifefitness@gmail.com</a><br>
       </div>
   </div>
 </div>
