@@ -93,21 +93,6 @@
             $('#forgotaddmodal').modal('toggle');
         });
 
-        // $('#frmforgotpwd').submit(function(e){
-        //     e.preventDefault();
-		// 	var data = $('#frmforgotpwd').serializeArray();
-		// 	console.log(data);
-        //     $.ajax({
-				
-        //         // url: "{{ url('/member/feedbacks/')}}",
-        //         // type: 'POST',
-        //         // data: $('#frmforgotpwd').serialize(),
-        //         // success: function(response){
-        //         //     alert(response.msg);
-        //         //     location.reload();
-        //         // }
-        //     });
-        // });
 
 </script>
 

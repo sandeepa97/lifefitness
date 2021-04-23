@@ -15,7 +15,10 @@
 </div>
 <div class="container">
 	<h1>FITNESS BLOG</h1>
-	<!-- <img src="img/img2.jpg" width="800px"> -->
+	<img src="img/banner.jpg" width="500px">
+	<h4>Regardless of where you’re at on your fitness journey today, welcome to our Fitness Blog here in Life Fitness Gyms.</h4>
+	<h5>We started this blog because We wanted to provide a fun place for everyone to learn about health and fitness and live better lives.
+As our motto here, “we don’t care where you came from, only where you’re going.”</h5>
 
 	<div class="container">
 <div id="blog_posts">

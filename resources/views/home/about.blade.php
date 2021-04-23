@@ -26,11 +26,18 @@
        <small class="text-uppercase" style="color: #E91C23;">LIFE FITNESS GYMS</small>
        <h1 class="h2 mb-4" style="font-weight: 600;">What <span style="color: #E91C23;">We</span> Do</h1>
        <p class="text-secondary" style="line-height: 2;">
-	   CrossFit is a cutting-edge functional fitness system that can help everyday men. There is a significant portion of the population here in World, that actually want and need success to be hard!
+       We mainly provide services such as fitness training, martial arts, dancing, importing supplements and selling goods. Apart from that we helps our customers in other ways such as cardio training, weight loss programs, muscle building, strength training, diet plans/ nutrition and endurance training.
 	 </p>
        <a href="#" style="background-color: #E91C23; width: 240px;" class="btn px-4 py-3 mt-4 text-white d-flex align-items-center justify-content-between">
-        <span>Our Services</span>
-		<i class="fas fa-dumbbell"></i>
+       <i class="fas fa-dumbbell"></i>
+        <span><b>Our Services</b> <br>
+          Cardio Training <br>
+          Weight Loss <br>
+          Muscle Building <br>
+          Strength Training <br>
+          Diet & Nutrition
+        </span>
+		  <i class="fas fa-dumbbell"></i>
       </a>
      </div>
      <div class="col-md-6 p-0 text-center order-1 order-sm-2">
@@ -44,11 +51,13 @@
       <small class="text-uppercase" style="color: #E91C23;">LIFE FITNESS GYMS</small>
       <h1 class="h2 mb-4" style="font-weight: 600;">Who <span style="color: #E91C23;">We</span> Are</h1>
       <p class="text-secondary" style="line-height: 2;">
-	  CrossFit is a cutting-edge functional fitness system that can help everyday men. There is a significant portion of the population here in World, that actually want and need success to be hard!
-	  </p>
+      New Life Fitness Gyms (Pvt) Ltd is a fitness company founded in 2010 and we are located in Kurunegala and We are one of the leading fitness companies in the city. We usually open from 5am to 10pm on weekdays and 6am – 8pm on weekends.
+  	  </p>
       <a href="#" style="background-color: #E91C23; width: 240px;" class="btn px-4 py-3 mt-4 text-white d-flex align-items-center justify-content-between">
-        <span>Our Mission</span>
-		<i class="fas fa-dumbbell"></i>
+      <i class="fas fa-dumbbell"></i>
+        <span><b>Our Mission</b> <br>
+        Help People to achieve life long benefits in body, mind and spirit.</span>
+		  <i class="fas fa-dumbbell"></i>
       </a>
     </div>
    </div>
