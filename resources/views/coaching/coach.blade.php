@@ -15,7 +15,14 @@
 </div>
 <div class="container">
 	<h1>ONLINE COACHING</h1>
-	<img src="img/img4.jpg" width="800px">
+	<img src="img/banner2.jpg" width="500px">
+    <h4>Staying in shape is the best investment you will ever make and we are here to make sure your time and efforts are put into action and use, with two programs to chose from. Our services are Personalized, Affordable and Guaranteed.</h4>
+    <hr>
+    <h5>AFFORDABLE : Affordable Programs made to your budget. No overspending on over priced food. Easy and convenient diet plans made to your EASE.</h5>
+    <h5>PERSONALISED: We will be committed with you throughout the phase of your Goal Weight, NO 1 month based limitations, offer a full time commitment, You get what you pay for, with full time whatsapp support, necessary schedule changes and dedicated follow ups.</h5>
+    <h5>GURANTEED RESULTS : You get what you pay for, that’s results. Unlike more other programs, what’s unique in our program is that the program is valid till the given goal weight is achieved.</h5>
+    <hr>
+    <div class="m-5"><h5>Join our Online Coaching program today and change your lifestyle for the better.</h5></div>
 
 	<div class="modal-content">
             <div class="modal-header">

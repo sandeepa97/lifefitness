@@ -15,7 +15,8 @@
 </div>
 <div class="container">
 	<h1>ONLINE STORE</h1>
-
+<h4>Your lifestyle may not encourage you to be healthy—but we will. We provide the tools and items needed for a transformational workout experience no matter your age or fitness level.</h4>
+<hr>
 <div class="row" id="item_card">
 
     <!-- dynamic card contents -->
@@ -42,7 +43,7 @@ $.ajax({
       // var html = '<div class="card" style="width: 18rem;">';
       var html = '<div class="col-md-6 col-lg-4 col-12">';
       html += '<div class="card" style="width: 18rem;">';
-      html += '<img class="card-img-top" src="'+store[x].img_url+'" alt="Card image cap">';
+      html += '<img class="card-img-top" height="170px" src="'+store[x].img_url+'" alt="Card image cap">';
       html += '<div id="module" class="card-body">';
       html += '<h5 class="card-title">'+store[x].item_name+'</h5>';
       html += '<p class="card-text collapse" id="collapseExample" aria-expanded="false">'+store[x].item_description+'</p>';
