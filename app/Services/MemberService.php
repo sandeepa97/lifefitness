@@ -39,7 +39,7 @@ class MemberService implements ServiceInterface
      * @return void
      */
     public function store($data)
-    {
+    {   
         $array = [
             'fname' => $data['fname'],
             'lname' => $data['lname'],

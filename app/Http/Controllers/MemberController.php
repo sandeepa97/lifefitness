@@ -49,7 +49,18 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        // 
+        // $data = [
+        //     'fname' => 'required',
+        //     'lname' => 'required',
+        //     'nic' => 'required',
+        //     'address' => 'required',
+        //     'contact' => 'required',
+        //     'email' => 'required',
+        //     'password' => 'required',
+        //     'confirm' => 'required',
+        // ];
+        // $this->validate($request, $data);
+
         try {
             
             $members = $this->memberService->store($request->all());

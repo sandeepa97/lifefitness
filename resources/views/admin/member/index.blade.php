@@ -45,6 +45,13 @@
 
 @section('custom-js')
 <script type="text/javascript">
+
+    //Form Validations
+    $(function(){
+        $('#frmcreatemember').parsley();
+    });
+
+
     $(document).ready(function(){
 
 

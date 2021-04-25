@@ -25,7 +25,14 @@
   <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-
+  <!-- Validation Styles -->
+  <style>
+		.parsley-errors-list li{
+			color : red;
+			list-style : none;
+		}
+	</style>
+  
   @yield('custom-css')
 
 
@@ -378,6 +385,9 @@
   <script src="{{url('js/demo/chart-pie-demo.js')}}"></script>
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
   <script src="{{asset('js/library/jquery.confirm.js')}}"></script>
+
+  <!-- Validation Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js" integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ==" crossorigin="anonymous"></script>
   
   <script type="text/javascript">
     var baseUrl = '{{url('/')}}';

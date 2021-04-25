@@ -43,16 +43,16 @@
 		<div class = "login-form">
 				<div class="card">
 					<div class="card-body">
-						<form action="{{url('post-login')}}" method="POST">
+						<form id="login-form" action="{{url('post-login')}}" method="POST">
 
 						{{ csrf_field() }}
 
 							<div class="input-group form-group">
-								<input type="text" class="form-control" placeholder="email" name="email" required="required">	
+								<input type="text" class="form-control" placeholder="email" name="email" required data-parsley-type="email" data-parsley-trigger="keyup">	
 	  
 							</div>
 							<div class="input-group form-group">
-								<input type="password" class="form-control" placeholder="password" name="password" required="required">
+								<input type="password" class="form-control" placeholder="password" name="password" required data-parsley-trigger="keyup">
 		
 							</div>
 							<div class="form-group">
@@ -93,6 +93,10 @@
             $('#forgotaddmodal').modal('toggle');
         });
 
+		//Login Form Validation
+		$(function(){
+			$('#login-form').parsley();
+		});
 
 </script>
 
