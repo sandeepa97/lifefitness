@@ -47,10 +47,47 @@
 <script type="text/javascript">
 
     //Form Validations
-    $(function(){
-        $('#frmcreatemember').parsley();
-    });
+    // $(function(){
+    //     $('#frmcreatemember').parsley()
+    //     // if ($('#frmcreatemember').parsley().isValid()){
+    //     //     preventDefault();
+    //     //     $('#frmcreatemember').submit(function(e){
+    //     //     e.preventDefault();
+    //     //     $.ajax({
+    //     //         url: "{{ url('/admin/members/')}}",
+    //     //         type: 'POST',
+    //     //         data: $('#frmcreatemember').serialize(),
+    //     //         success: function(response){
+    //     //             alert(response.msg);
+    //     //             location.reload();
+    //     //         }
+    //     //     });
+    //     // });
+    //     // } else {
+    //     //     //
+    //     // }
 
+    // });
+
+    $(function () {
+        $('#frmcreatemember').parsley().on('field:validated', function() {
+            var ok = $('.parsley-error').length === 0;
+            $('.bs-callout-info').toggleClass('d-none', !ok);
+            $('.bs-callout-warning').toggleClass('d-none', ok);
+        })
+        .on('form:submit', function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: "{{ url('/admin/members/')}}",
+                type: 'POST',
+                data: $('#frmcreatemember').serialize(),
+                success: function(response){
+                    alert(response.msg);
+                    location.reload();
+                }
+            });
+        });
+    });
 
     $(document).ready(function(){
 
@@ -83,18 +120,18 @@
             $('#memberaddmodal').modal('toggle');
         });
 
-        $('#frmcreatemember').submit(function(e){
-            e.preventDefault();
-            $.ajax({
-                url: "{{ url('/admin/members/')}}",
-                type: 'POST',
-                data: $('#frmcreatemember').serialize(),
-                success: function(response){
-                    alert(response.msg);
-                    location.reload();
-                }
-            });
-        });
+        // $('#frmcreatemember').submit(function(e){
+        //     e.preventDefault();
+        //     $.ajax({
+        //         url: "{{ url('/admin/members/')}}",
+        //         type: 'POST',
+        //         data: $('#frmcreatemember').serialize(),
+        //         success: function(response){
+        //             alert(response.msg);
+        //             location.reload();
+        //         }
+        //     });
+        // });
 
 
     // Delete Member Record
@@ -117,7 +154,7 @@
                       alert(res.msg);
                       setTimeout(function(){
                         location.reload();
-                      },2000)
+                      },1000)
                   }
               })
             },
@@ -164,7 +201,7 @@
                         alert(response.msg);
                         setTimeout(function(){
                             location.reload();
-                        },2000);
+                        },1000);
                     }else{
                         alert(response.msg);
                     }
