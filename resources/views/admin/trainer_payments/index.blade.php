@@ -65,6 +65,7 @@
 
 
         $('#paymenttable').DataTable({
+            "pageLength": 15,
 
         ajax: baseUrl+'/admin/get-all-trainer-payments',
         columns: 

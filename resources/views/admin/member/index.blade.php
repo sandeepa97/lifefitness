@@ -68,6 +68,7 @@
 
 
         $('#membertable').DataTable({
+        "pageLength": 15,
 
         ajax: baseUrl+'/admin/get-all-members',
         columns: 

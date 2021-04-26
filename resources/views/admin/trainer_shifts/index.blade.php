@@ -48,6 +48,7 @@
 <script type="text/javascript">
 
 $('#shifttable').DataTable({
+    "pageLength": 15,
 
 ajax: baseUrl+'/admin/get-all-trainer-shifts',
 columns: 

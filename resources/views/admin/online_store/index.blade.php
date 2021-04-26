@@ -45,7 +45,7 @@
 <script type="text/javascript">
 
 $('#storetable').DataTable({
-
+"pageLength": 15,
 ajax: baseUrl+'/admin/get-all-online-store',
 columns: 
         [

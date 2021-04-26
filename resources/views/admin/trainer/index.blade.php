@@ -49,6 +49,7 @@
 
 
         $('#trainertable').DataTable({
+            "pageLength": 15,
 
         ajax: baseUrl+'/admin/get-all-trainers',
         columns: 
@@ -76,16 +77,34 @@
             $('#traineraddmodal').modal('toggle');
         });
 
-        $('#frmcreatetrainer').submit(function(e){
-            e.preventDefault();
-            $.ajax({
-                url: "{{ url('/admin/trainers/')}}",
-                type: 'POST',
-                data: $('#frmcreatetrainer').serialize(),
-                success: function(response){
-                    alert(response.msg);
-                    location.reload();
-                }
+        // $('#frmcreatetrainer').submit(function(e){
+        //     e.preventDefault();
+        //     $.ajax({
+        //         url: "{{ url('/admin/trainers/')}}",
+        //         type: 'POST',
+        //         data: $('#frmcreatetrainer').serialize(),
+        //         success: function(response){
+        //             alert(response.msg);
+        //             location.reload();
+        //         }
+        //     });
+        // });
+
+        //Form Validation + Add Trainer
+        $(document).ready(function(){
+            $('#frmcreatetrainer').on('submit',function(e) {
+            e.preventDefault(); 
+            if ( $('#frmcreatetrainer').parsley().isValid() ) {
+                $.ajax({
+                    url: "{{ url('/admin/trainers/')}}",
+                    type: 'POST',
+                    data: $('#frmcreatetrainer').serialize(),
+                    success: function(response){
+                        alert(response.msg);
+                        location.reload();
+                    }
+                });
+            }
             });
         });
 
@@ -144,11 +163,35 @@
 
 
         //Edit trainer
-        $('#editfrmtrainer').submit(function(e){
-            e.preventDefault();
-                var trainerId = $('#hdntrainerid').val();
+        // $('#editfrmtrainer').submit(function(e){
+        //     e.preventDefault();
+        //         var trainerId = $('#hdntrainerid').val();
 
-            $.ajax({
+            // $.ajax({
+            //     type: 'PUT',
+            //     url: baseUrl+'/admin/trainers/'+trainerId,
+            //     data: $('#editfrmtrainer').serialize(),
+            //     success: function(response){
+            //         if(response.success==true){
+            //             alert(response.msg);
+            //             setTimeout(function(){
+            //                 location.reload();
+            //             },1000);
+            //         }else{
+            //             alert(response.msg);
+            //         }
+            //     }
+
+            // })
+        // });
+
+        //Form Validation + Edit Trainer
+        $(document).ready(function(){
+            $('#editfrmtrainer').on('submit',function(e) {
+            e.preventDefault();
+            var trainerId = $('#hdntrainerid').val(); 
+            if ( $('#editfrmtrainer').parsley().isValid() ) {
+                $.ajax({
                 type: 'PUT',
                 url: baseUrl+'/admin/trainers/'+trainerId,
                 data: $('#editfrmtrainer').serialize(),
@@ -164,6 +207,8 @@
                 }
 
             })
+            }
+            });
         });
 
 

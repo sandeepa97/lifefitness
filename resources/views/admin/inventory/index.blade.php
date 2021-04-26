@@ -46,6 +46,7 @@
 <script type="text/javascript">
 
 $('#inventorytable').DataTable({
+"pageLength": 15,
 
 ajax: baseUrl+'/admin/get-all-inventory',
 columns: 

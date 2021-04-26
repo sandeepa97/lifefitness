@@ -64,8 +64,9 @@
 
         //load data to Table
         $('#attendancetable').DataTable({
-            "paging": false,
+            // "paging": false,
             "bInfo" : false,
+            "pageLength": 15,
             order: [[0, 'desc']],
             ajax: baseUrl+'/admin/get-all-attendance',
             columns:

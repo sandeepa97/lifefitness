@@ -65,7 +65,7 @@
 
 
         $('#membertable').DataTable({
-        
+            "pageLength": 10,
         // "paging": false,
         // "bInfo" : false,
         ajax: baseUrl+'/admin/get-all-members',
@@ -127,7 +127,7 @@
 
 
         $('#trainertable').DataTable({
-        
+            "pageLength": 10,
         // "paging": false,
         // "bInfo" : false,
         ajax: baseUrl+'/admin/get-all-trainers',

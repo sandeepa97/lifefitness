@@ -47,6 +47,7 @@
 
 $('#clienttable').DataTable({
 
+"pageLength": 15,
 ajax: baseUrl+'/admin/get-all-online-clients',
 columns: 
         [

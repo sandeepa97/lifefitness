@@ -42,6 +42,7 @@
 <script type="text/javascript">
 
 $('#blogtable').DataTable({
+"pageLength": 15,
 
 ajax: baseUrl+'/admin/get-all-fitness-blog',
 columns: 

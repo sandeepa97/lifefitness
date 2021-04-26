@@ -68,6 +68,7 @@
 
         //load data to Table
         $('#exercisetable').DataTable({
+            "pageLength": 15,
             ajax: baseUrl+'/admin/get-all-exercises',
             columns:
                 [
@@ -169,6 +170,7 @@
 
         //load data to Schedule Table
         $('#scheduletable').DataTable({
+            "pageLength": 15,
             ajax: baseUrl+'/admin/get-all-schedules',
             columns:
                 [

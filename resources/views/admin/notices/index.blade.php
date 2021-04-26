@@ -82,6 +82,7 @@
         //load data to table
 
         $('#noticetable').DataTable({
+            "pageLength": 15,
 
         ajax: baseUrl+'/admin/get-all-notices',
         columns: 

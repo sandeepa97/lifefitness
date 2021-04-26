@@ -96,6 +96,7 @@
         });
 
         $('#statustable').DataTable({
+            "pageLength": 15,
 
             ajax: baseUrl+'/admin/get-all-member-status',
             columns:

@@ -8,17 +8,17 @@
                 </button>
             </div>
             <form data-parsley-validate="" id="frmcreatetrainer">
-                <div class="modal-body">
+            <div class="modal-body">
                     {{csrf_field()}}
                     <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="fname">First Name</label>
-                                    <input type="text"  class="form-control" id="fname" name="fname" placeholder="First Name">
+                                    <input type="text"  class="form-control" id="fname" name="fname" placeholder="First Name" required data-parsley-pattern="[a-zA-Z ]+$" data-parsley-trigger="keyup">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="lname">Last Name</label>
-                                    <input type="text"  class="form-control" id="lname" name="lname" placeholder="Last Name">
+                                    <input type="text"  class="form-control" id="lname" name="lname" placeholder="Last Name" required data-parsley-pattern="[a-zA-Z ]+$" data-parsley-trigger="keyup">
                                 </div>
                             </div>
                         </div>
@@ -33,11 +33,11 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="nic">NIC</label>
-                                <input type="text" class="form-control" id="nic" name="nic" placeholder="NIC">
+                                <input type="text" class="form-control" id="nic" name="nic" placeholder="NIC" required data-parsley-pattern="[0-9 V]+$" data-parsley-length="[10,12]" data-parsley-trigger="keyup">
                             </div>
                             <div class="col-md-4">
                                 <label for="Address">Address</label>
-                                <input type="text" class="form-control" id="address" name="address" placeholder="Address">
+                                <input type="text" class="form-control" id="address" name="address" placeholder="Address" required data-parsley-pattern="[a-zA-Z ,]+$" data-parsley-trigger="keyup">
                             </div>
 
                         </div>
@@ -46,11 +46,11 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="contact">Contact</label>
-                                <input type="text" name="contact" id="contact" class="form-control" placeholder="Contact"/>
+                                <input type="text" name="contact" id="contact" class="form-control" placeholder="Contact" required data-parsley-pattern="[0-9]+$" data-parsley-length="[10,13]" data-parsley-trigger="keyup"/>
                             </div>
                             <div class="col-md-6">
                                 <label for="email">Email</label>
-                                <input type="email" name="email" id="email" class="form-control" placeholder="Email"/>
+                                <input type="email" name="email" id="email" class="form-control" placeholder="Email" required data-parsley-type="email" data-parsley-trigger="keyup"/>
                             </div>
                         </div>
                     </div>
@@ -58,11 +58,11 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control"  name="password" id="password" placeholder="Password"/>
+                                <input type="password" class="form-control"  name="password" id="password" placeholder="Password" required data-parsley-length="[6,16]" data-parsley-trigger="keyup"/>
                             </div>
                             <div class="col-md-6">
                                 <label for="confirm">Confirm Password</label>
-                                <input type="password" class="form-control" name="confirm" id="confirm" placeholder="Confirm Password"/>
+                                <input type="password" class="form-control" name="confirm" id="confirm" placeholder="Confirm Password" required data-parsley-equalto="#password" data-parsley-trigger="keyup"/>
                             </div>
                         </div>
                     </div>
