@@ -51,13 +51,14 @@
                     <div class="form-group">
                         <div class="row">
                         <div class="col-md-4">
-                                <label for="bmi">Body Mass Index</label>
-                                <input type="text" class="form-control" id="bmi" name="bmi" placeholder="Body Mass Index">
+                                <!-- <label for="bmi">Body Mass Index</label> -->
+                                <input type="hidden" class="form-control" id="bmi" name="bmi" placeholder="Body Mass Index">
                             </div>
                         <div class="col-md-4">
-                                <label for="member_status_type_id">Status</label>
+                                <!-- <label for="member_status_type_id">Status</label>
                                 <select name="member_status_type_id"  id="member_status_type_id" class="form-control">
-                                </select>
+                                </select> -->
+                                <input type="hidden" class="form-control" id="member_status_type_id" name="member_status_type_id" placeholder="Member Status Type">
                             </div>
                         </div>
                     </div>

@@ -80,20 +80,20 @@
         });
         
         // Get All Member Status Types
-        $.ajax({
-            type: 'GET',
-            url: baseUrl+'/admin/get-all-member-status-types',
-            success: function(res){
-                var memberStatusType = res.data;
-                var html ='';
-                html+='<option value="0">Status</option>';
-                for(var x=0; x<memberStatusType.length; x++){
-                    html+='<option value="'+memberStatusType[x].id+'">'+memberStatusType[x].status_type+'</option>';
-                }
-               $('#member_status_type_id').html(html);
-            }
+        // $.ajax({
+        //     type: 'GET',
+        //     url: baseUrl+'/admin/get-all-member-status-types',
+        //     success: function(res){
+        //         var memberStatusType = res.data;
+        //         var html ='';
+        //         html+='<option value="0">Status</option>';
+        //         for(var x=0; x<memberStatusType.length; x++){
+        //             html+='<option value="'+memberStatusType[x].id+'">'+memberStatusType[x].status_type+'</option>';
+        //         }
+        //        $('#member_status_type_id').html(html);
+        //     }
 
-        });
+        // });
 
         $('#statustable').DataTable({
             "pageLength": 15,
@@ -128,6 +128,28 @@
 
         $('#frmcreatememberstatus').submit(function(e){
             e.preventDefault();
+            //BMI calculation
+            var height = $('#height_cm').val();
+            var weight = $('#weight_kg').val();
+            var bmi = (weight/(height/100)**2);
+                // console.log(bmi);
+
+            $('#bmi').val(bmi);
+            if(bmi>=20 && bmi<=25){
+                // console.log("Normal");
+                $('#member_status_type_id').val("1");
+            } else if (bmi<20){
+                // console.log("Underweight");
+                $('#member_status_type_id').val("2");
+            } else if (bmi>=26 && bmi<=30){
+                // console.log("Overweight");
+                $('#member_status_type_id').val("3");
+            } else {
+                // console.log("Obese");
+                $('#member_status_type_id').val("4");
+            }
+            
+
             $.ajax({
                 url: "{{ url('/admin/member-status')}}",
                 type: 'POST',
