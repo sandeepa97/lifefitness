@@ -46,47 +46,22 @@
 @section('custom-js')
 <script type="text/javascript">
 
-    //Form Validations
-    // $(function(){
-    //     $('#frmcreatemember').parsley()
-    //     // if ($('#frmcreatemember').parsley().isValid()){
-    //     //     preventDefault();
-    //     //     $('#frmcreatemember').submit(function(e){
-    //     //     e.preventDefault();
-    //     //     $.ajax({
-    //     //         url: "{{ url('/admin/members/')}}",
-    //     //         type: 'POST',
-    //     //         data: $('#frmcreatemember').serialize(),
-    //     //         success: function(response){
-    //     //             alert(response.msg);
-    //     //             location.reload();
-    //     //         }
-    //     //     });
-    //     // });
-    //     // } else {
-    //     //     //
-    //     // }
-
-    // });
-
-    $(function () {
-        $('#frmcreatemember').parsley().on('field:validated', function() {
-            var ok = $('.parsley-error').length === 0;
-            $('.bs-callout-info').toggleClass('d-none', !ok);
-            $('.bs-callout-warning').toggleClass('d-none', ok);
-        })
-        .on('form:submit', function(e) {
-            e.preventDefault();
-            $.ajax({
-                url: "{{ url('/admin/members/')}}",
-                type: 'POST',
-                data: $('#frmcreatemember').serialize(),
-                success: function(response){
-                    alert(response.msg);
-                    location.reload();
-                }
-            });
+    //Form Validation + Add Member
+    $(document).ready(function(){
+    $('#frmcreatemember').on('submit',function(e) {
+    e.preventDefault(); 
+    if ( $(this).parsley().isValid() ) {
+        $.ajax({
+            url: "{{ url('/admin/members/')}}",
+            type: 'POST',
+            data: $('#frmcreatemember').serialize(),
+            success: function(response){
+                alert(response.msg);
+                location.reload();
+            }
         });
+    }
+    });
     });
 
     $(document).ready(function(){
@@ -188,11 +163,35 @@
 
 
         //Edit Member
-        $('#editfrmmember').submit(function(e){
-            e.preventDefault();
-                var memberId = $('#hdnmemberid').val();
+        // $('#editfrmmember').submit(function(e){
+        //     e.preventDefault();
+        //         var memberId = $('#hdnmemberid').val();
 
-            $.ajax({
+        //     $.ajax({
+        //         type: 'PUT',
+        //         url: baseUrl+'/admin/members/'+memberId,
+        //         data: $('#editfrmmember').serialize(),
+        //         success: function(response){
+        //             if(response.success==true){
+        //                 alert(response.msg);
+        //                 setTimeout(function(){
+        //                     location.reload();
+        //                 },1000);
+        //             }else{
+        //                 alert(response.msg);
+        //             }
+        //         }
+
+        //     })
+        // });
+
+        //Form Validation + Edit Member
+        $(document).ready(function(){
+            $('#editfrmmember').on('submit',function(e) {
+            e.preventDefault();
+            var memberId = $('#hdnmemberid').val(); 
+            if ( $(this).parsley().isValid() ) {
+                $.ajax({
                 type: 'PUT',
                 url: baseUrl+'/admin/members/'+memberId,
                 data: $('#editfrmmember').serialize(),
@@ -205,12 +204,11 @@
                     }else{
                         alert(response.msg);
                     }
-                }
-
-            })
+                 }
+                })
+            }
+            });
         });
-
-
 
 </script>
 @endsection

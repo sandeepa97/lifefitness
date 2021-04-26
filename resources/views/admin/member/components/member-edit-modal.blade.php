@@ -14,12 +14,12 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="fname">First Name</label>
-                                    <input type="text"  class="form-control" id="editfname" name="fname" placeholder="First Name">
+                                    <input type="text"  class="form-control" id="editfname" name="fname" placeholder="First Name" required data-parsley-pattern="[a-zA-Z ]+$" data-parsley-trigger="keyup">
                                 </div>
                                 <input type="hidden" name="hdnmemberid" id="hdnmemberid"/>
                                 <div class="col-md-6">
                                     <label for="lname">Last Name</label>
-                                    <input type="text"  class="form-control" id="editlname" name="lname" placeholder="Last Name">
+                                    <input type="text"  class="form-control" id="editlname" name="lname" placeholder="Last Name" required data-parsley-pattern="[a-zA-Z ]+$" data-parsley-trigger="keyup">
                                 </div>
                             </div>
                         </div>
@@ -34,11 +34,11 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="nic">NIC</label>
-                                <input type="text" class="form-control" id="editnic" name="nic" placeholder="NIC">
+                                <input type="text" class="form-control" id="editnic" name="nic" placeholder="NIC" required data-parsley-pattern="[0-9]+[a-zA-Z ]" data-parsley-trigger="keyup">
                             </div>
                             <div class="col-md-4">
                                 <label for="Address">Address</label>
-                                <input type="text" class="form-control" id="editaddress" name="address" placeholder="Address">
+                                <input type="text" class="form-control" id="editaddress" name="address" placeholder="Address" required data-parsley-pattern="[a-zA-Z ,]+$" data-parsley-trigger="keyup">
                             </div>
 
                         </div>
@@ -47,11 +47,11 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="contact">Contact</label>
-                                <input type="text" name="contact" id="editcontact" class="form-control" placeholder="Contact"/>
+                                <input type="text" name="contact" id="editcontact" class="form-control" placeholder="Contact" required data-parsley-pattern="[0-9]+$" data-parsley-length="[10,13]" data-parsley-trigger="keyup"/>
                             </div>
                             <div class="col-md-6">
                                 <label for="email">Email</label>
-                                <input type="email" name="email" id="editemail" class="form-control" placeholder="Email"/>
+                                <input type="email" name="email" id="editemail" class="form-control" placeholder="Email" required data-parsley-type="email" data-parsley-trigger="keyup"/>
                             </div>
                         </div>
                     </div>

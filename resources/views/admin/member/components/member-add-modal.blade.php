@@ -7,15 +7,15 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-
+<!-- 
             <div class="bs-callout bs-callout-warning d-none">
             <h4>Oh snap!</h4>
-            <p>This form seems to be invalid :(</p>
+            <p>This form seems to be invalid</p>
             </div>
             <div class="bs-callout bs-callout-info d-none">
             <h4>Yay!</h4>
-            <p>Everything seems to be ok :)</p>
-            </div>
+            <p>Everything seems to be ok</p>
+            </div> -->
 
             <form id="frmcreatemember" data-parsley-validate="">
                 <div class="modal-body">
