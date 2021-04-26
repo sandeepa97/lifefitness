@@ -226,9 +226,25 @@
             $('#scheduleaddmodal').modal('toggle');
         });
 
-        $('#frmcreateschedule').submit(function(e){
-            e.preventDefault();
-            $.ajax({
+        // $('#frmcreateschedule').submit(function(e){
+        //     e.preventDefault();
+        //     $.ajax({
+        //         url: "{{url('admin/schedules')}}",
+        //         type: 'POST',
+        //         data: $('#frmcreateschedule').serialize(),
+        //         success: function(response){
+        //             alert(response.msg);
+        //             location.reload();
+        //         }
+        //     });
+        // });
+
+            //Form Validation + Add schedule
+        $(document).ready(function(){
+            $('#frmcreateschedule').on('submit',function(e) {
+            e.preventDefault(); 
+            if ( $('#frmcreateschedule').parsley().isValid() ) {
+                $.ajax({
                 url: "{{url('admin/schedules')}}",
                 type: 'POST',
                 data: $('#frmcreateschedule').serialize(),
@@ -236,6 +252,8 @@
                     alert(response.msg);
                     location.reload();
                 }
+            });
+            }
             });
         });
 
@@ -298,12 +316,36 @@
         });
 
 
-        //Edit Schedule
-        $('#frmeditschedule').submit(function(e){
-            e.preventDefault();
-                var scheduleId = $('#hdnschedule_id').val();
+        // //Edit Schedule
+        // $('#frmeditschedule').submit(function(e){
+        //     e.preventDefault();
+        //         var scheduleId = $('#hdnschedule_id').val();
 
-            $.ajax({
+        //     $.ajax({
+        //         type: 'PUT',
+        //         url: baseUrl+'/admin/schedules/'+scheduleId,
+        //         data: $('#frmeditschedule').serialize(),
+        //         success: function(response){
+        //             if(response.success==true){
+        //                 alert(response.msg);
+        //                 setTimeout(function(){
+        //                     location.reload();
+        //                 },1000);
+        //             }else{
+        //                 alert(response.msg);
+        //             }
+        //         }
+
+        //     })
+        // });
+
+        //Form Validation + Edit schedule
+        $(document).ready(function(){
+            $('#frmeditschedule').on('submit',function(e) {
+            e.preventDefault();
+            var scheduleId = $('#hdnschedule_id').val(); 
+            if ( $('#frmeditschedule').parsley().isValid() ) {
+                $.ajax({
                 type: 'PUT',
                 url: baseUrl+'/admin/schedules/'+scheduleId,
                 data: $('#frmeditschedule').serialize(),
@@ -319,6 +361,8 @@
                 }
 
             })
+            }
+            });
         });
 
 

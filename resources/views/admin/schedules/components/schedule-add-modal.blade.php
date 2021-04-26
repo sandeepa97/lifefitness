@@ -26,11 +26,11 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="reps">Reps</label>
-                                <input type="text" class="form-control" id="reps" name="reps" placeholder="Reps">
+                                <input type="text" class="form-control" id="reps" name="reps" placeholder="Reps" required data-parsley-pattern="[0-9]+$" data-parsley-length="[1,2]" data-parsley-trigger="keyup">
                             </div>
                             <div class="col-md-6">
                                 <label for="sets">Sets</label>
-                                <input type="text" class="form-control" id="sets" name="sets" placeholder="Sets">
+                                <input type="text" class="form-control" id="sets" name="sets" placeholder="Sets" required data-parsley-pattern="[0-9]+$" data-parsley-length="[1,2]" data-parsley-trigger="keyup">
                             </div>
                         </div>
                     </div>
