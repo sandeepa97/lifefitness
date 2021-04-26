@@ -50,7 +50,7 @@
     $(document).ready(function(){
     $('#frmcreatemember').on('submit',function(e) {
     e.preventDefault(); 
-    if ( $(this).parsley().isValid() ) {
+    if ( $('#frmcreatemember').parsley().isValid() ) {
         $.ajax({
             url: "{{ url('/admin/members/')}}",
             type: 'POST',
@@ -190,7 +190,7 @@
             $('#editfrmmember').on('submit',function(e) {
             e.preventDefault();
             var memberId = $('#hdnmemberid').val(); 
-            if ( $(this).parsley().isValid() ) {
+            if ( $('#editfrmmember').parsley().isValid() ) {
                 $.ajax({
                 type: 'PUT',
                 url: baseUrl+'/admin/members/'+memberId,

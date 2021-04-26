@@ -7,7 +7,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-<!-- 
+            <!-- 
             <div class="bs-callout bs-callout-warning d-none">
             <h4>Oh snap!</h4>
             <p>This form seems to be invalid</p>
@@ -43,7 +43,7 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="nic">NIC</label>
-                                <input type="text" class="form-control" id="nic" name="nic" placeholder="NIC" required data-parsley-pattern="[0-9]+[a-zA-Z ]" data-parsley-trigger="keyup">
+                                <input type="text" class="form-control" id="nic" name="nic" placeholder="NIC" required data-parsley-pattern="[0-9 V]+$" data-parsley-length="[10,12]" data-parsley-trigger="keyup">
                             </div>
                             <div class="col-md-4">
                                 <label for="Address">Address</label>

@@ -34,7 +34,7 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="nic">NIC</label>
-                                <input type="text" class="form-control" id="editnic" name="nic" placeholder="NIC" required data-parsley-pattern="[0-9]+[a-zA-Z ]" data-parsley-trigger="keyup">
+                                <input type="text" class="form-control" id="editnic" name="nic" placeholder="NIC" required data-parsley-pattern="[0-9 V]+$" data-parsley-length="[10,12]" data-parsley-trigger="keyup">
                             </div>
                             <div class="col-md-4">
                                 <label for="Address">Address</label>
