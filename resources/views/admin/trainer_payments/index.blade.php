@@ -91,17 +91,36 @@
             $('#paymentaddmodal').modal('toggle');
         });
 
-        $('#frmcreatepayment').submit(function(e){
-            e.preventDefault();
-            $.ajax({
-                url: "{{ url('/admin/trainer-payments')}}",
-                type: 'POST',
-                data: $('#frmcreatepayment').serialize(),
-                success: function(response){
-                    // console.log(response.msg);
-                    alert(response.msg);
-                    location.reload();
-                }
+        // $('#frmcreatepayment').submit(function(e){
+        //     e.preventDefault();
+        //     $.ajax({
+        //         url: "{{ url('/admin/trainer-payments')}}",
+        //         type: 'POST',
+        //         data: $('#frmcreatepayment').serialize(),
+        //         success: function(response){
+        //             // console.log(response.msg);
+        //             alert(response.msg);
+        //             location.reload();
+        //         }
+        //     });
+        // });
+
+            //Form Validation + Add Trainer Payment
+        $(document).ready(function(){
+            $('#frmcreatepayment').on('submit',function(e) {
+            e.preventDefault(); 
+            if ( $('#frmcreatepayment').parsley().isValid() ) {
+                $.ajax({
+                    url: "{{ url('/admin/trainer-payments')}}",
+                    type: 'POST',
+                    data: $('#frmcreatepayment').serialize(),
+                    success: function(response){
+                        // console.log(response.msg);
+                        alert(response.msg);
+                        location.reload();
+                    }
+                });
+            }
             });
         });
 
@@ -149,51 +168,29 @@
         var trainerId = data.trainer_id;
 
 
-         // Get All Trainers
-         $.ajax({
-            type: 'GET',
-            url: baseUrl+'/admin/get-all-trainers',
-            success: function(res){
-                var trainerData = res.data;
-                var html ='';
-                html+='<option value="0">trainer ID</option>';
-                for(var x=0; x<trainerData.length; x++){
-                    if(trainerId==trainerData[x].id){
-                        html+='<option selected value="'+trainerData[x].id+'">'+trainerData[x].id+'</option>';
-                    }else{
-                        html+='<option value="'+trainerData[x].id+'">'+trainerData[x].id+'</option>';
-                    }
-                }
-               $('#edittrainer_id').html(html);
+        //  // Get All Trainers
+        //  $.ajax({
+        //     type: 'GET',
+        //     url: baseUrl+'/admin/get-all-trainers',
+        //     success: function(res){
+        //         var trainerData = res.data;
+        //         var html ='';
+        //         html+='<option value="0">trainer ID</option>';
+        //         for(var x=0; x<trainerData.length; x++){
+        //             if(trainerId==trainerData[x].id){
+        //                 html+='<option selected value="'+trainerData[x].id+'">'+trainerData[x].id+'</option>';
+        //             }else{
+        //                 html+='<option value="'+trainerData[x].id+'">'+trainerData[x].id+'</option>';
+        //             }
+        //         }
+        //        $('#edittrainer_id').html(html);
+        //     }
 
-                // #First Name
-                var html ='';
-                html+='<option value="0">First Name</option>';
-                for(var x=0; x<trainerData.length; x++){
-                    if(trainerId==trainerData[x].id){
-                    html+='<option selected value="'+trainerData[x].id+'">'+trainerData[x].fname+'</option>';
-                    }else{
-                    html+='<option value="'+trainerData[x].id+'">'+trainerData[x].fname+'</option>';
-                    }
-                }
-               $('#editfname').html(html);
-                // #Last Name
-                var html ='';
-                html+='<option value="0">Last Name</option>';
-                for(var x=0; x<trainerData.length; x++){
-                    if(trainerId==trainerData[x].id){
-                    html+='<option selected value="'+trainerData[x].id+'">'+trainerData[x].lname+'</option>';
-                    }else{
-                    html+='<option value="'+trainerData[x].id+'">'+trainerData[x].lname+'</option>';
-                    }
-
-                }
-               $('#editlname').html(html);
-            }
-
-        });
+        // });
               
         $('#hdnpaymentid').val(data.id);
+        $('#edittrainer_id').val(data.trainer.id);
+        $('#edittrainer_name').val(data.trainer.id+' - '+data.trainer.fname+' '+data.trainer.lname);
         // $('#editfname').val(data.trainer.fname);
         // $('#editlname').val(data.trainer.lname);
         $('#editdate').val(data.date);
@@ -203,12 +200,36 @@
         });
 
 
-        //Edit Payment
-        $('#editfrmpayment').submit(function(e){
-            e.preventDefault();
-                var paymentId = $('#hdnpaymentid').val();
+        // //Edit Payment
+        // $('#editfrmpayment').submit(function(e){
+        //     e.preventDefault();
+        //         var paymentId = $('#hdnpaymentid').val();
 
-            $.ajax({
+        //     $.ajax({
+        //         type: 'PUT',
+        //         url: baseUrl+'/admin/trainer-payments/'+paymentId,
+        //         data: $('#editfrmpayment').serialize(),
+        //         success: function(response){
+        //             if(response.success==true){
+        //                 alert(response.msg);
+        //                 setTimeout(function(){
+        //                     location.reload();
+        //                 },1000);
+        //             }else{
+        //                 alert(response.msg);
+        //             }
+        //         }
+
+        //     })
+        // });
+
+        //Form Validation + Edit Trainer Payment
+        $(document).ready(function(){
+            $('#editfrmpayment').on('submit',function(e) {
+            e.preventDefault();
+            var paymentId = $('#hdnpaymentid').val(); 
+            if ( $('#editfrmpayment').parsley().isValid() ) {
+                $.ajax({
                 type: 'PUT',
                 url: baseUrl+'/admin/trainer-payments/'+paymentId,
                 data: $('#editfrmpayment').serialize(),
@@ -223,7 +244,9 @@
                     }
                 }
 
-            })
+                 })
+             }
+            });
         });
 
 

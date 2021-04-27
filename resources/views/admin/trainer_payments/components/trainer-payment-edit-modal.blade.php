@@ -14,10 +14,12 @@
                     <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label for="trainer">Trainer ID</label>
+                                    <label for="trainer">Trainer ID - Name</label>
                                     <!-- <input type="text"  class="form-control" id="edittrainer" name="trainer" placeholder="Member ID"> -->
-                                    <select name="trainer_id"  id="edittrainer_id" class="form-control">
-                                    </select>
+                                    <!-- <select name="trainer_id"  id="edittrainer_id" class="form-control">
+                                    </select> -->
+                                    <input type="hidden" name="trainer_id"  id="edittrainer_id" class="form-control">
+                                    <input type="text" name="trainer_name"  id="edittrainer_name" class="form-control" readonly="readonly">
                                 </div>
                                 <input type="hidden" name="hdnpaymentid" id="hdnpaymentid"/>
                             </div>
@@ -51,7 +53,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="amount">Payment Amount</label>
-                                <input type="text" name="amount" id="editamount" class="form-control" placeholder="Payment Amount"/>
+                                <input type="text" name="amount" id="editamount" class="form-control" placeholder="Payment Amount" required data-parsley-pattern ="[0-9 .]+$" data-parsley-trigger="keyup"/>
                             </div>
                         </div>
                     </div>

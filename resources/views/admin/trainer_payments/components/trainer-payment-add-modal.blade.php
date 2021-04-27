@@ -40,7 +40,8 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="date">Date</label>
-                                <input type="date" class="form-control" id="date" name="date" placeholder="Date">
+                                <input type="date" class="form-control" id="date" name="date" placeholder="Date"
+                                    value="<?php echo date('Y-m-d'); ?>" readonly="readonly">
                             </div>
 
                         </div>
@@ -49,7 +50,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="amount">Payment Amount</label>
-                                <input type="text" name="amount" id="amount" class="form-control" placeholder="Payment Amount"/>
+                                <input type="text" name="amount" id="amount" class="form-control" placeholder="Payment Amount" required data-parsley-pattern ="[0-9]+$" data-parsley-trigger="keyup"/>
                             </div>
                         </div>
                     </div>
