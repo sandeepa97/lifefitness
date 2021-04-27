@@ -40,11 +40,11 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="height_cm">Height (CM)</label>
-                                <input type="text" class="form-control" id="height_cm" name="height_cm" placeholder="Height (CM)">
+                                <input type="text" class="form-control" id="height_cm" name="height_cm" placeholder="Height (CM)" required data-parsley-pattern="[0-9 .]+$" data-parsley-trigger="keyup">
                             </div>
                             <div class="col-md-4">
                                 <label for="weight_kg">Weight (KG)</label>
-                                <input type="text" class="form-control" id="weight_kg" name="weight_kg" placeholder="Weight (KG)">
+                                <input type="text" class="form-control" id="weight_kg" name="weight_kg" placeholder="Weight (KG)" required data-parsley-pattern="[0-9 .]+$" data-parsley-trigger="keyup">
                             </div>
                         </div>
                     </div>

@@ -154,26 +154,26 @@
         var memberStatusTypeId = data.member_status_type_id;
         var memberId = data.member_id;
 
-        // Get All Member Status Types
-        $.ajax({
-            type: 'GET',
-            url: baseUrl+'/admin/get-all-member-status-types',
-            success: function(res){
-                var memberStatusType = res.data;
-                var html ='';
-                html+='<option value="0">Status</option>';
-                for(var x=0; x<memberStatusType.length; x++){
-                    if(memberStatusTypeId==memberStatusType[x].id){
-                    html+='<option selected value="'+memberStatusType[x].id+'">'+memberStatusType[x].status_type+'</option>';
-                    }
-                    else{
-                    html+='<option value="'+memberStatusType[x].id+'">'+memberStatusType[x].status_type+'</option>';
-                    }
-                }
-               $('#editmember_status_type_id').html(html);
-            }
+        // // Get All Member Status Types
+        // $.ajax({
+        //     type: 'GET',
+        //     url: baseUrl+'/admin/get-all-member-status-types',
+        //     success: function(res){
+        //         var memberStatusType = res.data;
+        //         var html ='';
+        //         html+='<option value="0">Status</option>';
+        //         for(var x=0; x<memberStatusType.length; x++){
+        //             if(memberStatusTypeId==memberStatusType[x].id){
+        //             html+='<option selected value="'+memberStatusType[x].id+'">'+memberStatusType[x].status_type+'</option>';
+        //             }
+        //             else{
+        //             html+='<option value="'+memberStatusType[x].id+'">'+memberStatusType[x].status_type+'</option>';
+        //             }
+        //         }
+        //        $('#editmember_status_type_id').html(html);
+        //     }
 
-        });
+        // });
 
          // Get All Members
          $.ajax({
@@ -182,26 +182,27 @@
             success: function(res){
                 var memberData = res.data;
         
-                // #payment_type
                 var html ='';
                 html+='<option value="0">Member ID</option>';
                 for(var x=0; x<memberData.length; x++){
                     if(memberId==memberData[x].id){
-                        html+='<option selected value="'+memberData[x].id+'">'+memberData[x].id+'</option>';
+                        html+='<option selected value="'+memberData[x].id+'">'+memberData[x].id+' - '+memberData[x].fname+' '+memberData[x].lname+'</option>';
                     }else{
                         html+='<option value="'+memberData[x].id+'">'+memberData[x].id+'</option>';
                     }
                 }
-               $('#editmember_id').html(html);
+            //    $('#editmember_id').html(html);
             }
 
         });
         
      
+        $('#editmember_id').val(data.member.id);
+        $('#editmember_name').val(data.member.id+ ' - ' +data.member.fname+' '+data.member.lname);
         $('#hdnmemberstatus_id').val(data.id);
         $('#editheight_cm').val(data.height_cm);
         $('#editweight_kg').val(data.weight_kg);
-        $('#editbmi').val(data.bmi);
+        // $('#editbmi').val(data.bmi);
         $('#memberstatuseditmodal').modal('toggle');
 
         });
@@ -211,6 +212,26 @@
         $('#frmeditmemberstatus').submit(function(e){
             e.preventDefault();
                 var memberStatusId = $('#hdnmemberstatus_id').val();
+                    //BMI calculation
+                var height = $('#editheight_cm').val();
+                var weight = $('#editweight_kg').val();
+                var bmi = (weight/(height/100)**2);
+                    // console.log(bmi);
+
+                $('#editbmi').val(bmi);
+                if(bmi>=20 && bmi<=25){
+                    // console.log("Normal");
+                    $('#editmember_status_type_id').val("1");
+                } else if (bmi<20){
+                    // console.log("Underweight");
+                    $('#editmember_status_type_id').val("2");
+                } else if (bmi>25 && bmi<=30){
+                    // console.log("Overweight");
+                    $('#editmember_status_type_id').val("3");
+                } else {
+                    // console.log("Obese");
+                    $('#editmember_status_type_id').val("4");
+                }
 
             $.ajax({
                 type: 'PUT',

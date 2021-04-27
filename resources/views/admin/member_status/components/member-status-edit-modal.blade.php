@@ -13,10 +13,14 @@
                     <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label for="member_id">Member ID</label>
+                                    <label for="member_id">Member ID - Name</label>
                                     <!-- <input type="text"  class="form-control" id="member_id" name="member_id" placeholder="Member ID"> -->
-                                    <select name="member_id"  id="editmember_id" class="form-control">
-                                    </select>
+                                    <!-- <select name="member_id"  id="editmember_id" class="form-control">
+                                    </select> -->
+                                    <input type="hidden" name="member_id"  id="editmember_id" class="form-control">
+                                    <input type="text" name="member_name"  id="editmember_name" class="form-control" disabled>
+                                    
+                                    
 
                                     <input type="hidden" name="hdnmemberstatus_id" id="hdnmemberstatus_id"/>
                                 </div>
@@ -42,24 +46,25 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="height_cm">Height (CM)</label>
-                                <input type="text" class="form-control" id="editheight_cm" name="height_cm" placeholder="Height (CM)">
+                                <input type="text" class="form-control" id="editheight_cm" name="height_cm" placeholder="Height (CM)" required data-parsley-pattern="[0-9 .]+$" data-parsley-trigger="keyup">
                             </div>
                             <div class="col-md-4">
                                 <label for="weight_kg">Weight (KG)</label>
-                                <input type="text" class="form-control" id="editweight_kg" name="weight_kg" placeholder="Weight (KG)">
+                                <input type="text" class="form-control" id="editweight_kg" name="weight_kg" placeholder="Weight (KG)" required data-parsley-pattern="[0-9 .]+$" data-parsley-trigger="keyup">
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="row">
                         <div class="col-md-4">
-                                <label for="bmi">Body Mass Index</label>
-                                <input type="text" class="form-control" id="editbmi" name="bmi" placeholder="Body Mass Index">
+                                <!-- <label for="bmi">Body Mass Index</label> -->
+                                <input type="hidden" class="form-control" id="editbmi" name="bmi" placeholder="Body Mass Index">
                             </div>
                         <div class="col-md-4">
-                                <label for="member_status_type_id">Status</label>
-                                <select name="member_status_type_id"  id="editmember_status_type_id" class="form-control">
-                                </select>
+                                <!-- <label for="member_status_type_id">Status</label> -->
+                                <!-- <select name="member_status_type_id"  id="editmember_status_type_id" class="form-control">
+                                </select> -->
+                                <input type="hidden" class="form-control" id="editmember_status_type_id" name="member_status_type_id" placeholder="Member Status Type">
                             </div>
                         </div>
                     </div>
