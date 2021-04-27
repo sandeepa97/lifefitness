@@ -61,22 +61,7 @@
                 }
                $('#member_id').html(html);
                $('#member_id').select2();
-            //     // #First Name
-            //     var html ='';
-            //     html+='<option value="0">First Name</option>';
-            //     for(var x=0; x<memberData.length; x++){
-            //         html+='<option value="'+memberData[x].id+'">'+memberData[x].fname+'</option>';
-            //     }
-            //    $('#fname').html(html);
-            //     // #Last Name
-            //     var html ='';
-            //     html+='<option value="0">Last Name</option>';
-            //     for(var x=0; x<memberData.length; x++){
-            //         html+='<option value="'+memberData[x].id+'">'+memberData[x].lname+'</option>';
-            //     }
-            //    $('#lname').html(html);
             }
-
         });
         
         // Get All Member Status Types
@@ -208,30 +193,6 @@
                     }
                 }
                $('#editmember_id').html(html);
-
-            //     // #First Name
-            //     var html ='';
-            //     html+='<option value="0">First Name</option>';
-            //     for(var x=0; x<memberData.length; x++){
-            //         if(memberId==memberData[x].id){
-            //         html+='<option selected value="'+memberData[x].id+'">'+memberData[x].fname+'</option>';
-            //         }else{
-            //         html+='<option value="'+memberData[x].id+'">'+memberData[x].fname+'</option>';
-            //         }
-            //     }
-            //    $('#editfname').html(html);
-            //     // #Last Name
-            //     var html ='';
-            //     html+='<option value="0">Last Name</option>';
-            //     for(var x=0; x<memberData.length; x++){
-            //         if(memberId==memberData[x].id){
-            //         html+='<option selected value="'+memberData[x].id+'">'+memberData[x].lname+'</option>';
-            //         }else{
-            //         html+='<option value="'+memberData[x].id+'">'+memberData[x].lname+'</option>';
-            //         }
-
-            //     }
-            //    $('#editlname').html(html);
             }
 
         });

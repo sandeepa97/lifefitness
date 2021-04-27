@@ -124,16 +124,34 @@
             $('#paymentaddmodal').modal('toggle');
         });
 
-        $('#frmcreatepayment').submit(function(e){
-            e.preventDefault();
-            $.ajax({
-                url: "{{ url('/admin/payments')}}",
-                type: 'POST',
-                data: $('#frmcreatepayment').serialize(),
-                success: function(response){
-                    alert(response.msg);
-                    location.reload();
-                }
+        // $('#frmcreatepayment').submit(function(e){
+        //     e.preventDefault();
+        //     $.ajax({
+        //         url: "{{ url('/admin/payments')}}",
+        //         type: 'POST',
+        //         data: $('#frmcreatepayment').serialize(),
+        //         success: function(response){
+        //             alert(response.msg);
+        //             location.reload();
+        //         }
+        //     });
+        // });
+
+        //Form Validation + Add Payment
+        $(document).ready(function(){
+            $('#frmcreatepayment').on('submit',function(e) {
+            e.preventDefault(); 
+            if ( $('#frmcreatepayment').parsley().isValid() ) {
+                $.ajax({
+                    url: "{{ url('/admin/payments')}}",
+                    type: 'POST',
+                    data: $('#frmcreatepayment').serialize(),
+                    success: function(response){
+                        alert(response.msg);
+                        location.reload();
+                    }
+                 });
+            }
             });
         });
 
@@ -260,12 +278,37 @@
         });
 
 
-        //Edit Payment
-        $('#editfrmpayment').submit(function(e){
-            e.preventDefault();
-                var paymentId = $('#hdnpaymentid').val();
+        // //Edit Payment
+        // $('#editfrmpayment').submit(function(e){
+        //     e.preventDefault();
+        //         var paymentId = $('#hdnpaymentid').val();
 
-            $.ajax({
+        //     $.ajax({
+        //         type: 'PUT',
+        //         url: baseUrl+'/admin/payments/'+paymentId,
+        //         data: $('#editfrmpayment').serialize(),
+        //         success: function(response){
+        //             if(response.success==true){
+        //                 alert(response.msg);
+        //                 setTimeout(function(){
+        //                     location.reload();
+        //                 },2000);
+        //             }else{
+        //                 alert(response.msg);
+        //             }
+        //         }
+
+        //     })
+        // });
+
+
+        //Form Validation + Edit Payment
+        $(document).ready(function(){
+            $('#editfrmpayment').on('submit',function(e) {
+            e.preventDefault();
+            var paymentId = $('#hdnpaymentid').val();
+            if ( $('#editfrmpayment').parsley().isValid() ) {
+                $.ajax({
                 type: 'PUT',
                 url: baseUrl+'/admin/payments/'+paymentId,
                 data: $('#editfrmpayment').serialize(),
@@ -274,13 +317,15 @@
                         alert(response.msg);
                         setTimeout(function(){
                             location.reload();
-                        },2000);
+                        },1000);
                     }else{
                         alert(response.msg);
                     }
                 }
 
             })
+            }
+            });
         });
 
 

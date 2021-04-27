@@ -56,7 +56,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="amount">Payment Amount</label>
-                                <input type="text" name="amount" id="editamount" class="form-control" placeholder="Payment Amount"/>
+                                <input type="text" name="amount" id="editamount" class="form-control" placeholder="Payment Amount" required data-parsley-pattern="[0-9 .]+$" data-parsley-trigger="keyup"/>
                             </div>
                         </div>
                     </div>
