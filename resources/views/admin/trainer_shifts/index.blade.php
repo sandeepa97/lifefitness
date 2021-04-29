@@ -175,9 +175,9 @@ columns:
                 html+='<option value="0">Select Trainer ID</option>';
                 for(var x=0; x<trainerData.length; x++){
                     if(trainerId==trainerData[x].id){
-                        html+='<option selected value="'+trainerData[x].id+'">'+trainerData[x].id+'</option>';
+                        html+='<option selected value="'+trainerData[x].id+'">'+trainerData[x].id+' '+trainerData[x].fname+' '+trainerData[x].lname+'</option>';
                     }else{
-                        html+='<option value="'+trainerData[x].id+'">'+trainerData[x].id+'</option>';
+                        html+='<option value="'+trainerData[x].id+'">'+trainerData[x].id+' '+trainerData[x].fname+' '+trainerData[x].lname+'</option>';
                     }
                 }
                $('#edittrainer_id').html(html);
