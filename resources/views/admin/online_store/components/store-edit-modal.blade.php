@@ -15,7 +15,7 @@
                                 <div class="col-md-6">
                                     <input type="hidden" name="hdnstoreid" id="hdnstoreid"/>
                                     <label for="item_name">Item Name</label>
-                                    <input type="text"  class="form-control" id="edititem_name" name="item_name" placeholder="Item Name">
+                                    <input type="text"  class="form-control" id="edititem_name" name="item_name" placeholder="Item Name" required data-parsley-trigger="keyup">
 
                                 </div>
                                 <div class="col-md-6">
@@ -29,11 +29,11 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="quantity">Description</label>
-                                <input type="text" class="form-control" id="edititem_description" name="item_description" placeholder="Description">
+                                <input type="text" class="form-control" id="edititem_description" name="item_description" placeholder="Description" required data-parsley-trigger="keyup">
                             </div>
                             <div class="col-md-6">
                             <label for="manufacturer">Manufacturer</label>
-                                <input type="text" class="form-control" id="editmanufacturer" name="manufacturer" placeholder="Manufacturer">
+                                <input type="text" class="form-control" id="editmanufacturer" name="manufacturer" placeholder="Manufacturer" required data-parsley-trigger="keyup">
                             </div>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                         <div class="row">
                         <div class="col-md-6">
                                 <label for="price">Price</label>
-                                <input type="text" class="form-control" id="editprice" name="price" placeholder="Price">
+                                <input type="text" class="form-control" id="editprice" name="price" placeholder="Price" required data-parsley-pattern="[0-9 .]+$" data-parsley-trigger="keyup">
                             </div>
                         <!-- <div class="col-md-6">
                                 <label for="img_url">Image</label>

@@ -85,20 +85,42 @@ columns:
             $('#storeaddmodal').modal('toggle');
         });
 
-        $('#frmcreatestore').submit(function(e){
-            e.preventDefault();
-            $.ajax({
-                headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: "{{ url('/admin/online-store')}}",
-                type: 'POST',
-                data: $('#frmcreatestore').serialize(),
-                success: function(response){
-                    // console.log(response.msg);
-                    alert(response.msg);
-                    location.reload();
-                }
+        // $('#frmcreatestore').submit(function(e){
+        //     e.preventDefault();
+        //     $.ajax({
+        //         headers: {
+        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //         },
+        //         url: "{{ url('/admin/online-store')}}",
+        //         type: 'POST',
+        //         data: $('#frmcreatestore').serialize(),
+        //         success: function(response){
+        //             // console.log(response.msg);
+        //             alert(response.msg);
+        //             location.reload();
+        //         }
+        //     });
+        // });
+
+        //Form Validation + Add Item
+        $(document).ready(function(){
+            $('#frmcreatestore').on('submit',function(e) {
+            e.preventDefault(); 
+            if ( $('#frmcreatestore').parsley().isValid() ) {
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                    url: "{{ url('/admin/online-store')}}",
+                    type: 'POST',
+                    data: $('#frmcreatestore').serialize(),
+                    success: function(response){
+                        // console.log(response.msg);
+                        alert(response.msg);
+                        location.reload();
+                    }
+                });
+            }
             });
         });
 
@@ -142,15 +164,37 @@ columns:
 
         });
 
-        //Edit store
-        $('#frmeditstore').submit(function(e){
-            e.preventDefault();
-                var storeId = $('#hdnstoreid').val();
+        // //Edit store
+        // $('#frmeditstore').submit(function(e){
+        //     e.preventDefault();
+        //         var storeId = $('#hdnstoreid').val();
 
-            $.ajax({
-                // headers: {
-                // 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                // },
+        //     $.ajax({
+        //         type: 'PUT',
+        //         url: baseUrl+'/admin/online-store/'+storeId,
+        //         data: $('#frmeditstore').serialize(),
+        //         success: function(response){
+        //             if(response.success==true){
+        //                 alert(response.msg);
+        //                 setTimeout(function(){
+        //                     location.reload();
+        //                 },1000);
+        //             }else{
+        //                 // alert(response.msg);
+        //                 console.log(response.msg);
+        //             }
+        //         }
+
+        //     })
+        // });
+
+        //Form Validation + Edit Payment
+        $(document).ready(function(){
+            $('#frmeditstore').on('submit',function(e) {
+            e.preventDefault();
+            var storeId = $('#hdnstoreid').val();
+            if ( $('#frmeditstore').parsley().isValid() ) {
+                $.ajax({
                 type: 'PUT',
                 url: baseUrl+'/admin/online-store/'+storeId,
                 data: $('#frmeditstore').serialize(),
@@ -167,6 +211,8 @@ columns:
                 }
 
             })
+            }
+            });
         });
 
 
