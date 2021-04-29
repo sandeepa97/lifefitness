@@ -15,11 +15,11 @@
                                 <div class="col-md-6">
                                     <input type="hidden" name="hdnclientid" id="hdnclientid"/>
                                     <label for="fname">First Name</label>
-                                    <input type="text"  class="form-control" id="editfname" name="fname" placeholder="First Name">
+                                    <input type="text"  class="form-control" id="editfname" name="fname" placeholder="First Name" required data-parsley-pattern="[a-zA-Z ]+$" data-parsley-trigger="keyup">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="lname">Last Name</label>
-                                    <input type="text"  class="form-control" id="editlname" name="lname" placeholder="Last Name">
+                                    <input type="text"  class="form-control" id="editlname" name="lname" placeholder="Last Name" required data-parsley-pattern="[a-zA-Z ]+$" data-parsley-trigger="keyup">
                                 </div>
                             </div>
                         </div>
@@ -34,7 +34,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="location">Location</label>
-                                <input type="text" class="form-control" id="editlocation" name="location" placeholder="Location">
+                                <input type="text" class="form-control" id="editlocation" name="location" placeholder="Location" required data-parsley-trigger="keyup">
                             </div>
 
                         </div>
@@ -43,11 +43,11 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="contact">Contact</label>
-                                <input type="text" name="contact" id="editcontact" class="form-control" placeholder="Contact"/>
+                                <input type="text" name="contact" id="editcontact" class="form-control" placeholder="Contact" required data-parsley-pattern="[0-9]+$" data-parsley-length="[10,13]" data-parsley-trigger="keyup"/>
                             </div>
                             <div class="col-md-6">
                                 <label for="email">Email</label>
-                                <input type="email" name="email" id="editemail" class="form-control" placeholder="Email"/>
+                                <input type="email" name="email" id="editemail" class="form-control" placeholder="Email" required data-parsley-type="email" data-parsley-trigger="keyup"/>
                             </div>
                         </div>
                     </div>

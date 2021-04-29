@@ -88,16 +88,34 @@ columns:
             $('#clientaddmodal').modal('toggle');
         });
 
-        $('#frmcreateclient').submit(function(e){
-            e.preventDefault();
-            $.ajax({
-                url: "{{ url('/admin/online-coach')}}",
-                type: 'POST',
-                data: $('#frmcreateclient').serialize(),
-                success: function(response){
-                    alert(response.msg);
-                    location.reload();
+        // $('#frmcreateclient').submit(function(e){
+        //     e.preventDefault();
+        //     $.ajax({
+        //         url: "{{ url('/admin/online-coach')}}",
+        //         type: 'POST',
+        //         data: $('#frmcreateclient').serialize(),
+        //         success: function(response){
+        //             alert(response.msg);
+        //             location.reload();
+        //         }
+        //     });
+        // });
+
+        //Form Validation + Add Client
+        $(document).ready(function(){
+            $('#frmcreateclient').on('submit',function(e) {
+            e.preventDefault(); 
+            if ( $('#frmcreateclient').parsley().isValid() ) {
+                $.ajax({
+                    url: "{{ url('/admin/online-coach')}}",
+                    type: 'POST',
+                    data: $('#frmcreateclient').serialize(),
+                    success: function(response){
+                        alert(response.msg);
+                        location.reload();
                 }
+            });
+            }
             });
         });
 
@@ -142,12 +160,37 @@ columns:
 
         });
 
-        //Edit Client
-        $('#frmeditclient').submit(function(e){
-            e.preventDefault();
-                var clientId = $('#hdnclientid').val();
+        // //Edit Client
+        // $('#frmeditclient').submit(function(e){
+        //     e.preventDefault();
+        //         var clientId = $('#hdnclientid').val();
 
-            $.ajax({
+        //     $.ajax({
+        //         type: 'PUT',
+        //         url: baseUrl+'/admin/online-coach/'+clientId,
+        //         data: $('#frmeditclient').serialize(),
+        //         success: function(response){
+        //             if(response.success==true){
+        //                 alert(response.msg);
+        //                 setTimeout(function(){
+        //                     location.reload();
+        //                 },1000);
+        //             }else{
+        //                 // alert(response.msg);
+        //                 console.log(response.msg);
+        //             }
+        //         }
+
+        //     })
+        // });
+
+        //Form Validation + Edit Client
+        $(document).ready(function(){
+            $('#frmeditclient').on('submit',function(e) {
+            e.preventDefault();
+            var clientId = $('#hdnclientid').val();
+            if ( $('#frmeditclient').parsley().isValid() ) {
+                $.ajax({
                 type: 'PUT',
                 url: baseUrl+'/admin/online-coach/'+clientId,
                 data: $('#frmeditclient').serialize(),
@@ -164,8 +207,9 @@ columns:
                 }
 
             })
+            }
+            });
         });
-
 
     // Delete Client Record
     $('#clienttable').on('click', 'a.remove_client', function (e) {
