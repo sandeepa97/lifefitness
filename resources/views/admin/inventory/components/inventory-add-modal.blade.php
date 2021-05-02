@@ -32,7 +32,8 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="service_date">Service Date</label>
-                                <input type="date" class="form-control" id="service_date" name="service_date" placeholder="Service Date">
+                                <input type="date" class="form-control" id="service_date" name="service_date" placeholder="Service Date"
+                                data-parsley-mindate="<?php echo date('Y-m-d'); ?>">
                             </div>
                         </div>
                     </div>
@@ -57,3 +58,32 @@
         </div>
     </div>
   </div>
+
+
+<!-- <div class='input-group date' id='datetimepicker'>
+    <input type='text' name="contact-date" id="contact-date"
+        placeholder="MM/DD/YYYY"
+        data-date-format="MM/DD/YYYY"
+        data-date-minDate="<?php //echo date('m/d/Y'); ?>"
+        data-parsley-mindate="<?php // echo date('m/d/Y'); ?>" />
+    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+</span>
+</div> -->
+
+<!-- <script>
+window.ParsleyValidator
+    .addValidator('mindate', function (value, requirement) {
+        // is valid date?
+        var timestamp = Date.parse(value),
+            minTs = Date.parse(requirement);
+
+        return isNaN(timestamp) ? false : timestamp > minTs;    
+    }, 32)
+    .addMessage('en', 'mindate', 'This date should be greater than %s');
+
+$('#myForm').parsley();
+
+$('#datetimepicker').datetimepicker({
+    language:'en'
+});
+</script> -->
