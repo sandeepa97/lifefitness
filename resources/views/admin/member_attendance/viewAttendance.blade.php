@@ -9,7 +9,7 @@
 
     <div class="row">
         <div class="col-md-12 text-right">
-            <button type="button" class="btn btn-primary" id="btnaddattendance">Add Attendance</button>
+            <!-- <button type="button" class="btn btn-primary" id="btnaddattendance">Add Attendance</button> -->
         </div>
     </div>
     <div class="row card mt-1">
@@ -23,7 +23,7 @@
                             <th>Name</th>
                             <th>Date In</th>
                             <th>Time In</th>
-                            <th>Action</th>
+                            <!-- <th>Action</th> -->
                         </tr>
 
                     </thead>
@@ -85,13 +85,13 @@
                          }
                     },
                     { data: 'member_in_date' },
-                    { data: 'member_in_time' },
-                    { 
-                        data: null,
-                        className: "center",
-                        defaultContent: '<a href="" class="edit_attendance btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>' + 
-                        '<a href="" class="remove_attendance btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>'
-                    }
+                    { data: 'member_in_time' }
+                    // { 
+                    //     data: null,
+                    //     className: "center",
+                    //     defaultContent: '<a href="" class="edit_attendance btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>' + 
+                    //     '<a href="" class="remove_attendance btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>'
+                    // }
                 ]
         });
 

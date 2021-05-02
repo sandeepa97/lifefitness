@@ -44,7 +44,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="date">Date</label>
-                                <input type="date" class="form-control" id="editdate" name="date" placeholder="Date">
+                                <input type="date" class="form-control" id="editdate" name="date" placeholder="Date" readonly="readonly">
                             </div>
 
                         </div>

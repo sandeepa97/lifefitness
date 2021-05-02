@@ -19,13 +19,13 @@
                                 <select name="payment_type_id"  id="payment_type_id" class="form-control">
                                 </select>
                                 </div>
-                                <div class="col-md-4">
+                                <!-- <div class="col-md-4">
                                     <label for="report_type">Report Type</label>
                                     <select name="report_type"  id="report_type" class="form-control">
                                     <option value="">Detailed Report</option>
                                     <option value="" disabled>Summary Report</option>
                                     </select>
-                                </div>
+                                </div> -->
                                 </div>
                               
                     </div> 
@@ -73,13 +73,13 @@
                                 <select name="member_id"  id="attendee" class="form-control">
                                 </select>
                                 </div>
-                                <div class="col-md-4">
+                                <!-- <div class="col-md-4">
                                     <label for="report_type">Report Type</label>
                                     <select name="report_type"  id="report_type" class="form-control">
                                     <option value="">Detailed Report</option>
                                     <option value="" disabled>Summary Report</option>
                                     </select>
-                                </div>
+                                </div> -->
                                 </div>
                               
                     </div> 
@@ -127,13 +127,13 @@
                                 <select name="member_id"  id="member_name" class="form-control">
                                 </select>
                                 </div>
-                                <div class="col-md-4">
+                                <!-- <div class="col-md-4">
                                     <label for="report_type">Report Type</label>
                                     <select name="report_type"  id="report_type" class="form-control">
                                     <option value="">Detailed Report</option>
                                     <option value="" disabled>Summary Report</option>
                                     </select>
-                                </div>
+                                </div> -->
                                 </div>
                               
                     </div> 

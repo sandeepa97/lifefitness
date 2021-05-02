@@ -37,7 +37,7 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="Address">Address</label>
-                                <input type="text" class="form-control" id="address" name="address" placeholder="Address" required data-parsley-pattern="[a-zA-Z ,]+$" data-parsley-trigger="keyup">
+                                <input type="text" class="form-control" id="address" name="address" placeholder="Address" required data-parsley-pattern="[a-zA-Z 0-9 ,]+$" data-parsley-trigger="keyup">
                             </div>
 
                         </div>

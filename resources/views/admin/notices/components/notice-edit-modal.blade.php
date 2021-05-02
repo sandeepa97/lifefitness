@@ -32,13 +32,13 @@
                             <div class="col-md-4">
                                 <label for="notice_date">Date</label>
                                 <input type="date" class="form-control" id="editnotice_date" name="notice_date" placeholder="Publish Date" 
-                                step = "any">
+                                step = "any" readonly="readonly">
                                 <!-- value="<?php //echo date('Y-m-d'); ?>" -->
                             </div>
                             <div class="col-md-4">
                                 <label for="time">Time</label>
                                 <input type="time" class="form-control" id="editnotice_time" name="notice_time" placeholder="Publish Time"
-                                step = "any">
+                                step = "any" readonly="readonly">
                                 <!-- value="<?php //echo date('h:i:s'); ?>" -->
                             </div>
                         </div>
