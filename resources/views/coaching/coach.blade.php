@@ -36,11 +36,11 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="fname">First Name</label>
-                                    <input type="text"  class="form-control" id="fname" name="fname" placeholder="First Name">
+                                    <input type="text"  class="form-control" id="fname" name="fname" placeholder="First Name" required="required">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="lname">Last Name</label>
-                                    <input type="text"  class="form-control" id="lname" name="lname" placeholder="Last Name">
+                                    <input type="text"  class="form-control" id="lname" name="lname" placeholder="Last Name" required="required">
                                 </div>
                             </div>
                         </div>
@@ -55,7 +55,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="location">Location</label>
-                                <input type="text" class="form-control" id="location" name="location" placeholder="Location">
+                                <input type="text" class="form-control" id="location" name="location" placeholder="Location" required="required">
                             </div>
 
                         </div>
@@ -64,11 +64,11 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="contact">Contact</label>
-                                <input type="text" name="contact" id="contact" class="form-control" placeholder="Contact"/>
+                                <input type="text" name="contact" id="contact" class="form-control" placeholder="Contact" required="required"/>
                             </div>
                             <div class="col-md-6">
                                 <label for="email">Email</label>
-                                <input type="email" name="email" id="email" class="form-control" placeholder="Email"/>
+                                <input type="email" name="email" id="email" class="form-control" placeholder="Email" required="required"/>
                             </div>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="online_coach_package_id">Coach Package</label>
-                                <select name="online_coach_package_id"  id="online_coach_package_id" class="form-control">
+                                <select name="online_coach_package_id"  id="online_coach_package_id" class="form-control" >
                                 </select>
                             </div>
                         </div>
